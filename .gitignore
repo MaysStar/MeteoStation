@@ -1,0 +1,19 @@
+# Build output
+Debug/
+Release/
+build/
+
+# IDE files
+.settings/
+.vscode/
+*.launch
+
+# Object files
+*.o
+*.elf
+*.bin
+*.map
+*.hex
+
+# CubeMX backup
+*.ioc-backup
