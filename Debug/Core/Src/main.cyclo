@@ -1,0 +1,16 @@
+../Core/Src/main.c:97:5:main	5
+../Core/Src/main.c:222:6:SystemClock_Config	3
+../Core/Src/main.c:268:13:MX_I2C1_Init	2
+../Core/Src/main.c:318:13:MX_I2S3_Init	2
+../Core/Src/main.c:352:13:MX_SPI1_Init	2
+../Core/Src/main.c:392:13:MX_TIM2_Init	4
+../Core/Src/main.c:437:13:MX_GPIO_Init	1
+../Core/Src/main.c:591:14:get_day_of_weak	1
+../Core/Src/main.c:598:13:number_to_string	4
+../Core/Src/main.c:612:14:time_to_string	1
+../Core/Src/main.c:629:14:date_to_string	1
+../Core/Src/main.c:645:13:saveDataIntoEEPROM	2
+../Core/Src/main.c:674:13:get_data	2
+../Core/Src/main.c:699:13:get_data_ds1307	1
+../Core/Src/main.c:715:6:HAL_TIM_PeriodElapsedCallback	3
+../Core/Src/main.c:738:6:Error_Handler	1

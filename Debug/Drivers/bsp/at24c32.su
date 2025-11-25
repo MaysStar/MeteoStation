@@ -1,0 +1,2 @@
+../Drivers/bsp/at24c32.c:20:6:at24c32_set_data	72	dynamic
+../Drivers/bsp/at24c32.c:77:6:at24c32_get_data	40	static
