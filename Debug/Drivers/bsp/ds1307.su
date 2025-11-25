@@ -1,9 +1,0 @@
-../Drivers/bsp/ds1307.c:101:13:ds1307_write	32	static
-../Drivers/bsp/ds1307.c:142:16:ds1307_read	32	static
-../Drivers/bsp/ds1307.c:202:16:binary_to_bcd	24	static
-../Drivers/bsp/ds1307.c:235:16:bcd_to_binary	24	static
-../Drivers/bsp/ds1307.c:260:9:ds1307_init	16	static
-../Drivers/bsp/ds1307.c:292:6:ds1307_set_current_time	24	static
-../Drivers/bsp/ds1307.c:341:6:ds1307_get_current_time	24	static
-../Drivers/bsp/ds1307.c:388:6:ds1307_set_current_date	16	static
-../Drivers/bsp/ds1307.c:415:6:ds1307_get_current_date	16	static
