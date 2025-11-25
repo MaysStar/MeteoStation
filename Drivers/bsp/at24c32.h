@@ -14,11 +14,9 @@ extern I2C_HandleTypeDef hi2c1;
 #define AT24C32_END_ADDR				0x0FFF
 #define AT24C32_TIMEOUT					1000
 
-/* Initialization API */
-void at24c32_init(void);
 
 /* Send and receive data APIs */
-void at24c32_set_data(uint8_t *Tx, uint32_t len);
-void at24c32_get_data(uint8_t *Rx, uint16_t address, uint32_t len);
+HAL_StatusTypeDef at24c32_set_data(uint8_t *Tx, uint32_t len);
+HAL_StatusTypeDef at24c32_get_data(uint8_t *Rx, uint16_t address, uint32_t len);
 
 #endif /* BSP_AT24C32_H_ */

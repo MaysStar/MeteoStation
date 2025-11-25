@@ -103,7 +103,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-	HAL_Init();
+  HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -124,41 +124,27 @@ int main(void)
   MX_SPI1_Init();
   MX_USB_HOST_Init();*/
   /* USER CODE BEGIN 2 */
-
-  printf("Start of code\n");
-
-  at24c32_get_data(sd_buf, 0x00, 4095);
-
-  sd_buf[4095] = '\0';
-
-  printf("ALL sd flash: %s \n", sd_buf);
-
-  HAL_Delay(5000);
-
   lcd_display_clear();
 
   lcd_print_string("HAL testing");
 
   /* DS1307 initialization */
 
-  if (ds1307_init()) {
-      printf("Error ds1307 init\n");
-      while (1);
-  }
+  ds1307_init();
 
   /* Timer 2 initialization */
   HAL_TIM_Base_Start_IT(&htim2);
 
   /* DS1307 set data */
 	curr_date.day = THURSDAY;
-	curr_date.date = 24;
+	curr_date.date = 25;
 	curr_date.month = 11;
 	curr_date.year = 25;
 
 	curr_time.time_format = DS1307_TIME_FORMAT_24HOUR;
-	curr_time.hours = 22;
-	curr_time.minutes = 57;
-	curr_time.seconds = 10;
+	curr_time.hours = 21;
+	curr_time.minutes = 39;
+	curr_time.seconds = 50;
 
 	ds1307_set_current_date(&curr_date);
 
@@ -275,19 +261,6 @@ static void MX_I2C1_Init(void)
   /* USER CODE BEGIN I2C1_Init 1 */
 
   /* USER CODE END I2C1_Init 1 */
-  /*hi2c1.Instance = I2C1;
-  hi2c1.Init.ClockSpeed = 100000;
-  hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
-  hi2c1.Init.OwnAddress1 = 0;
-  hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
-  hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
-  hi2c1.Init.OwnAddress2 = 0;
-  hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
-  hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
-  if (HAL_I2C_Init(&hi2c1) != HAL_OK)
-  {
-    Error_Handler();
-  }*/
   /* USER CODE BEGIN I2C1_Init 2 */
 	__HAL_RCC_I2C1_CLK_ENABLE();
 
@@ -439,87 +412,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 /* USER CODE BEGIN MX_GPIO_Init_1 */
 /* USER CODE END MX_GPIO_Init_1 */
-
-  /* GPIO Ports Clock Enable */
-  //__HAL_RCC_GPIOE_CLK_ENABLE();
-  //__HAL_RCC_GPIOC_CLK_ENABLE();
-  //__HAL_RCC_GPIOH_CLK_ENABLE();
- // __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
-
-  /*Configure GPIO pin Output Level */
-  //HAL_GPIO_WritePin(CS_I2C_SPI_GPIO_Port, CS_I2C_SPI_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  //HAL_GPIO_WritePin(OTG_FS_PowerSwitchOn_GPIO_Port, OTG_FS_PowerSwitchOn_Pin, GPIO_PIN_SET);
-
-  /*Configure GPIO pin Output Level */
-  //HAL_GPIO_WritePin(GPIOD, LD4_Pin|LD3_Pin|LD5_Pin|LD6_Pin
-  //                        |Audio_RST_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin : CS_I2C_SPI_Pin */
-  /*GPIO_InitStruct.Pin = CS_I2C_SPI_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(CS_I2C_SPI_GPIO_Port, &GPIO_InitStruct);*/
-
-  /*Configure GPIO pin : OTG_FS_PowerSwitchOn_Pin */
-  /*GPIO_InitStruct.Pin = OTG_FS_PowerSwitchOn_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(OTG_FS_PowerSwitchOn_GPIO_Port, &GPIO_InitStruct);**/
-
-  /*Configure GPIO pin : PDM_OUT_Pin */
-  /*GPIO_InitStruct.Pin = PDM_OUT_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
-  HAL_GPIO_Init(PDM_OUT_GPIO_Port, &GPIO_InitStruct);*/
-
-  /*Configure GPIO pin : B1_Pin */
-  /*GPIO_InitStruct.Pin = B1_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_EVT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);*/
-
-  /*Configure GPIO pin : BOOT1_Pin */
-  /*GPIO_InitStruct.Pin = BOOT1_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(BOOT1_GPIO_Port, &GPIO_InitStruct);*/
-
-  /*Configure GPIO pin : CLK_IN_Pin */
-  /*GPIO_InitStruct.Pin = CLK_IN_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
-  HAL_GPIO_Init(CLK_IN_GPIO_Port, &GPIO_InitStruct);*/
-
-  /*Configure GPIO pins : LD4_Pin LD3_Pin LD5_Pin LD6_Pin
-                           Audio_RST_Pin */
-  /*GPIO_InitStruct.Pin = LD4_Pin|LD3_Pin|LD5_Pin|LD6_Pin
-                          |Audio_RST_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);*/
-
-  /*Configure GPIO pin : OTG_FS_OverCurrent_Pin */
-  /*GPIO_InitStruct.Pin = OTG_FS_OverCurrent_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(OTG_FS_OverCurrent_GPIO_Port, &GPIO_InitStruct);*/
-
-  /*Configure GPIO pin : MEMS_INT2_Pin */
-  /*GPIO_InitStruct.Pin = MEMS_INT2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_EVT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(MEMS_INT2_GPIO_Port, &GPIO_InitStruct);*/
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
   	  /*Configure GPIO pin : PD14 */
@@ -659,14 +553,12 @@ static void saveDataIntoEEPROM(void)
 		lcd_set_cursor(1, 1);
 
 		lcd_print_string("I2C NOT READY");
-
-		Error_Handler();
 	}
 
 	// save into ROM
 	at24c32_set_data(time_to_string(&curr_time), strlen(time_to_string(&curr_time)));
 
-	HAL_Delay(200);
+	while(HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(AT24C32_I2C_ADDR), 10, 100) != HAL_OK);
 
 	at24c32_set_data(date_to_string(&curr_date), strlen(date_to_string(&curr_date)));
 }
@@ -684,16 +576,12 @@ static void get_data(void)
 		lcd_set_cursor(1, 1);
 
 		lcd_print_string("I2C NOT READY");
-
-		Error_Handler();
 	}
 	at24c32_get_data(rx_buf, cuur_data, 8);
 
 	cuur_data += 8;
 
 	rx_buf[8] = '\0';
-
-	printf("Data: %s\n", rx_buf);
 }
 
 static void get_data_ds1307(void)

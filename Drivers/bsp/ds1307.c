@@ -1,87 +1,9 @@
 #include "ds1307.h"
 
-/*static void ds1307_i2c_pin_config(void);
-static void ds1307_i2c_config(void);*/
-static void ds1307_write(uint8_t val, uint8_t reg_addr);
-static uint8_t ds1307_read(uint8_t reg_addr);
+static HAL_StatusTypeDef ds1307_write(uint8_t val, uint8_t reg_addr);
+static DS1307_rx_t ds1307_read(uint8_t reg_addr);
 static uint8_t binary_to_bcd(uint8_t bin);
 static uint8_t bcd_to_binary(uint8_t bcd);
-
-// global I2C handle
-//I2C_Handle_t g_ds1307I2CHandle;
-//I2C_HandleTypeDef DS1307_I2C_Handle;
-
-/*********************************************************************
- * @fn      		  - ds1307_i2c_pin_config
- *
- * @brief             - This function initialize gpio for i2c pin
- *
- * @param[in]         -
- * @param[in]         -
- * @param[in]         -
- *
- * @return            - none
- *
- * @Note              - none
-
- */
-
-/*static void ds1307_i2c_pin_config(void)
-{
-	GPIO_InitTypeDef GPIO_InitStruct = {0};
-	__HAL_RCC_GPIOB_CLK_ENABLE();
-
-	GPIO_InitStruct.Pin = DS1307_I2C_SCL_PIN;
-	GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
-	GPIO_InitStruct.Alternate = GPIO_AF4_I2C1;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-
-	HAL_GPIO_Init(DS1307_I2C_GPIO_PORT,&GPIO_InitStruct);
-
-	GPIO_InitStruct.Pin = DS1307_I2C_SDA_PIN;
-	GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
-	GPIO_InitStruct.Alternate = GPIO_AF4_I2C1;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
-	HAL_GPIO_Init(DS1307_I2C_GPIO_PORT, &GPIO_InitStruct);
-}*/
-
-/*********************************************************************
- * @fn      		  - ds1307_i2c_config
- *
- * @brief             - This function initialize i2c for real time clock
- *
- * @param[in]         -
- * @param[in]         -
- * @param[in]         -
- *
- * @return            - none
- *
- * @Note              - none
-
- */
-
-/*static void ds1307_i2c_config(void)
-{
-
-
-
-	DS1307_I2C_Handle.Instance = I2C1;
-	DS1307_I2C_Handle.Init.ClockSpeed = DS1307_I2C_SPEED;
-	DS1307_I2C_Handle.Init.DutyCycle = I2C_DUTYCYCLE_2;
-	DS1307_I2C_Handle.Init.OwnAddress1 = 0x0;
-	DS1307_I2C_Handle.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
-	DS1307_I2C_Handle.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
-	DS1307_I2C_Handle.Init.OwnAddress2 = 0;
-	DS1307_I2C_Handle.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
-	DS1307_I2C_Handle.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
-
-	if (HAL_I2C_Init(&DS1307_I2C_Handle) != HAL_OK)
-	{
-		Error_Handler();
-	}
-}*/
 
 /*********************************************************************
  * @fn      		  - ds1307_write
@@ -92,13 +14,13 @@ static uint8_t bcd_to_binary(uint8_t bcd);
  * @param[in]         -	address of register in rtc
  * @param[in]         -
  *
- * @return            - none
+ * @return            - HAL state
  *
  * @Note              - none
 
  */
 
-static void ds1307_write(uint8_t val, uint8_t reg_addr)
+static HAL_StatusTypeDef ds1307_write(uint8_t val, uint8_t reg_addr)
 {
 	HAL_StatusTypeDef ret;
 
@@ -107,21 +29,20 @@ static void ds1307_write(uint8_t val, uint8_t reg_addr)
 	tx[1] = val;
 
 	ret = HAL_I2C_Master_Transmit(&hi2c1, (uint16_t)(DS1307_I2C_ADDR), tx, 2, 1000);
-	if(ret == HAL_ERROR)
+	if(ret != HAL_OK)
 	{
-		printf("I2C error: 0x%08lx\r\n", hi2c1.ErrorCode);
-
 		lcd_display_clear();
 
 		lcd_set_cursor(1, 1);
 
 		lcd_print_string("I2C ERROR DS1307");
 
-		Error_Handler();
-		// або HAL_I2C_GetError(&hi2c1);
+		lcd_set_cursor(2, 1);
+
+		lcd_print_string("DS WRITE");
 	}
 
-	//HAL_I2C_Master_Seq_Transmit_IT(hi2c, DevAddress, pData, Size, XferOptions)(&hi2c1, DS1307_I2C_ADDR, &tx, 2, Timeout)
+	return ret;
 }
 
 /*********************************************************************
@@ -133,39 +54,48 @@ static void ds1307_write(uint8_t val, uint8_t reg_addr)
  * @param[in]         -
  * @param[in]         -
  *
- * @return            - none
+ * @return            - HAL state and byte
  *
  * @Note              - none
 
  */
 
-static uint8_t ds1307_read(uint8_t reg_addr)
+static DS1307_rx_t ds1307_read(uint8_t reg_addr)
 {
-	HAL_StatusTypeDef ret;
-	uint8_t rx;
-	// send pointer to register
-	ret = HAL_I2C_Master_Transmit(&hi2c1, (uint16_t)(DS1307_I2C_ADDR), &reg_addr, 1, 1000);
-	//HAL_I2C_Master_Seq_Transmit_IT(&hi2c1, DS1307_I2C_ADDR, &reg_addr, 1, XferOptions)
-	//I2C_MasterSendData(&g_ds1307I2CHandle, &reg_addr, 1, DS1307_I2C_ADDR, I2C_STOP);
-	if(ret == HAL_ERROR)
-	{
-		printf("I2C error: 0x%08lx\r\n", hi2c1.ErrorCode);
+	DS1307_rx_t ret;
+	ret.data = 0;
 
+	// send pointer to register
+	ret.state = HAL_I2C_Master_Transmit(&hi2c1, (uint16_t)(DS1307_I2C_ADDR), &reg_addr, 1, 1000);
+	if(ret.state != HAL_OK)
+	{
 		lcd_display_clear();
 
 		lcd_set_cursor(1, 1);
 
 		lcd_print_string("I2C ERROR DS1307");
 
-		Error_Handler();
-		// або HAL_I2C_GetError(&hi2c1);
+		lcd_set_cursor(2, 1);
+
+		lcd_print_string("DS WRITE");
+
+		return ret;
 	}
 
-	HAL_Delay(10);
+	ret.state = HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(DS1307_I2C_ADDR) | 0x01, 10, 1000);
+
+	if(ret.state != HAL_OK)
+	{
+		lcd_display_clear();
+
+		lcd_set_cursor(1, 1);
+
+		lcd_print_string("I2C ERROR DS READY");
+	}
 
 	// read from that register
-	ret = HAL_I2C_Master_Receive(&hi2c1, (uint16_t)(DS1307_I2C_ADDR) | 0x01, &rx, 1, 1000);
-	if(ret == HAL_ERROR)
+	ret.state = HAL_I2C_Master_Receive(&hi2c1, (uint16_t)(DS1307_I2C_ADDR) | 0x01, &ret.data, 1, 1000);
+	if(ret.state != HAL_OK)
 	{
 		printf("I2C error: 0x%08lx\r\n", hi2c1.ErrorCode);
 
@@ -175,13 +105,12 @@ static uint8_t ds1307_read(uint8_t reg_addr)
 
 		lcd_print_string("I2C ERROR DS1307");
 
-		Error_Handler();
-		// або HAL_I2C_GetError(&hi2c1);
+		lcd_set_cursor(2, 1);
+
+		lcd_print_string("DS READ");
 	}
 
-	//HAL_I2C_Master_Receive_IT(&DS1307_I2C_Handle, (DS1307_I2C_ADDR << 1), &rx, 1);
-
-	return rx;
+	return ret;
 }
 
 /*********************************************************************
@@ -193,7 +122,7 @@ static uint8_t ds1307_read(uint8_t reg_addr)
  * @param[in]         -
  * @param[in]         -
  *
- * @return            - number in bcd format
+ * @return            - bcd code
  *
  * @Note              - none
 
@@ -251,14 +180,15 @@ static uint8_t bcd_to_binary(uint8_t bcd)
  * @param[in]         -
  * @param[in]         -
  *
- * @return            - if( return 1 ) ? CH = 1 ( init failed ) : CH = 0 ( init success )
+ * @return            - HAL state
  *
  * @Note              - none
 
  */
 
-uint8_t ds1307_init(void)
+HAL_StatusTypeDef ds1307_init(void)
 {
+	HAL_StatusTypeDef ret;
 	// 1. Initialize I2C pin
 	/*ds1307_i2c_pin_config();
 
@@ -266,12 +196,14 @@ uint8_t ds1307_init(void)
 	ds1307_i2c_config();*/
 
 	// 3. Make clock halt = 0
-	ds1307_write(0x00, DS1307_ADDR_SEC);
+	ret = ds1307_write(0x00, DS1307_ADDR_SEC);
+
+	if(ret != HAL_OK) return ret;
 
 	// 5. Read back clock halt bit
-	uint8_t clock_state = ds1307_read(DS1307_ADDR_SEC);
+	ret = ds1307_read(DS1307_ADDR_SEC).state;
 
-	return ((clock_state >> 7) & 0x1);
+	return ret;
 }
 
 /*********************************************************************
@@ -283,14 +215,15 @@ uint8_t ds1307_init(void)
  * @param[in]         -
  * @param[in]         -
  *
- * @return            - none
+ * @return            - HAL state
  *
  * @Note              - none
 
  */
 
-void ds1307_set_current_time(RTC_time_t *rtc_time)
+HAL_StatusTypeDef ds1307_set_current_time(RTC_time_t *rtc_time)
 {
+	HAL_StatusTypeDef ret;
 	uint8_t seconds, hours;
 
 	// change format to bcd
@@ -301,9 +234,13 @@ void ds1307_set_current_time(RTC_time_t *rtc_time)
 	seconds &= ~(1 << 7);
 
 	// write time to clock
-	ds1307_write(seconds, DS1307_ADDR_SEC);
+	ret = ds1307_write(seconds, DS1307_ADDR_SEC);
 
-	ds1307_write(binary_to_bcd(rtc_time->minutes), DS1307_ADDR_MIN);
+	if(ret != HAL_OK) return ret;
+
+	ret = ds1307_write(binary_to_bcd(rtc_time->minutes), DS1307_ADDR_MIN);
+
+	if(ret != HAL_OK) return ret;
 
 	if(rtc_time->time_format == DS1307_TIME_FORMAT_24HOUR)
 	{
@@ -320,7 +257,9 @@ void ds1307_set_current_time(RTC_time_t *rtc_time)
 				hours | (1 << 5) : hours & ~(1 << 5);
 	}
 
-	ds1307_write(hours, DS1307_ADDR_HOUR);
+	ret = ds1307_write(hours, DS1307_ADDR_HOUR);
+
+	return ret;
 }
 
 /*********************************************************************
@@ -332,17 +271,21 @@ void ds1307_set_current_time(RTC_time_t *rtc_time)
  * @param[in]         -
  * @param[in]         -
  *
- * @return            - none
+ * @return            - HAL state
  *
  * @Note              - none
 
  */
 
-void ds1307_get_current_time(RTC_time_t *rtc_time)
+HAL_StatusTypeDef ds1307_get_current_time(RTC_time_t *rtc_time)
 {
+	DS1307_rx_t ret;
 	uint8_t seconds, hours;
 
-	seconds = ds1307_read(DS1307_ADDR_SEC);
+	ret = ds1307_read(DS1307_ADDR_SEC);
+
+	if(ret.state != HAL_OK) return ret.state;
+	seconds = ret.data;
 
 	// this bit is not required
 	seconds &= ~(1 << 7);
@@ -350,9 +293,13 @@ void ds1307_get_current_time(RTC_time_t *rtc_time)
 	// get time from rtc
 	rtc_time->seconds = bcd_to_binary(seconds);
 
-	rtc_time->minutes = bcd_to_binary(ds1307_read(DS1307_ADDR_MIN));
+	ret = ds1307_read(DS1307_ADDR_MIN);
+	if(ret.state != HAL_OK) return ret.state;
 
-	hours = ds1307_read(DS1307_ADDR_HOUR);
+	rtc_time->minutes = bcd_to_binary(ret.data);
+
+	ret = ds1307_read(DS1307_ADDR_HOUR);
+	hours = ret.data;
 
 	// check time format
 	if((hours & (1 << 6)) == RESET)
@@ -368,6 +315,8 @@ void ds1307_get_current_time(RTC_time_t *rtc_time)
 	}
 
 	rtc_time->hours = bcd_to_binary(hours);
+
+	return ret.state;
 }
 
 /*********************************************************************
@@ -379,22 +328,28 @@ void ds1307_get_current_time(RTC_time_t *rtc_time)
  * @param[in]         -
  * @param[in]         -
  *
- * @return            - none
+ * @return            - HAL state
  *
  * @Note              - none
 
  */
 
-void ds1307_set_current_date(RTC_date_t *rtc_date)
+HAL_StatusTypeDef ds1307_set_current_date(RTC_date_t *rtc_date)
 {
+	HAL_StatusTypeDef ret;
+
 	// change format to bcd and set the date
-	ds1307_write(binary_to_bcd(rtc_date->day), DS1307_ADDR_DAY);
+	ret = ds1307_write(binary_to_bcd(rtc_date->day), DS1307_ADDR_DAY);
+	if(ret != HAL_OK) return ret;
 
-	ds1307_write(binary_to_bcd(rtc_date->date), DS1307_ADDR_DATA);
+	ret = ds1307_write(binary_to_bcd(rtc_date->date), DS1307_ADDR_DATA);
+	if(ret != HAL_OK) return ret;
 
-	ds1307_write(binary_to_bcd(rtc_date->month), DS1307_ADDR_MONTH);
+	ret = ds1307_write(binary_to_bcd(rtc_date->month), DS1307_ADDR_MONTH);
+	if(ret != HAL_OK) return ret;
 
-	ds1307_write(binary_to_bcd(rtc_date->year), DS1307_ADDR_YEAR);
+	ret = ds1307_write(binary_to_bcd(rtc_date->year), DS1307_ADDR_YEAR);
+	return ret;
 }
 
 /*********************************************************************
@@ -406,36 +361,34 @@ void ds1307_set_current_date(RTC_date_t *rtc_date)
  * @param[in]         -
  * @param[in]         -
  *
- * @return            - none
+ * @return            - HAL state
  *
  * @Note              - none
 
  */
 
-void ds1307_get_current_date(RTC_date_t *rtc_date)
+HAL_StatusTypeDef ds1307_get_current_date(RTC_date_t *rtc_date)
 {
+	DS1307_rx_t ret;
 	// get date from rtc
-	rtc_date->day = bcd_to_binary(ds1307_read(DS1307_ADDR_DAY));
+	ret = ds1307_read(DS1307_ADDR_DAY);
+	if(ret.state != HAL_OK) return ret.state;
 
-	rtc_date->date = bcd_to_binary(ds1307_read(DS1307_ADDR_DATA));
+	rtc_date->day = bcd_to_binary(ret.data);
 
-	rtc_date->month = bcd_to_binary(ds1307_read(DS1307_ADDR_MONTH));
+	ret = ds1307_read(DS1307_ADDR_DATA);
+	if(ret.state != HAL_OK) return ret.state;
 
-	rtc_date->year = bcd_to_binary(ds1307_read(DS1307_ADDR_YEAR));
+	rtc_date->date = bcd_to_binary(ret.data);
+
+	ret = ds1307_read(DS1307_ADDR_MONTH);
+	if(ret.state != HAL_OK) return ret.state;
+
+	rtc_date->month = bcd_to_binary(ret.data);
+
+	ret = ds1307_read(DS1307_ADDR_YEAR);
+
+	rtc_date->year = bcd_to_binary(ret.data);
+
+	return ret.state;
 }
-
-/*void HAL_I2C_MasterTxCpltCallback(I2C_HandleTypeDef *hi2c) {
-    // handle transmit complete
-	if (hi2c->Instance == I2C1)
-	{
-		TxComplite = SET;
-	}
-}
-
-void HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef *hi2c) {
-    // handle receive complete
-	if (hi2c->Instance == I2C1)
-	{
-		RxComplite = SET;
-	}
-}*/

@@ -54,15 +54,21 @@ typedef struct
 	uint8_t time_format;
 }RTC_time_t;
 
+typedef struct
+{
+	uint8_t data;
+	HAL_StatusTypeDef state;
+}DS1307_rx_t;
+
 /* Function prototypes */
 uint8_t ds1307_init(void);
 
 /* Set and Get time */
-void ds1307_set_current_time(RTC_time_t *time);
-void ds1307_get_current_time(RTC_time_t *time);
+HAL_StatusTypeDef ds1307_set_current_time(RTC_time_t *time);
+HAL_StatusTypeDef ds1307_get_current_time(RTC_time_t *time);
 
 /* Set and Get date */
-void ds1307_set_current_date(RTC_date_t *date);
-void ds1307_get_current_date(RTC_date_t *date);
+HAL_StatusTypeDef ds1307_set_current_date(RTC_date_t *date);
+HAL_StatusTypeDef ds1307_get_current_date(RTC_date_t *date);
 
 #endif /* BSP_DS1307_H_ */

@@ -11,13 +11,13 @@ static uint16_t curr_addr = AT24C32_START_ADDR;
  * @param[in]         -	len
  * @param[in]         -
  *
- * @return            - none
+ * @return            - HAL state
  *
  * @Note              - none
 
  */
 
-void at24c32_set_data(uint8_t *Tx, uint32_t len)
+HAL_StatusTypeDef at24c32_set_data(uint8_t *Tx, uint32_t len)
 {
 	HAL_StatusTypeDef ret;
 	while(len > 0)
@@ -37,18 +37,15 @@ void at24c32_set_data(uint8_t *Tx, uint32_t len)
 		// 3. Send
 		ret = HAL_I2C_Master_Transmit(&hi2c1, (uint16_t)(AT24C32_I2C_ADDR), buf, (curr_len + 2), AT24C32_TIMEOUT);
 
-		if(ret == HAL_ERROR)
+		if(ret != HAL_OK)
 		{
-			printf("I2C error: 0x%08lx\r\n", hi2c1.ErrorCode);
-
 			lcd_display_clear();
 
 			lcd_set_cursor(1, 1);
 
 			lcd_print_string("I2C ERROR AT TX1");
 
-			Error_Handler();
-			// або HAL_I2C_GetError(&hi2c1);
+			return ret;
 		}
 
 		len -= curr_len;
@@ -57,6 +54,8 @@ void at24c32_set_data(uint8_t *Tx, uint32_t len)
 	}
 
 	if(curr_addr >= AT24C32_END_ADDR) curr_addr = AT24C32_START_ADDR;
+
+	return ret;
 }
 
 /*********************************************************************
@@ -68,16 +67,14 @@ void at24c32_set_data(uint8_t *Tx, uint32_t len)
  * @param[in]         -	address of byte
  * @param[in]         - len
  *
- * @return            - none
+ * @return            - HAL state
  *
  * @Note              - none
 
  */
 
-void at24c32_get_data(uint8_t *Rx, uint16_t address, uint32_t len)
+HAL_StatusTypeDef at24c32_get_data(uint8_t *Rx, uint16_t address, uint32_t len)
 {
-	//I2C_MasterReceiveData(&g_AT24C32I2CHandle, Rx, len, AT24C32_I2C_ADDR, I2C_STOP);
-
 	HAL_StatusTypeDef ret;
 
 	// 1. Send address of data
@@ -87,18 +84,15 @@ void at24c32_get_data(uint8_t *Rx, uint16_t address, uint32_t len)
 
 	ret = HAL_I2C_Master_Transmit(&hi2c1, (uint16_t)(AT24C32_I2C_ADDR), addr, 2, AT24C32_TIMEOUT);
 
-	if(ret == HAL_ERROR)
+	if(ret != HAL_OK)
 	{
-		printf("I2C error: 0x%08lx\r\n", hi2c1.ErrorCode);
-
 		lcd_display_clear();
 
 		lcd_set_cursor(1, 1);
 
 		lcd_print_string("I2C ERROR AT TX2");
 
-		Error_Handler();
-		// або HAL_I2C_GetError(&hi2c1);
+		return ret;
 	}
 
 	HAL_Delay(10);
@@ -106,17 +100,14 @@ void at24c32_get_data(uint8_t *Rx, uint16_t address, uint32_t len)
 	// 2. Receive data from EEPROM
 	ret = HAL_I2C_Master_Receive(&hi2c1, (uint16_t)(AT24C32_I2C_ADDR) | 0x01, Rx, len, AT24C32_TIMEOUT);
 
-	if(ret == HAL_ERROR)
+	if(ret != HAL_OK)
 	{
-		printf("I2C error: 0x%08lx\r\n", hi2c1.ErrorCode);
-
 		lcd_display_clear();
 
 		lcd_set_cursor(1, 1);
 
 		lcd_print_string("I2C ERROR AT RX");
-
-		Error_Handler();
-		// або HAL_I2C_GetError(&hi2c1);
 	}
+
+	return ret;
 }

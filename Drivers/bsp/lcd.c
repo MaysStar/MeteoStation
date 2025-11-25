@@ -4,6 +4,7 @@
 
 static void write_4_bits(uint8_t num);
 static void lcd_enable(void);
+static void lcd_busy_wait(void);
 
 /*********************************************************************
  * @fn      		  - write_4_bits
@@ -53,7 +54,60 @@ static void lcd_enable(void)
 
 	// from high to low
 	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_EN, GPIO_PIN_RESET);
-	HAL_Delay(1); // execution time > 37 micro seconds
+	HAL_Delay(1);// execution time > 37 micro seconds
+}
+
+/*********************************************************************
+ * @fn      		  - lcd_busy_wait
+ *
+ * @brief             - This function wait BUSY flag
+ *
+ * @param[in]         -
+ * @param[in]         -
+ * @param[in]         -
+ *
+ * @return            - none
+ *
+ * @Note              - none
+
+ */
+
+static void lcd_busy_wait(void)
+{
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+	// 1. D4-D7 -> input
+	GPIO_InitStruct.Pin = LCD_GPIO_D4 | LCD_GPIO_D5 | LCD_GPIO_D6 | LCD_GPIO_D7;
+	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(LCD_GPIO_PORT, &GPIO_InitStruct);
+
+	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_RS, GPIO_PIN_RESET); // command
+	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_RW, GPIO_PIN_SET);   // read
+
+	uint8_t busy = 1;
+
+	while (busy)
+	{
+		// EN high
+		HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_EN, GPIO_PIN_SET);
+
+		// read D7
+		busy = HAL_GPIO_ReadPin(LCD_GPIO_PORT, LCD_GPIO_D7);
+
+		// EN low
+		HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_EN, GPIO_PIN_RESET);
+
+		// dummy second cycle
+		HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_EN, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_EN, GPIO_PIN_RESET);
+	}
+
+	// return pins to OUTPUT mode
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	HAL_GPIO_Init(LCD_GPIO_PORT, &GPIO_InitStruct);
+
+	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_RW, GPIO_PIN_RESET);
 }
 
 /*********************************************************************
@@ -84,19 +138,16 @@ void lcd_init(void)
 	/* Command for initialization */
 	write_4_bits(0x3);
 
-	HAL_Delay(5);
+	lcd_busy_wait();
 
 	/* Command for initialization */
 	write_4_bits(0x3);
 
-	HAL_Delay(1);
+	lcd_busy_wait();
 
 	/* Command for initialization */
 	write_4_bits(0x3);
 	write_4_bits(0x2);
-
-	/*// Return home
-	write_4_bits(LCD_CMD_DIS_RETURN_HOME);*/
 
 	/* Function set command */
 	lcd_send_command(LCD_CMD_4DL_2N_5X8F);
@@ -213,7 +264,7 @@ void lcd_display_clear(void)
 {
 	lcd_send_command(LCD_CMD_DIS_CLEAR);
 
-	HAL_Delay(2);
+	lcd_busy_wait();
 }
 
 /*********************************************************************
@@ -239,7 +290,7 @@ void lcd_display_return_home(void)
 	 * check page number 24 of datasheet.
 	 * return home command execution wait time is around 2ms
 	 */
-	HAL_Delay(2);
+	lcd_busy_wait();
 }
 
 /*********************************************************************
