@@ -83,8 +83,8 @@ static void update_data(void);
 RTC_time_t curr_time;
 RTC_date_t curr_date;
 __vo uint8_t flag_read_rtc = RESET;
-char rx_buf[9];
-char meas_buf[24];
+char rx_buf[32];
+char meas_buf[16];
 static uint16_t cuur_data = 0;
 static uint32_t counter = 0;
 BME280_data_t data;
@@ -151,8 +151,8 @@ int main(void)
 	curr_date.year = 25;
 
 	curr_time.time_format = DS1307_TIME_FORMAT_24HOUR;
-	curr_time.hours = 21;
-	curr_time.minutes = 39;
+	curr_time.hours = 15;
+	curr_time.minutes = 11;
 	curr_time.seconds = 50;
 
 	ds1307_set_current_date(&curr_date);
@@ -195,21 +195,16 @@ int main(void)
 			lcd_print_string(rx_buf);
 		}
 
+		// after time get temperature, pressure and humidity
+		lcd_set_cursor(2, 1);
+		//lcd_print_string(meas_buf);
+		lcd_print_string(&rx_buf[16]);
+
 		if(counter >= 9)
 		{
 			counter = 0;
 			update_data();
 		}
-
-		// after time set temperature, pressure and humidity
-		lcd_set_cursor(1, 9);
-		lcd_print_string(meas_buf);
-
-		lcd_set_cursor(2, 1);
-		lcd_print_string(&meas_buf[8]);
-
-		get_data();
-
 	  }
 
     /* USER CODE BEGIN 3 */
@@ -503,6 +498,10 @@ static void saveDataIntoEEPROM(void)
 	while(HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(AT24C32_I2C_ADDR), 10, 100) != HAL_OK);
 
 	at24c32_set_data((uint8_t*)date_to_string(&curr_date), strlen(date_to_string(&curr_date)));
+
+	while(HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(AT24C32_I2C_ADDR), 10, 100) != HAL_OK);
+
+	at24c32_set_data((uint8_t*)meas_buf, strlen(meas_buf));
 }
 
 static void get_data(void)
@@ -519,11 +518,11 @@ static void get_data(void)
 
 		lcd_print_string("I2C NOT READY");
 	}
-	at24c32_get_data((uint8_t*)rx_buf, cuur_data, 8);
+	at24c32_get_data((uint8_t*)rx_buf, cuur_data, 32);
 
-	cuur_data += 8;
+	cuur_data += 31;
 
-	rx_buf[8] = '\0';
+	rx_buf[31] = '\0';
 }
 
 /*static void get_data_ds1307(void)
@@ -535,20 +534,14 @@ static void get_data(void)
 static void update_data(void)
 {
 	bme280_get_data(&data);
-	meas_buf[0] = ' ';
-	snprintf(&meas_buf[1], 5, "%.2f", data.temperature);
-	meas_buf[5] = ' ';
-	meas_buf[6] = 'C';
 
-	snprintf(&meas_buf[8], 7, "%.2f", data.pressure);
-	meas_buf[14] = 'h';
-	meas_buf[15] = 'P';
-	meas_buf[16] = ' ';
+	snprintf(meas_buf, 5, "%.2f", data.temperature);
+	meas_buf[4] = ',';
 
-	snprintf(&meas_buf[17], 5, "%.2f", data.humidity);
-	meas_buf[21] = '%';
-	meas_buf[22] = 'R';
-	meas_buf[23] = 'H';
+	snprintf(&meas_buf[5], 6, "%.2f", data.pressure);
+	meas_buf[10] = ',';
+
+	snprintf(&meas_buf[11], 5, "%.2f", data.humidity);
 }
 
 /* USER CODE END 4 */

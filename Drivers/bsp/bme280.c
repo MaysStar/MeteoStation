@@ -40,7 +40,7 @@ HAL_StatusTypeDef bme280_init(void)
 		return HAL_ERROR;
 	}
 
-	HAL_Delay(10);
+	while(HAL_I2C_IsDeviceReady(&hi2c1, BME280_I2C_ADDR | 0x01, 10, BME280_TIMEOUT) != HAL_OK);
 
 	/* Get all calibrating data */
 	ret = HAL_I2C_Mem_Read(&hi2c1, BME280_I2C_ADDR | 0x01, BME280_CALIB1_ADDR, 1, rx_buf1, BME280_CALIB1_SIZE, BME280_TIMEOUT);
@@ -55,7 +55,7 @@ HAL_StatusTypeDef bme280_init(void)
 		return ret;
 	}
 
-	HAL_Delay(10);
+	while(HAL_I2C_IsDeviceReady(&hi2c1, BME280_I2C_ADDR | 0x01, 10, BME280_TIMEOUT) != HAL_OK);
 
 	ret = HAL_I2C_Mem_Read(&hi2c1, BME280_I2C_ADDR | 0x01, BME280_CALIB2_ADDR, 1, rx_buf2, BME280_CALIB2_SIZE, BME280_TIMEOUT);
 	if(ret != HAL_OK)
@@ -93,7 +93,7 @@ HAL_StatusTypeDef bme280_init(void)
 
 
 	/* Configure bme modul setting data into ( ctrl_hum / ctrl_meas / config ) */
-	HAL_Delay(10);
+	while(HAL_I2C_IsDeviceReady(&hi2c1, BME280_I2C_ADDR, 10, BME280_TIMEOUT) != HAL_OK);
 
 	// CTRL_HUM configuration
 	uint8_t tempreg = BME280_OSRS_H;
@@ -110,7 +110,7 @@ HAL_StatusTypeDef bme280_init(void)
 		return ret;
 	}
 
-	HAL_Delay(5);
+	while(HAL_I2C_IsDeviceReady(&hi2c1, BME280_I2C_ADDR, 10, BME280_TIMEOUT) != HAL_OK);
 
 	// CTRL_MEAS configuration
 	tempreg = 0;
@@ -128,7 +128,7 @@ HAL_StatusTypeDef bme280_init(void)
 		return ret;
 	}
 
-	HAL_Delay(5);
+	while(HAL_I2C_IsDeviceReady(&hi2c1, BME280_I2C_ADDR, 10, BME280_TIMEOUT) != HAL_OK);
 
 	// CONFIG configuration
 	tempreg = 0;
@@ -234,7 +234,7 @@ HAL_StatusTypeDef bme280_get_data(BME280_data_t* data)
 	// DegC
 	data->temperature = (BME280_compensate_T_int32(temp) / 100.0);
 
-	HAL_Delay(3);
+	while(HAL_I2C_IsDeviceReady(&hi2c1, BME280_I2C_ADDR | 0x01, 10, BME280_TIMEOUT) != HAL_OK);
 
 	/* get humidity */
 	ret = HAL_I2C_Mem_Read(&hi2c1, BME280_I2C_ADDR | 0x01, BME280_HUMIDITY_ADDR, 1, rx_buf, 2, BME280_TIMEOUT);
@@ -255,7 +255,7 @@ HAL_StatusTypeDef bme280_get_data(BME280_data_t* data)
 	// %rH
 	data->humidity = (bme280_compensate_H_int32(hum) / 1024.0);
 
-	HAL_Delay(3);
+	while(HAL_I2C_IsDeviceReady(&hi2c1, BME280_I2C_ADDR | 0x01, 10, BME280_TIMEOUT) != HAL_OK);
 
 	/* get pressure */
 	ret = HAL_I2C_Mem_Read(&hi2c1, BME280_I2C_ADDR | 0x01, BME280_PRESSURE_ADDR, 1, rx_buf, 3, BME280_TIMEOUT);
@@ -274,8 +274,6 @@ HAL_StatusTypeDef bme280_get_data(BME280_data_t* data)
 	press = (BME280_S32_t)((rx_buf[0] << 12) | (rx_buf[1] << 4) | (rx_buf[2] >> 4));
 
 	data->pressure = (BME280_compensate_P_int64(press) / 25600.0);
-
-	HAL_Delay(3);
 
 	return ret;
 }

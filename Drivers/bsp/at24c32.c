@@ -34,6 +34,8 @@ HAL_StatusTypeDef at24c32_set_data(uint8_t *Tx, uint32_t len)
 
 		memcpy(&buf[2], Tx, curr_len);
 
+		while(HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(AT24C32_I2C_ADDR), 10, AT24C32_TIMEOUT) != HAL_OK);
+
 		// 3. Send
 		ret = HAL_I2C_Master_Transmit(&hi2c1, (uint16_t)(AT24C32_I2C_ADDR), buf, (curr_len + 2), AT24C32_TIMEOUT);
 
@@ -95,7 +97,7 @@ HAL_StatusTypeDef at24c32_get_data(uint8_t *Rx, uint16_t address, uint32_t len)
 		return ret;
 	}
 
-	HAL_Delay(10);
+	HAL_Delay(1);
 
 	// 2. Receive data from EEPROM
 	ret = HAL_I2C_Master_Receive(&hi2c1, (uint16_t)(AT24C32_I2C_ADDR) | 0x01, Rx, len, AT24C32_TIMEOUT);
