@@ -66,7 +66,7 @@ static DS1307_rx_t ds1307_read(uint8_t reg_addr)
 	ret.data = 0;
 
 	// send pointer to register
-	ret.state = HAL_I2C_Master_Transmit(&hi2c1, (uint16_t)(DS1307_I2C_ADDR), &reg_addr, 1, 1000);
+	ret.state = HAL_I2C_Master_Transmit(&hi2c1, (uint16_t)(DS1307_I2C_ADDR), &reg_addr, 1, DS1307_TIMEOUT);
 	if(ret.state != HAL_OK)
 	{
 		lcd_display_clear();
@@ -82,7 +82,7 @@ static DS1307_rx_t ds1307_read(uint8_t reg_addr)
 		return ret;
 	}
 
-	ret.state = HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(DS1307_I2C_ADDR) | 0x01, 10, 1000);
+	ret.state = HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(DS1307_I2C_ADDR) | 0x01, 10, DS1307_TIMEOUT);
 
 	if(ret.state != HAL_OK)
 	{
@@ -94,7 +94,7 @@ static DS1307_rx_t ds1307_read(uint8_t reg_addr)
 	}
 
 	// read from that register
-	ret.state = HAL_I2C_Master_Receive(&hi2c1, (uint16_t)(DS1307_I2C_ADDR) | 0x01, &ret.data, 1, 1000);
+	ret.state = HAL_I2C_Master_Receive(&hi2c1, (uint16_t)(DS1307_I2C_ADDR) | 0x01, &ret.data, 1, DS1307_TIMEOUT);
 	if(ret.state != HAL_OK)
 	{
 		printf("I2C error: 0x%08lx\r\n", hi2c1.ErrorCode);

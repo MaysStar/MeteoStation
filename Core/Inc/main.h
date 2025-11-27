@@ -38,6 +38,7 @@ extern "C" {
 #include "ds1307.h"
 #include "lcd.h"
 #include "at24c32.h"
+#include "bme280.h"
 
 /* USER CODE END Includes */
 

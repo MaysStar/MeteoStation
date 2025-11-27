@@ -8,7 +8,8 @@ extern I2C_HandleTypeDef hi2c1;
 /* Application configurable items */
 #define DS1307_I2C						I2C1
 #define DS1307_I2C_SPEED				100000
-#define DS1307_I2C_PUPD					GPIO_NOPULL // we use internal pull up
+#define DS1307_I2C_PUPD					GPIO_NOPULL // we don't use internal pull up
+#define DS1307_TIMEOUT					1000
 
 /* Register addresses */
 #define DS1307_ADDR_SEC					0x00
@@ -61,7 +62,7 @@ typedef struct
 }DS1307_rx_t;
 
 /* Function prototypes */
-uint8_t ds1307_init(void);
+HAL_StatusTypeDef ds1307_init(void);
 
 /* Set and Get time */
 HAL_StatusTypeDef ds1307_set_current_time(RTC_time_t *time);

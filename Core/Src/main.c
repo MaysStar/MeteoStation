@@ -75,6 +75,7 @@ static char *date_to_string(RTC_date_t *);
 static void saveDataIntoEEPROM(void);
 static void get_data_ds1307(void);
 static void get_data(void);
+static void update_data(void);
 
 /* USER CODE END PFP */
 
@@ -85,8 +86,10 @@ RTC_time_t curr_time;
 RTC_date_t curr_date;
 __vo uint8_t flag_read_rtc = RESET;
 char rx_buf[9];
-char sd_buf[4096];
+char meas_buf[24];
 static uint16_t cuur_data = 0;
+static uint32_t counter = 0;
+BME280_data_t data;
 
 /* USER CODE END 0 */
 
@@ -104,6 +107,7 @@ int main(void)
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
+  printf("he\n");
 
   /* USER CODE BEGIN Init */
 
@@ -127,6 +131,15 @@ int main(void)
   lcd_display_clear();
 
   lcd_print_string("HAL testing");
+
+  /* BME280 test */
+  bme280_init();
+  memset(meas_buf, ' ', strlen(meas_buf));
+  update_data();
+
+  lcd_display_clear();
+  lcd_set_cursor(1, 1);
+  lcd_print_string(meas_buf);
 
   /* DS1307 initialization */
 
@@ -163,6 +176,7 @@ int main(void)
 
 	  if(flag_read_rtc == SET)
 	  {
+		counter++;
 
 		flag_read_rtc = RESET;
 
@@ -171,29 +185,35 @@ int main(void)
 		lcd_set_cursor(1, 1);
 
 		get_data();
-		//get_data_ds1307();
+
 		char *am_pm;
 		if(curr_time.time_format != DS1307_TIME_FORMAT_24HOUR)
 		{
 			am_pm = (curr_time.time_format) ? "PM" : "AM";
 
 			lcd_print_string(rx_buf);
-			//lcd_print_string(time_to_string(&curr_time));
 			lcd_print_string(am_pm);
 		}
 		else
 		{
-			//lcd_print_string(time_to_string(&curr_time));
 			lcd_print_string(rx_buf);
 		}
 
+		if(counter >= 10)
+		{
+			counter = 0;
+			update_data();
+		}
+
+		// after time set temperature, pressure and humidity
+		lcd_set_cursor(1, 9);
+		lcd_print_string(meas_buf);
+
 		lcd_set_cursor(2, 1);
+		lcd_print_string(&meas_buf[8]);
 
 		get_data();
-		lcd_print_string(rx_buf);
-		//lcd_print_string(date_to_string(&curr_date));
-		lcd_print_string(" ");
-		lcd_print_string(get_day_of_weak(curr_date.day));
+
 	  }
 
     /* USER CODE BEGIN 3 */
@@ -588,6 +608,25 @@ static void get_data_ds1307(void)
 {
 	ds1307_get_current_time(&curr_time);
 	ds1307_get_current_date(&curr_date);
+}
+
+static void update_data(void)
+{
+	bme280_get_data(&data);
+	meas_buf[0] = ' ';
+	snprintf(&meas_buf[1], 5, "%.2f", data.temperature);
+	meas_buf[5] = ' ';
+	meas_buf[6] = 'C';
+
+	snprintf(&meas_buf[8], 7, "%.2f", data.pressure);
+	meas_buf[14] = 'h';
+	meas_buf[15] = 'P';
+	meas_buf[16] = ' ';
+
+	snprintf(&meas_buf[17], 5, "%.2f", data.humidity);
+	meas_buf[21] = '%';
+	meas_buf[22] = 'R';
+	meas_buf[23] = 'H';
 }
 
 /* USER CODE END 4 */
