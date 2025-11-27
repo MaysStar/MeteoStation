@@ -61,19 +61,17 @@ TIM_HandleTypeDef htim2;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_I2C1_Init(void);
-static void MX_I2S3_Init(void);
-static void MX_SPI1_Init(void);
 static void MX_TIM2_Init(void);
 void MX_USB_HOST_Process(void);
 
 /* USER CODE BEGIN PFP */
 
-static char *get_day_of_weak(uint8_t);
+//static char *get_day_of_weak(uint8_t);
 static void number_to_string(uint8_t, char *);
 static char *time_to_string(RTC_time_t *);
 static char *date_to_string(RTC_date_t *);
 static void saveDataIntoEEPROM(void);
-static void get_data_ds1307(void);
+//static void get_data_ds1307(void);
 static void get_data(void);
 static void update_data(void);
 
@@ -124,9 +122,7 @@ int main(void)
   MX_TIM2_Init();
   MX_GPIO_Init();
   MX_I2C1_Init();
-  /*MX_I2S3_Init();
-  MX_SPI1_Init();
-  MX_USB_HOST_Init();*/
+
   /* USER CODE BEGIN 2 */
   lcd_display_clear();
 
@@ -199,7 +195,7 @@ int main(void)
 			lcd_print_string(rx_buf);
 		}
 
-		if(counter >= 10)
+		if(counter >= 9)
 		{
 			counter = 0;
 			update_data();
@@ -301,80 +297,6 @@ static void MX_I2C1_Init(void)
 	}
 
   /* USER CODE END I2C1_Init 2 */
-}
-
-/**
-  * @brief I2S3 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_I2S3_Init(void)
-{
-
-  /* USER CODE BEGIN I2S3_Init 0 */
-
-  /* USER CODE END I2S3_Init 0 */
-
-  /* USER CODE BEGIN I2S3_Init 1 */
-
-  /* USER CODE END I2S3_Init 1 */
-  hi2s3.Instance = SPI3;
-  hi2s3.Init.Mode = I2S_MODE_MASTER_TX;
-  hi2s3.Init.Standard = I2S_STANDARD_PHILIPS;
-  hi2s3.Init.DataFormat = I2S_DATAFORMAT_16B;
-  hi2s3.Init.MCLKOutput = I2S_MCLKOUTPUT_ENABLE;
-  hi2s3.Init.AudioFreq = I2S_AUDIOFREQ_96K;
-  hi2s3.Init.CPOL = I2S_CPOL_LOW;
-  hi2s3.Init.ClockSource = I2S_CLOCK_PLL;
-  hi2s3.Init.FullDuplexMode = I2S_FULLDUPLEXMODE_DISABLE;
-  if (HAL_I2S_Init(&hi2s3) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN I2S3_Init 2 */
-
-  /* USER CODE END I2S3_Init 2 */
-
-}
-
-/**
-  * @brief SPI1 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_SPI1_Init(void)
-{
-
-  /* USER CODE BEGIN SPI1_Init 0 */
-
-  /* USER CODE END SPI1_Init 0 */
-
-  /* USER CODE BEGIN SPI1_Init 1 */
-
-  /* USER CODE END SPI1_Init 1 */
-  /* SPI1 parameter configuration*/
-  hspi1.Instance = SPI1;
-  hspi1.Init.Mode = SPI_MODE_MASTER;
-  hspi1.Init.Direction = SPI_DIRECTION_2LINES;
-  hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
-  hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
-  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
-  hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
-  hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
-  hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
-  hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
-  hspi1.Init.CRCPolynomial = 10;
-  if (HAL_SPI_Init(&hspi1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN SPI1_Init 2 */
-
-
-
-  /* USER CODE END SPI1_Init 2 */
-
 }
 
 /**
@@ -502,12 +424,12 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-static char *get_day_of_weak(uint8_t dayCode)
+/*static char *get_day_of_weak(uint8_t dayCode)
 {
 	char* days[] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
 
 	return days[dayCode - 1];
-}
+}*/
 
 static void number_to_string(uint8_t num, char *buf)
 {
@@ -576,11 +498,11 @@ static void saveDataIntoEEPROM(void)
 	}
 
 	// save into ROM
-	at24c32_set_data(time_to_string(&curr_time), strlen(time_to_string(&curr_time)));
+	at24c32_set_data((uint8_t*)time_to_string(&curr_time), strlen(time_to_string(&curr_time)));
 
 	while(HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(AT24C32_I2C_ADDR), 10, 100) != HAL_OK);
 
-	at24c32_set_data(date_to_string(&curr_date), strlen(date_to_string(&curr_date)));
+	at24c32_set_data((uint8_t*)date_to_string(&curr_date), strlen(date_to_string(&curr_date)));
 }
 
 static void get_data(void)
@@ -597,18 +519,18 @@ static void get_data(void)
 
 		lcd_print_string("I2C NOT READY");
 	}
-	at24c32_get_data(rx_buf, cuur_data, 8);
+	at24c32_get_data((uint8_t*)rx_buf, cuur_data, 8);
 
 	cuur_data += 8;
 
 	rx_buf[8] = '\0';
 }
 
-static void get_data_ds1307(void)
+/*static void get_data_ds1307(void)
 {
 	ds1307_get_current_time(&curr_time);
 	ds1307_get_current_date(&curr_date);
-}
+}*/
 
 static void update_data(void)
 {
