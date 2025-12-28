@@ -29,18 +29,7 @@ static HAL_StatusTypeDef ds1307_write(uint8_t val, uint8_t reg_addr)
 	tx[1] = val;
 
 	ret = HAL_I2C_Master_Transmit(&hi2c1, (uint16_t)(DS1307_I2C_ADDR), tx, 2, 1000);
-	if(ret != HAL_OK)
-	{
-		lcd_display_clear();
-
-		lcd_set_cursor(1, 1);
-
-		lcd_print_string("I2C ERROR DS1307");
-
-		lcd_set_cursor(2, 1);
-
-		lcd_print_string("DS WRITE");
-	}
+	if(ret != HAL_OK) return ret;
 
 	return ret;
 }
@@ -67,48 +56,14 @@ static DS1307_rx_t ds1307_read(uint8_t reg_addr)
 
 	// send pointer to register
 	ret.state = HAL_I2C_Master_Transmit(&hi2c1, (uint16_t)(DS1307_I2C_ADDR), &reg_addr, 1, DS1307_TIMEOUT);
-	if(ret.state != HAL_OK)
-	{
-		lcd_display_clear();
+	if(ret.state != HAL_OK) return ret;
 
-		lcd_set_cursor(1, 1);
-
-		lcd_print_string("I2C ERROR DS1307");
-
-		lcd_set_cursor(2, 1);
-
-		lcd_print_string("DS WRITE");
-
-		return ret;
-	}
-
-	ret.state = HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(DS1307_I2C_ADDR) | 0x01, 10, DS1307_TIMEOUT);
-
-	if(ret.state != HAL_OK)
-	{
-		lcd_display_clear();
-
-		lcd_set_cursor(1, 1);
-
-		lcd_print_string("I2C ERROR DS READY");
-	}
+	ret.state = HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(DS1307_I2C_ADDR), 10, DS1307_TIMEOUT);
+	if(ret.state != HAL_OK) return ret;
 
 	// read from that register
 	ret.state = HAL_I2C_Master_Receive(&hi2c1, (uint16_t)(DS1307_I2C_ADDR) | 0x01, &ret.data, 1, DS1307_TIMEOUT);
-	if(ret.state != HAL_OK)
-	{
-		printf("I2C error: 0x%08lx\r\n", hi2c1.ErrorCode);
-
-		lcd_display_clear();
-
-		lcd_set_cursor(1, 1);
-
-		lcd_print_string("I2C ERROR DS1307");
-
-		lcd_set_cursor(2, 1);
-
-		lcd_print_string("DS READ");
-	}
+	if(ret.state != HAL_OK) return ret;
 
 	return ret;
 }
@@ -197,7 +152,6 @@ HAL_StatusTypeDef ds1307_init(void)
 
 	// 3. Make clock halt = 0
 	ret = ds1307_write(0x00, DS1307_ADDR_SEC);
-
 	if(ret != HAL_OK) return ret;
 
 	// 5. Read back clock halt bit
@@ -235,11 +189,9 @@ HAL_StatusTypeDef ds1307_set_current_time(RTC_time_t *rtc_time)
 
 	// write time to clock
 	ret = ds1307_write(seconds, DS1307_ADDR_SEC);
-
 	if(ret != HAL_OK) return ret;
 
 	ret = ds1307_write(binary_to_bcd(rtc_time->minutes), DS1307_ADDR_MIN);
-
 	if(ret != HAL_OK) return ret;
 
 	if(rtc_time->time_format == DS1307_TIME_FORMAT_24HOUR)

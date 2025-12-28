@@ -29,45 +29,18 @@ HAL_StatusTypeDef bme280_init(void)
 
 	/* Proof the id */
 	ret = HAL_I2C_Mem_Read(&hi2c1, BME280_I2C_ADDR | 0x01, BME280_ID_ADDR, 1, &id, 1, BME280_TIMEOUT);
-	if(ret != HAL_OK || id != BME280_ID)
-	{
-		lcd_display_clear();
+	if(ret != HAL_OK) return ret;
 
-		lcd_set_cursor(1, 1);
-
-		lcd_print_string("I2C ERROR BME ID");
-
-		return HAL_ERROR;
-	}
-
-	while(HAL_I2C_IsDeviceReady(&hi2c1, BME280_I2C_ADDR | 0x01, 10, BME280_TIMEOUT) != HAL_OK);
+	while(HAL_I2C_IsDeviceReady(&hi2c1, BME280_I2C_ADDR, 10, BME280_TIMEOUT) != HAL_OK);
 
 	/* Get all calibrating data */
 	ret = HAL_I2C_Mem_Read(&hi2c1, BME280_I2C_ADDR | 0x01, BME280_CALIB1_ADDR, 1, rx_buf1, BME280_CALIB1_SIZE, BME280_TIMEOUT);
-	if(ret != HAL_OK)
-	{
-		lcd_display_clear();
+	if(ret != HAL_OK) return ret;
 
-		lcd_set_cursor(1, 1);
-
-		lcd_print_string("I2C ERROR BME CAL1");
-
-		return ret;
-	}
-
-	while(HAL_I2C_IsDeviceReady(&hi2c1, BME280_I2C_ADDR | 0x01, 10, BME280_TIMEOUT) != HAL_OK);
+	while(HAL_I2C_IsDeviceReady(&hi2c1, BME280_I2C_ADDR, 10, BME280_TIMEOUT) != HAL_OK);
 
 	ret = HAL_I2C_Mem_Read(&hi2c1, BME280_I2C_ADDR | 0x01, BME280_CALIB2_ADDR, 1, rx_buf2, BME280_CALIB2_SIZE, BME280_TIMEOUT);
-	if(ret != HAL_OK)
-	{
-		lcd_display_clear();
-
-		lcd_set_cursor(1, 1);
-
-		lcd_print_string("I2C ERROR BME CAL2");
-
-		return ret;
-	}
+	if(ret != HAL_OK) return ret;
 
 	/* Set all calibrating data into static definition structure ( calib ) */
 	calib.dig_T1 = (uint16_t)(rx_buf1[0] | (rx_buf1[1] << 8));
@@ -99,16 +72,7 @@ HAL_StatusTypeDef bme280_init(void)
 	uint8_t tempreg = BME280_OSRS_H;
 
 	ret = HAL_I2C_Mem_Write(&hi2c1, BME280_I2C_ADDR, BME280_CTRL_HUM_ADDR, 1, &tempreg, 1, BME280_TIMEOUT);
-	if(ret != HAL_OK)
-	{
-		lcd_display_clear();
-
-		lcd_set_cursor(1, 1);
-
-		lcd_print_string("I2C ERROR BME CONF");
-
-		return ret;
-	}
+	if(ret != HAL_OK) return ret;
 
 	while(HAL_I2C_IsDeviceReady(&hi2c1, BME280_I2C_ADDR, 10, BME280_TIMEOUT) != HAL_OK);
 
@@ -117,16 +81,7 @@ HAL_StatusTypeDef bme280_init(void)
 	tempreg = BME280_MODE + BME280_OSRS_P + BME280_OSRS_T;
 
 	ret = HAL_I2C_Mem_Write(&hi2c1, BME280_I2C_ADDR, BME280_CTRL_MEAS_ADDR, 1, &tempreg, 1, BME280_TIMEOUT);
-	if(ret != HAL_OK)
-	{
-		lcd_display_clear();
-
-		lcd_set_cursor(1, 1);
-
-		lcd_print_string("I2C ERROR BME CONF");
-
-		return ret;
-	}
+	if(ret != HAL_OK) return ret;
 
 	while(HAL_I2C_IsDeviceReady(&hi2c1, BME280_I2C_ADDR, 10, BME280_TIMEOUT) != HAL_OK);
 
@@ -135,16 +90,7 @@ HAL_StatusTypeDef bme280_init(void)
 	tempreg = BME280_SPI3W_EN + BME280_FILTER + BME280_T_SB;
 
 	ret = HAL_I2C_Mem_Write(&hi2c1, BME280_I2C_ADDR, BME280_CONFIG_ADDR, 1, &tempreg, 1, BME280_TIMEOUT);
-	if(ret != HAL_OK)
-	{
-		lcd_display_clear();
-
-		lcd_set_cursor(1, 1);
-
-		lcd_print_string("I2C ERROR BME CONF");
-
-		return ret;
-	}
+	if(ret != HAL_OK) return ret;
 
 	return ret;
 }
@@ -218,16 +164,7 @@ HAL_StatusTypeDef bme280_get_data(BME280_data_t* data)
 
 	/* get temperature */
 	ret = HAL_I2C_Mem_Read(&hi2c1, BME280_I2C_ADDR | 0x01, BME280_TEMPERATURE_ADDR, 1, rx_buf, 3, BME280_TIMEOUT);
-	if(ret != HAL_OK)
-	{
-		lcd_display_clear();
-
-		lcd_set_cursor(1, 1);
-
-		lcd_print_string("I2C ERROR BME TEMP");
-
-		return ret;
-	}
+	if(ret != HAL_OK) return ret;
 
 	temp = (BME280_S32_t)((rx_buf[0] << 12) | (rx_buf[1] << 4) | (rx_buf[2] >> 4));
 
@@ -238,16 +175,7 @@ HAL_StatusTypeDef bme280_get_data(BME280_data_t* data)
 
 	/* get humidity */
 	ret = HAL_I2C_Mem_Read(&hi2c1, BME280_I2C_ADDR | 0x01, BME280_HUMIDITY_ADDR, 1, rx_buf, 2, BME280_TIMEOUT);
-	if(ret != HAL_OK)
-	{
-		lcd_display_clear();
-
-		lcd_set_cursor(1, 1);
-
-		lcd_print_string("I2C ERROR BME HUM");
-
-		return ret;
-	}
+	if(ret != HAL_OK) return ret;
 
 
 	hum = (BME280_S32_t)((rx_buf[0] << 8) | rx_buf[1]);
@@ -259,16 +187,7 @@ HAL_StatusTypeDef bme280_get_data(BME280_data_t* data)
 
 	/* get pressure */
 	ret = HAL_I2C_Mem_Read(&hi2c1, BME280_I2C_ADDR | 0x01, BME280_PRESSURE_ADDR, 1, rx_buf, 3, BME280_TIMEOUT);
-	if(ret != HAL_OK)
-	{
-		lcd_display_clear();
-
-		lcd_set_cursor(1, 1);
-
-		lcd_print_string("I2C ERROR BME PRESS");
-
-		return ret;
-	}
+	if(ret != HAL_OK) return ret;
 
 	// hPa
 	press = (BME280_S32_t)((rx_buf[0] << 12) | (rx_buf[1] << 4) | (rx_buf[2] >> 4));

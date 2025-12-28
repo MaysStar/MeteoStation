@@ -38,17 +38,7 @@ HAL_StatusTypeDef at24c32_set_data(uint8_t *Tx, uint32_t len)
 
 		// 3. Send
 		ret = HAL_I2C_Master_Transmit(&hi2c1, (uint16_t)(AT24C32_I2C_ADDR), buf, (curr_len + 2), AT24C32_TIMEOUT);
-
-		if(ret != HAL_OK)
-		{
-			lcd_display_clear();
-
-			lcd_set_cursor(1, 1);
-
-			lcd_print_string("I2C ERROR AT TX1");
-
-			return ret;
-		}
+		if(ret != HAL_OK) return ret;
 
 		len -= curr_len;
 		Tx += curr_len;
@@ -85,31 +75,13 @@ HAL_StatusTypeDef at24c32_get_data(uint8_t *Rx, uint16_t address, uint32_t len)
 	addr[1] = (uint8_t)(address & 0xFF);		// low bits
 
 	ret = HAL_I2C_Master_Transmit(&hi2c1, (uint16_t)(AT24C32_I2C_ADDR), addr, 2, AT24C32_TIMEOUT);
-
-	if(ret != HAL_OK)
-	{
-		lcd_display_clear();
-
-		lcd_set_cursor(1, 1);
-
-		lcd_print_string("I2C ERROR AT TX2");
-
-		return ret;
-	}
+	if(ret != HAL_OK) return ret;
 
 	HAL_Delay(1);
 
 	// 2. Receive data from EEPROM
 	ret = HAL_I2C_Master_Receive(&hi2c1, (uint16_t)(AT24C32_I2C_ADDR) | 0x01, Rx, len, AT24C32_TIMEOUT);
-
-	if(ret != HAL_OK)
-	{
-		lcd_display_clear();
-
-		lcd_set_cursor(1, 1);
-
-		lcd_print_string("I2C ERROR AT RX");
-	}
+	if(ret != HAL_OK) return ret;
 
 	return ret;
 }

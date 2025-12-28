@@ -9,7 +9,7 @@ extern I2C_HandleTypeDef hi2c1;
 /* Some definition for work with BME280 */
 
 /* Application configurable items */
-#define BME280_I2C						I2C1
+#define BME280_I2C						I2C
 #define BME280_GPIO_PORT				GPIOB
 #define	BME280_I2C_ADDR					(0x76 << 1)
 #define BME280_TIMEOUT					1000

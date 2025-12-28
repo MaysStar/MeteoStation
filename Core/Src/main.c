@@ -18,7 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "usb_host.h"
+#include "fatfs.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -47,11 +47,13 @@
 /* Private variables ---------------------------------------------------------*/
 I2C_HandleTypeDef hi2c1;
 
-I2S_HandleTypeDef hi2s3;
-
-SPI_HandleTypeDef hspi1;
+SD_HandleTypeDef hsd;
+DMA_HandleTypeDef hdma_sdio_tx;
+DMA_HandleTypeDef hdma_sdio_rx;
 
 TIM_HandleTypeDef htim2;
+
+UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 
@@ -60,20 +62,26 @@ TIM_HandleTypeDef htim2;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_TIM2_Init(void);
-void MX_USB_HOST_Process(void);
-
+static void MX_SDIO_SD_Init(void);
+static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
-//static char *get_day_of_weak(uint8_t);
 static void number_to_string(uint8_t, char *);
-static char *time_to_string(RTC_time_t *);
-static char *date_to_string(RTC_date_t *);
-static void saveDataIntoEEPROM(void);
-//static void get_data_ds1307(void);
-static void get_data(void);
-static void update_data(void);
+
+static void time_to_string(RTC_time_t *curr_time, char *buf);
+static void date_to_string(RTC_date_t *curr_date, char *buf);
+static void get_data(char* buf);
+static void update_data(char *buf);
+static void sd_create_dir_logs(char *path, int year, int month);
+static void sd_logs(void);
+
+
+//static void saveDataIntoEEPROM(void);
+
+int _write(int fd, unsigned char *buf, int len);
 
 /* USER CODE END PFP */
 
@@ -82,12 +90,24 @@ static void update_data(void);
 
 RTC_time_t curr_time;
 RTC_date_t curr_date;
-__vo uint8_t flag_read_rtc = RESET;
-char rx_buf[32];
-char meas_buf[16];
-static uint16_t cuur_data = 0;
-static uint32_t counter = 0;
+
 BME280_data_t data;
+
+volatile uint8_t flag_read_rtc = RESET;
+
+// variables for directory creation
+static uint32_t curr_day = 0;
+static uint32_t curr_month = 0;
+
+// buffer for data
+static char path[64];
+static char file_path[128];
+
+char rx_buf[26];
+char date[9];
+char date_csv[13];
+char time[9];
+
 
 /* USER CODE END 0 */
 
@@ -105,7 +125,6 @@ int main(void)
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
-  printf("he\n");
 
   /* USER CODE BEGIN Init */
 
@@ -119,47 +138,51 @@ int main(void)
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-  MX_TIM2_Init();
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_I2C1_Init();
-
+  MX_TIM2_Init();
+  MX_SDIO_SD_Init();
+  MX_FATFS_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
+
+  lcd_display_clear();
+  lcd_print_string("HELLO_WORLD");
+  lcd_set_cursor(2, 1);
+  lcd_print_string("EVERYTHING_OK");
   lcd_display_clear();
 
-  lcd_print_string("HAL testing");
-
-  /* BME280 test */
+  /* BME280 initialization */
   bme280_init();
-  memset(meas_buf, ' ', strlen(meas_buf));
-  update_data();
-
-  lcd_display_clear();
-  lcd_set_cursor(1, 1);
-  lcd_print_string(meas_buf);
+  update_data(rx_buf);
 
   /* DS1307 initialization */
-
   ds1307_init();
 
   /* Timer 2 initialization */
   HAL_TIM_Base_Start_IT(&htim2);
 
   /* DS1307 set data */
-	curr_date.day = THURSDAY;
-	curr_date.date = 25;
-	curr_date.month = 11;
-	curr_date.year = 25;
+  curr_date.day = FRIDAY;
+  curr_date.date = 28;
+  curr_date.month = 12;
+  curr_date.year = 25;
 
-	curr_time.time_format = DS1307_TIME_FORMAT_24HOUR;
-	curr_time.hours = 15;
-	curr_time.minutes = 11;
-	curr_time.seconds = 50;
+  curr_time.time_format = DS1307_TIME_FORMAT_24HOUR;
+  curr_time.hours = 6;
+  curr_time.minutes = 5;
+  curr_time.seconds = 10;
 
-	ds1307_set_current_date(&curr_date);
+  ds1307_set_current_date(&curr_date);
+  ds1307_set_current_time(&curr_time);
 
-	ds1307_set_current_time(&curr_time);
+  get_data(rx_buf);
 
-	lcd_display_clear();
+  // /LOGS creation
+  sd_mount();
+  sd_create_directory("/LOGS");
+  sd_unmount();
 
   /* USER CODE END 2 */
 
@@ -167,20 +190,13 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
-    //MX_USB_HOST_Process();
-
-	  if(flag_read_rtc == SET)
-	  {
-		counter++;
-
+	if(flag_read_rtc == SET)
+	{
 		flag_read_rtc = RESET;
 
-		saveDataIntoEEPROM();
+		sd_logs();
 
 		lcd_set_cursor(1, 1);
-
-		get_data();
 
 		char *am_pm;
 		if(curr_time.time_format != DS1307_TIME_FORMAT_24HOUR)
@@ -192,20 +208,22 @@ int main(void)
 		}
 		else
 		{
-			lcd_print_string(rx_buf);
+			memcpy(time, rx_buf, 8);
+			time[8] = '\n';
+
+			lcd_print_string(time);
+			lcd_set_cursor(1, 9);
+			lcd_print_string(date);
 		}
 
-		// after time get temperature, pressure and humidity
+		// after time set temperature, pressure and humidity
 		lcd_set_cursor(2, 1);
-		//lcd_print_string(meas_buf);
-		lcd_print_string(&rx_buf[16]);
+		lcd_print_string(&rx_buf[9]);
 
-		if(counter >= 9)
-		{
-			counter = 0;
-			update_data();
-		}
-	  }
+		//sd_write_file(, text)
+	}
+
+    /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }
@@ -229,12 +247,13 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
-  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLM = 8;
-  RCC_OscInitStruct.PLL.PLLN = 336;
+  RCC_OscInitStruct.PLL.PLLN = 168;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = 7;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
@@ -272,26 +291,71 @@ static void MX_I2C1_Init(void)
   /* USER CODE BEGIN I2C1_Init 1 */
 
   /* USER CODE END I2C1_Init 1 */
+  hi2c1.Instance = I2C1;
+  hi2c1.Init.ClockSpeed = 100000;
+  hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
+  hi2c1.Init.OwnAddress1 = 0;
+  hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+  hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+  hi2c1.Init.OwnAddress2 = 0;
+  hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+  hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+  if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+  {
+    Error_Handler();
+  }
   /* USER CODE BEGIN I2C1_Init 2 */
-	__HAL_RCC_I2C1_CLK_ENABLE();
-
-	hi2c1.Instance = I2C1;
-	hi2c1.Init.ClockSpeed = DS1307_I2C_SPEED;
-	hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
-	hi2c1.Init.OwnAddress1 = 0;
-	hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
-	hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
-	hi2c1.Init.OwnAddress2 = 0;
-	hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
-	hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
-	//hi2c1.MemaddSize
-
-	if (HAL_I2C_Init(&hi2c1) != HAL_OK)
-	{
-		Error_Handler();
-	}
 
   /* USER CODE END I2C1_Init 2 */
+
+}
+
+/**
+  * @brief SDIO Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_SDIO_SD_Init(void)
+{
+
+  /* USER CODE BEGIN SDIO_Init 0 */
+
+  /* USER CODE END SDIO_Init 0 */
+
+  /* USER CODE BEGIN SDIO_Init 1 */
+
+  /* USER CODE END SDIO_Init 1 */
+  hsd.Instance = SDIO;
+  hsd.Init.ClockEdge = SDIO_CLOCK_EDGE_RISING;
+  hsd.Init.ClockBypass = SDIO_CLOCK_BYPASS_DISABLE;
+  hsd.Init.ClockPowerSave = SDIO_CLOCK_POWER_SAVE_DISABLE;
+  hsd.Init.BusWide = SDIO_BUS_WIDE_1B;
+  hsd.Init.HardwareFlowControl = SDIO_HARDWARE_FLOW_CONTROL_DISABLE;
+  hsd.Init.ClockDiv = 0;
+  /* USER CODE BEGIN SDIO_Init 2 */
+
+  //1) Initialize SD peripheral (this performs card init in 1-bit) */
+
+  if (HAL_SD_Init(&hsd) != HAL_OK)
+  {
+	  printf("HAL_SD_Init failed!\r\n");
+      Error_Handler();
+  }
+
+  printf("HAL_SD_Init OK\n");
+
+  // switch to 4-bit AFTER init
+  if (HAL_SD_ConfigWideBusOperation(&hsd, SDIO_BUS_WIDE_4B) == HAL_OK)
+  {
+	  printf("4-bit mode enabled \r\n");
+  }
+  else
+  {
+	  printf("Failed to switch to 4-bit mode\r\n");
+  }
+
+  /* USER CODE END SDIO_Init 2 */
+
 }
 
 /**
@@ -315,7 +379,7 @@ static void MX_TIM2_Init(void)
   htim2.Instance = TIM2;
   htim2.Init.Prescaler = 8399;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 9999;
+  htim2.Init.Period = 99999;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
@@ -340,6 +404,58 @@ static void MX_TIM2_Init(void)
 }
 
 /**
+  * @brief USART2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART2_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART2_Init 0 */
+
+  /* USER CODE END USART2_Init 0 */
+
+  /* USER CODE BEGIN USART2_Init 1 */
+
+  /* USER CODE END USART2_Init 1 */
+  huart2.Instance = USART2;
+  huart2.Init.BaudRate = 115200;
+  huart2.Init.WordLength = UART_WORDLENGTH_8B;
+  huart2.Init.StopBits = UART_STOPBITS_1;
+  huart2.Init.Parity = UART_PARITY_NONE;
+  huart2.Init.Mode = UART_MODE_TX_RX;
+  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART2_Init 2 */
+
+  /* USER CODE END USART2_Init 2 */
+
+}
+
+/**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA2_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA2_Stream3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
+  /* DMA2_Stream6_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream6_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream6_IRQn);
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -349,82 +465,100 @@ static void MX_GPIO_Init(void)
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 /* USER CODE BEGIN MX_GPIO_Init_1 */
 /* USER CODE END MX_GPIO_Init_1 */
+
+  /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
+  __HAL_RCC_GPIOC_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOD, LD4_Pin|LD3_Pin|LD5_Pin|LD6_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin : B1_Pin */
+  GPIO_InitStruct.Pin = B1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_EVT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : BOOT1_Pin */
+  GPIO_InitStruct.Pin = BOOT1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(BOOT1_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : LD4_Pin LD3_Pin LD5_Pin LD6_Pin */
+  GPIO_InitStruct.Pin = LD4_Pin|LD3_Pin|LD5_Pin|LD6_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PA10 */
+  GPIO_InitStruct.Pin = GPIO_PIN_10;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
-  	  /*Configure GPIO pin : PD14 */
-	GPIO_InitStruct.Pin = GPIO_PIN_13;
-	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
-	HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+  	 /*Configure GPIO pin : PD14 */
+  GPIO_InitStruct.Pin = GPIO_PIN_13;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
+  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
-  	GPIO_InitStruct.Pin = DS1307_I2C_SCL_PIN;
-	GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
-	GPIO_InitStruct.Alternate = GPIO_AF4_I2C1;
-	GPIO_InitStruct.Pull = DS1307_I2C_PUPD;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  // 1. Configure GPIO pins which used for lcd connections
 
-	HAL_GPIO_Init(DS1307_I2C_GPIO_PORT,&GPIO_InitStruct);
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
 
-	GPIO_InitStruct.Pin = DS1307_I2C_SDA_PIN;
-	GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
-	GPIO_InitStruct.Alternate = GPIO_AF4_I2C1;
-	GPIO_InitStruct.Pull = DS1307_I2C_PUPD;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-	HAL_GPIO_Init(DS1307_I2C_GPIO_PORT, &GPIO_InitStruct);
+  GPIO_InitStruct.Pin = LCD_GPIO_RS;
+  HAL_GPIO_Init(LCD_GPIO_PORT, &GPIO_InitStruct);
 
-	// 1. Configure GPIO pins which used for lcd connections
+  GPIO_InitStruct.Pin = LCD_GPIO_RW;
+  HAL_GPIO_Init(LCD_GPIO_PORT, &GPIO_InitStruct);
 
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pin = LCD_GPIO_EN;
+  HAL_GPIO_Init(LCD_GPIO_PORT, &GPIO_InitStruct);
 
-	GPIO_InitStruct.Pin = LCD_GPIO_RS;
-	HAL_GPIO_Init(LCD_GPIO_PORT, &GPIO_InitStruct);
+  GPIO_InitStruct.Pin = LCD_GPIO_D4;
+  HAL_GPIO_Init(LCD_GPIO_PORT, &GPIO_InitStruct);
 
-	GPIO_InitStruct.Pin = LCD_GPIO_RW;
-	HAL_GPIO_Init(LCD_GPIO_PORT, &GPIO_InitStruct);
+  GPIO_InitStruct.Pin = LCD_GPIO_D5;
+  HAL_GPIO_Init(LCD_GPIO_PORT, &GPIO_InitStruct);
 
-	GPIO_InitStruct.Pin = LCD_GPIO_EN;
-	HAL_GPIO_Init(LCD_GPIO_PORT, &GPIO_InitStruct);
+  GPIO_InitStruct.Pin = LCD_GPIO_D6;
+  HAL_GPIO_Init(LCD_GPIO_PORT, &GPIO_InitStruct);
 
-	GPIO_InitStruct.Pin = LCD_GPIO_D4;
-	HAL_GPIO_Init(LCD_GPIO_PORT, &GPIO_InitStruct);
+  GPIO_InitStruct.Pin = LCD_GPIO_D7;
+  HAL_GPIO_Init(LCD_GPIO_PORT, &GPIO_InitStruct);
 
-	GPIO_InitStruct.Pin = LCD_GPIO_D5;
-	HAL_GPIO_Init(LCD_GPIO_PORT, &GPIO_InitStruct);
+  HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_RS, GPIO_PIN_RESET);
 
-	GPIO_InitStruct.Pin = LCD_GPIO_D6;
-	HAL_GPIO_Init(LCD_GPIO_PORT, &GPIO_InitStruct);
+  HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_RW, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_EN, GPIO_PIN_RESET);
 
-	GPIO_InitStruct.Pin = LCD_GPIO_D7;
-	HAL_GPIO_Init(LCD_GPIO_PORT, &GPIO_InitStruct);
+  HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_D4, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_D5, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_D6, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_D7, GPIO_PIN_RESET);
 
-	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_RS, GPIO_PIN_RESET);
+  lcd_init();
 
-	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_RW, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_EN, GPIO_PIN_RESET);
-
-	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_D4, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_D5, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_D6, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_D7, GPIO_PIN_RESET);
-
-	lcd_init();
+  /* SDIO 4-bit pins D0-D3  initialization */
+  GPIO_InitStruct.Pin = GPIO_PIN_8 | GPIO_PIN_9 | GPIO_PIN_10 | GPIO_PIN_11;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF12_SDIO;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
 /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
-
-/*static char *get_day_of_weak(uint8_t dayCode)
-{
-	char* days[] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
-
-	return days[dayCode - 1];
-}*/
 
 static void number_to_string(uint8_t num, char *buf)
 {
@@ -440,10 +574,8 @@ static void number_to_string(uint8_t num, char *buf)
 }
 
 // hh:mm:ss
-static char *time_to_string(RTC_time_t *curr_time)
+static void time_to_string(RTC_time_t *curr_time, char *buf)
 {
-	static char buf[9];
-
 	buf[2] = ':';
 	buf[5] = ':';
 
@@ -451,16 +583,12 @@ static char *time_to_string(RTC_time_t *curr_time)
 	number_to_string(curr_time->minutes, &buf[3]);
 	number_to_string(curr_time->seconds, &buf[6]);
 
-	buf[8] = '\0';
-
-	return buf;
+	buf[8] = ';';
 }
 
 // dd.mm.yy
-static char *date_to_string(RTC_date_t *curr_date)
+static void date_to_string(RTC_date_t *curr_date, char *buf)
 {
-	static char buf[9];
-
 	buf[2] = '.';
 	buf[5] = '.';
 
@@ -469,11 +597,28 @@ static char *date_to_string(RTC_date_t *curr_date)
 	number_to_string(curr_date->year, &buf[6]);
 
 	buf[8] = '\0';
-
-	return buf;
 }
 
-static void saveDataIntoEEPROM(void)
+static void sd_create_dir_logs(char *path, int year, int month)
+{
+	sd_mount();
+	year += 2000;
+
+	// /LOGS
+    sd_create_directory("/LOGS");
+
+    // /LOGS/YYYY
+    sprintf(path, "/LOGS/%04d", year);
+    sd_create_directory(path);
+
+    // /LOGS/YYYY/MM
+    sprintf(path, "/LOGS/%04d/%02d", year, month);
+    sd_create_directory(path);
+
+    sd_unmount();
+}
+
+/*static void saveDataIntoEEPROM(void)
 {
 	HAL_StatusTypeDef ret;
 
@@ -520,28 +665,81 @@ static void get_data(void)
 	}
 	at24c32_get_data((uint8_t*)rx_buf, cuur_data, 32);
 
-	cuur_data += 31;
+	cuur_data += 32;
+	if(cuur_data >= 4095) cuur_data = 0;
 
-	rx_buf[31] = '\0';
-}
-
-/*static void get_data_ds1307(void)
-{
-	ds1307_get_current_time(&curr_time);
-	ds1307_get_current_date(&curr_date);
+	rx_buf[32] = '\0';
 }*/
 
-static void update_data(void)
+static void get_data(char* buf)
+{
+	// get data
+	ds1307_get_current_time(&curr_time);
+	ds1307_get_current_date(&curr_date);
+
+	/* Seve data into rx_buffer */
+	time_to_string(&curr_time, rx_buf);
+	date_to_string(&curr_date, date);
+}
+
+static void update_data(char *buf)
 {
 	bme280_get_data(&data);
 
-	snprintf(meas_buf, 5, "%.2f", data.temperature);
-	meas_buf[4] = ',';
+	memset(&buf[9], 'A', 16);
 
-	snprintf(&meas_buf[5], 6, "%.2f", data.pressure);
-	meas_buf[10] = ',';
+	snprintf(&buf[9], 16, "%.1f;%.1f;%.2f", data.temperature, data.pressure, data.humidity);
+}
 
-	snprintf(&meas_buf[11], 5, "%.2f", data.humidity);
+static void sd_logs(void)
+{
+	update_data(rx_buf);
+	get_data(rx_buf);
+
+	/* create directory for new month or year */
+	if(curr_month != curr_date.month)
+	{
+		curr_month = curr_date.month;
+		sd_create_dir_logs(path, curr_date.year, curr_date.month);
+
+		memcpy(file_path, path, 14);
+		file_path[13] = '/';
+	}
+	// end month directory creation
+
+	// Write data into day file
+	sd_mount();
+
+	// if we start new day
+	if(curr_day != curr_date.date)
+	{
+		curr_day = curr_date.date;
+
+		date_csv[0] = 'D';
+		memcpy(&date_csv[1], date, 8);
+		date_csv[9] = '.';
+		date_csv[10] = 'c';
+		date_csv[11] = 's';
+		date_csv[12] = 'v';
+
+		memcpy(file_path + 14, date_csv, sizeof(date_csv));
+		file_path[13] = '/';
+
+		sd_append_file(file_path, "time;temperature;pressure;humidity\r\n");
+	}
+	rx_buf[24] = '\r';
+	rx_buf[25] = '\n';
+	sd_append_file(file_path, rx_buf);
+
+	sd_unmount();
+	/* end day file write */
+}
+
+int _write(int fd, unsigned char *buf, int len) {
+  if (fd == 1 || fd == 2) {
+    HAL_UART_Transmit(&huart2, buf, len, 999);  // Print to the UART
+  }
+  return len;
 }
 
 /* USER CODE END 4 */
@@ -566,8 +764,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
   if(htim->Instance == TIM2)
   {
-	  flag_read_rtc = SET;
-	  //printf("TIM2 is working\n")
+	 flag_read_rtc = SET;
   }
 
   /* USER CODE END Callback 1 */
