@@ -32,12 +32,21 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+// RTOS includes
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "semphr.h"
+
+// library includes
 #include "stdio.h"
 #include "stdint.h"
 #include "string.h"
+
+// sensor includes
+#include "types.h"
 #include "ds1307.h"
 #include "lcd.h"
-#include "at24c32.h"
 #include "bme280.h"
 
 /* USER CODE END Includes */
@@ -45,17 +54,33 @@ extern "C" {
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
 
+/* definitions of some structures of date, time and measuring */
+
+extern RTC_time_t curr_time;
+extern RTC_date_t curr_date;
+
+extern prev_date_t prev_date;
+extern char curr_path[21];
+
+extern BME280_data_t measuring;
+extern TaskHandle_t handle_rtc_task, handle_bme280_task, handle_lcd_task, handle_sd_task;
+extern QueueHandle_t q_bme280, q_lcd, q_sd;
+extern SemaphoreHandle_t i2cMutex;
+
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
+
+extern I2C_HandleTypeDef hi2c1;
+extern UART_HandleTypeDef huart2;
 
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
 
-#define __vo volatile
+#define SEGGER_UART_REC				0
 
 /* USER CODE END EM */
 
@@ -63,6 +88,13 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
+
+extern int _write(int fd, unsigned char *buf, int len);
+extern void rtc_task(void*);
+extern void bme280_task(void*);
+extern void lcd_task(void*);
+extern void sd_task(void*);
+extern void sd_create_new_dir(char *path, int year, int month, size_t len);
 
 /* USER CODE END EFP */
 
@@ -85,6 +117,10 @@ void Error_Handler(void);
 #define Audio_SDA_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
+
+#define DS1307_I2C_GPIO_PORT			GPIOB
+#define DS1307_I2C_SCL_PIN				GPIO_PIN_8
+#define DS1307_I2C_SDA_PIN				GPIO_PIN_9
 
 /* USER CODE END Private defines */
 

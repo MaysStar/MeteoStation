@@ -37,24 +37,6 @@ extern I2C_HandleTypeDef hi2c1;
 #define FRIDAY							6
 #define SATURDAY						7
 
-
-/* definitions of some structures of date and time */
-typedef struct
-{
-	uint8_t date;
-	uint8_t month;
-	uint8_t	year;
-	uint8_t day;
-}RTC_date_t;
-
-typedef struct
-{
-	uint8_t seconds;
-	uint8_t minutes;
-	uint8_t	hours;
-	uint8_t time_format;
-}RTC_time_t;
-
 typedef struct
 {
 	uint8_t data;

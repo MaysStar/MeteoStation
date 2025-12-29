@@ -23,6 +23,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "sd_functions.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -33,9 +35,7 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 
-#define DS1307_I2C_GPIO_PORT			GPIOB
-#define DS1307_I2C_SCL_PIN				GPIO_PIN_8
-#define DS1307_I2C_SDA_PIN				GPIO_PIN_9
+#define DWT_CTRL	(*(volatile uint32_t*)0xE0001000)
 
 /* USER CODE END PD */
 
@@ -69,45 +69,33 @@ static void MX_SDIO_SD_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
-static void number_to_string(uint8_t, char *);
-
-static void time_to_string(RTC_time_t *curr_time, char *buf);
-static void date_to_string(RTC_date_t *curr_date, char *buf);
-static void get_data(char* buf);
-static void update_data(char *buf);
-static void sd_create_dir_logs(char *path, int year, int month);
-static void sd_logs(void);
-
-
-//static void saveDataIntoEEPROM(void);
-
 int _write(int fd, unsigned char *buf, int len);
+void rtc_task(void*);
+void bme280_task(void*);
+void lcd_task(void*);
+void sd_task(void*);
+void vApplicationIdleHook(void);
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+// time and data structures
 RTC_time_t curr_time;
 RTC_date_t curr_date;
 
-BME280_data_t data;
+BME280_data_t measuring;
 
-volatile uint8_t flag_read_rtc = RESET;
+// data for queue and sd card
+prev_date_t prev_date;
 
-// variables for directory creation
-static uint32_t curr_day = 0;
-static uint32_t curr_month = 0;
+char curr_path[21];
 
-// buffer for data
-static char path[64];
-static char file_path[128];
-
-char rx_buf[26];
-char date[9];
-char date_csv[13];
-char time[9];
-
+// handlers
+TaskHandle_t handle_rtc_task, handle_bme280_task, handle_lcd_task, handle_sd_task;
+QueueHandle_t q_bme280, q_lcd, q_sd;
+SemaphoreHandle_t i2cMutex;
 
 /* USER CODE END 0 */
 
@@ -147,86 +135,135 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
-  lcd_display_clear();
-  lcd_print_string("HELLO_WORLD");
-  lcd_set_cursor(2, 1);
-  lcd_print_string("EVERYTHING_OK");
-  lcd_display_clear();
-
   /* BME280 initialization */
-  bme280_init();
-  update_data(rx_buf);
+  if(bme280_init() != HAL_OK)
+  {
+	  HAL_UART_Transmit(&huart2, "BME280_initialization is failed\n", 100, portMAX_DELAY);
+  }
+  else
+  {
+	  HAL_UART_Transmit(&huart2, "BME280_initialization is OK\n", 100, portMAX_DELAY);
+  }
 
+  // get first data
+  if(bme280_get_data(&measuring) != HAL_OK)
+  {
+	  HAL_UART_Transmit(&huart2, "BME280_get_data is failed\n", 100, portMAX_DELAY);
+  }
+  else
+  {
+	  HAL_UART_Transmit(&huart2, "BME280_get_data is OK\n", 100, portMAX_DELAY);
+  }
   /* DS1307 initialization */
-  ds1307_init();
+  if(ds1307_init() != HAL_OK)
+  {
+	  HAL_UART_Transmit(&huart2, "DS1307_initialization is failed\n", 100, portMAX_DELAY);
+  }
+  else
+  {
+	  HAL_UART_Transmit(&huart2, "DS1307_initialization is OK\n", 100, portMAX_DELAY);
+  }
+
+  /* SET CURR DATA */
+  {
+	  curr_date.day = WEDNESDAY;
+	  curr_date.date = 29;
+	  curr_date.month = 12;
+	  curr_date.year = 25;
+
+	  curr_time.time_format = DS1307_TIME_FORMAT_24HOUR;
+	  curr_time.hours = 20;
+	  curr_time.minutes = 41;
+	  curr_time.seconds = 30;
+
+	  prev_date.prev_month = 11;
+	  prev_date.prev_date = 28;
+  }
+
+  if(ds1307_set_current_date(&curr_date) != HAL_OK)
+  {
+	  HAL_UART_Transmit(&huart2, "DS1307_set_date is failed\n", 100, portMAX_DELAY);
+  }
+  else
+  {
+	  HAL_UART_Transmit(&huart2, "DS1307_set_date is OK\n", 100, portMAX_DELAY);
+  }
+
+  if(ds1307_set_current_time(&curr_time) != HAL_OK)
+  {
+	  HAL_UART_Transmit(&huart2, "DS1307_set_time is failed\n", 100, portMAX_DELAY);
+  }
+  else
+  {
+	  HAL_UART_Transmit(&huart2, "DS1307_set_time is OK\n", 100, portMAX_DELAY);
+  }
+
+  // /LOGS creation
+  {
+	  sd_mount();
+	  sd_create_directory("/LOGS");
+	  sd_unmount();
+  }
+
+#if SEGGER_UART_REC
+  // Enable the CYCCNT counter.
+  DWT_CTRL |= (1 << 0);
+
+  // Enable SEGGER UART_VIEW
+  SEGGER_UART_init(500000);
+
+  SEGGER_SYSVIEW_Start();
+#endif
+
+  // Value to check the status
+  BaseType_t status;
+
+  // Create tasks
+  status = xTaskCreate(rtc_task, "rtc_task", 256, NULL, 5, &handle_rtc_task);
+  configASSERT(status == pdPASS);
+
+  status = xTaskCreate(bme280_task, "bme280_task", 512, NULL, 5, &handle_bme280_task);
+  configASSERT(status == pdPASS);
+
+  status = xTaskCreate(lcd_task, "lcd_task", 512, NULL, 5, &handle_lcd_task);
+  configASSERT(status == pdPASS);
+
+  status = xTaskCreate(sd_task, "sd_task", 512, NULL, 4, &handle_sd_task);
+  configASSERT(status == pdPASS);
+
+  // Create 3 queue for rtc, bme280 and ( lcd & sd )
+  q_bme280 = xQueueCreate(1, sizeof(meteo_msg_t));
+  configASSERT(q_bme280 != NULL);
+
+  q_lcd = xQueueCreate(1, sizeof(meteo_msg_t));
+  configASSERT(q_lcd != NULL);
+
+  q_sd = xQueueCreate(1, sizeof(meteo_msg_t));
+  configASSERT(q_sd != NULL);
+
+  i2cMutex = xSemaphoreCreateMutex();
+  configASSERT(i2cMutex != NULL);
+
+  xSemaphoreGive(i2cMutex);
 
   /* Timer 2 initialization */
   HAL_TIM_Base_Start_IT(&htim2);
 
-  /* DS1307 set data */
-  curr_date.day = FRIDAY;
-  curr_date.date = 28;
-  curr_date.month = 12;
-  curr_date.year = 25;
-
-  curr_time.time_format = DS1307_TIME_FORMAT_24HOUR;
-  curr_time.hours = 6;
-  curr_time.minutes = 5;
-  curr_time.seconds = 10;
-
-  ds1307_set_current_date(&curr_date);
-  ds1307_set_current_time(&curr_time);
-
-  get_data(rx_buf);
-
-  // /LOGS creation
-  sd_mount();
-  sd_create_directory("/LOGS");
-  sd_unmount();
+  // Start the freeRTOS scheduler
+  vTaskStartScheduler();
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
+  while(1)
   {
-	if(flag_read_rtc == SET)
-	{
-		flag_read_rtc = RESET;
-
-		sd_logs();
-
-		lcd_set_cursor(1, 1);
-
-		char *am_pm;
-		if(curr_time.time_format != DS1307_TIME_FORMAT_24HOUR)
-		{
-			am_pm = (curr_time.time_format) ? "PM" : "AM";
-
-			lcd_print_string(rx_buf);
-			lcd_print_string(am_pm);
-		}
-		else
-		{
-			memcpy(time, rx_buf, 8);
-			time[8] = '\n';
-
-			lcd_print_string(time);
-			lcd_set_cursor(1, 9);
-			lcd_print_string(date);
-		}
-
-		// after time set temperature, pressure and humidity
-		lcd_set_cursor(2, 1);
-		lcd_print_string(&rx_buf[9]);
-
-		//sd_write_file(, text)
-	}
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }
+
+  return 0;
   /* USER CODE END 3 */
 }
 
@@ -447,10 +484,10 @@ static void MX_DMA_Init(void)
 
   /* DMA interrupt init */
   /* DMA2_Stream3_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 7, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
   /* DMA2_Stream6_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA2_Stream6_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA2_Stream6_IRQn, 7, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream6_IRQn);
 
 }
@@ -560,186 +597,16 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-static void number_to_string(uint8_t num, char *buf)
-{
-	if(num < 10)
-	{
-		buf[0] = '0';
-		buf[1] = num + 48;
-	}else if(num >= 10 && num <= 99)
-	{
-		buf[0] = (num / 10) + 48;
-		buf[1] = (num % 10) + 48;
-	}
-}
-
-// hh:mm:ss
-static void time_to_string(RTC_time_t *curr_time, char *buf)
-{
-	buf[2] = ':';
-	buf[5] = ':';
-
-	number_to_string(curr_time->hours, buf);
-	number_to_string(curr_time->minutes, &buf[3]);
-	number_to_string(curr_time->seconds, &buf[6]);
-
-	buf[8] = ';';
-}
-
-// dd.mm.yy
-static void date_to_string(RTC_date_t *curr_date, char *buf)
-{
-	buf[2] = '.';
-	buf[5] = '.';
-
-	number_to_string(curr_date->date, buf);
-	number_to_string(curr_date->month, &buf[3]);
-	number_to_string(curr_date->year, &buf[6]);
-
-	buf[8] = '\0';
-}
-
-static void sd_create_dir_logs(char *path, int year, int month)
-{
-	sd_mount();
-	year += 2000;
-
-	// /LOGS
-    sd_create_directory("/LOGS");
-
-    // /LOGS/YYYY
-    sprintf(path, "/LOGS/%04d", year);
-    sd_create_directory(path);
-
-    // /LOGS/YYYY/MM
-    sprintf(path, "/LOGS/%04d/%02d", year, month);
-    sd_create_directory(path);
-
-    sd_unmount();
-}
-
-/*static void saveDataIntoEEPROM(void)
-{
-	HAL_StatusTypeDef ret;
-
-	// get data
-	ds1307_get_current_time(&curr_time);
-	ds1307_get_current_date(&curr_date);
-
-	ret = HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(AT24C32_I2C_ADDR), 10, 1000);
-
-	if(ret != HAL_OK)
-	{
-		lcd_display_clear();
-
-		lcd_set_cursor(1, 1);
-
-		lcd_print_string("I2C NOT READY");
-	}
-
-	// save into ROM
-	at24c32_set_data((uint8_t*)time_to_string(&curr_time), strlen(time_to_string(&curr_time)));
-
-	while(HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(AT24C32_I2C_ADDR), 10, 100) != HAL_OK);
-
-	at24c32_set_data((uint8_t*)date_to_string(&curr_date), strlen(date_to_string(&curr_date)));
-
-	while(HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(AT24C32_I2C_ADDR), 10, 100) != HAL_OK);
-
-	at24c32_set_data((uint8_t*)meas_buf, strlen(meas_buf));
-}
-
-static void get_data(void)
-{
-	HAL_StatusTypeDef ret;
-
-	ret = HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(AT24C32_I2C_ADDR), 10, 1000);
-
-	if(ret != HAL_OK)
-	{
-		lcd_display_clear();
-
-		lcd_set_cursor(1, 1);
-
-		lcd_print_string("I2C NOT READY");
-	}
-	at24c32_get_data((uint8_t*)rx_buf, cuur_data, 32);
-
-	cuur_data += 32;
-	if(cuur_data >= 4095) cuur_data = 0;
-
-	rx_buf[32] = '\0';
-}*/
-
-static void get_data(char* buf)
-{
-	// get data
-	ds1307_get_current_time(&curr_time);
-	ds1307_get_current_date(&curr_date);
-
-	/* Seve data into rx_buffer */
-	time_to_string(&curr_time, rx_buf);
-	date_to_string(&curr_date, date);
-}
-
-static void update_data(char *buf)
-{
-	bme280_get_data(&data);
-
-	memset(&buf[9], 'A', 16);
-
-	snprintf(&buf[9], 16, "%.1f;%.1f;%.2f", data.temperature, data.pressure, data.humidity);
-}
-
-static void sd_logs(void)
-{
-	update_data(rx_buf);
-	get_data(rx_buf);
-
-	/* create directory for new month or year */
-	if(curr_month != curr_date.month)
-	{
-		curr_month = curr_date.month;
-		sd_create_dir_logs(path, curr_date.year, curr_date.month);
-
-		memcpy(file_path, path, 14);
-		file_path[13] = '/';
-	}
-	// end month directory creation
-
-	// Write data into day file
-	sd_mount();
-
-	// if we start new day
-	if(curr_day != curr_date.date)
-	{
-		curr_day = curr_date.date;
-
-		date_csv[0] = 'D';
-		memcpy(&date_csv[1], date, 8);
-		date_csv[9] = '.';
-		date_csv[10] = 'c';
-		date_csv[11] = 's';
-		date_csv[12] = 'v';
-
-		memcpy(file_path + 14, date_csv, sizeof(date_csv));
-		file_path[13] = '/';
-
-		sd_append_file(file_path, "time;temperature;pressure;humidity\r\n");
-	}
-	rx_buf[24] = '\r';
-	rx_buf[25] = '\n';
-	sd_append_file(file_path, rx_buf);
-
-	sd_unmount();
-	/* end day file write */
-}
-
 int _write(int fd, unsigned char *buf, int len) {
   if (fd == 1 || fd == 2) {
-    HAL_UART_Transmit(&huart2, buf, len, 999);  // Print to the UART
+    HAL_UART_Transmit(&huart2, buf, len, HAL_MAX_DELAY);  // Print to the UART
   }
   return len;
+}
+
+void vApplicationIdleHook(void)
+{
+	HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI);
 }
 
 /* USER CODE END 4 */
@@ -764,7 +631,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
   if(htim->Instance == TIM2)
   {
-	 flag_read_rtc = SET;
+	 xTaskNotifyFromISR(handle_rtc_task, 0, eNoAction, NULL);
   }
 
   /* USER CODE END Callback 1 */

@@ -3,13 +3,14 @@
 #include "lcd.h"
 
 static void write_4_bits(uint8_t num);
+static void write_4_bits_init(uint8_t num);
 static void lcd_enable(void);
 static void lcd_busy_wait(void);
 
 /*********************************************************************
  * @fn      		  - write_4_bits
  *
- * @brief             - This function allows us to write to the D7 - D4
+ * @brief             - This function allows us to write to the D7 - D4 for ordinary function
  *
  * @param[in]         - number in hex, which we want to write
  * @param[in]         -
@@ -17,7 +18,7 @@ static void lcd_busy_wait(void);
  *
  * @return            - none
  *
- * @Note              - none
+ * @Note              - Use freeRTOS API like TaskDelay
 
  */
 
@@ -29,6 +30,38 @@ static void write_4_bits(uint8_t num)
 	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_D7, ((num >> 3) & 0x1));
 
 	lcd_enable();
+}
+
+/*********************************************************************
+ * @fn      		  - write_4_bits_init
+ *
+ * @brief             - This function allows us to write to the D7 - D4 for initialization
+ *
+ * @param[in]         - number in hex, which we want to write
+ * @param[in]         -
+ * @param[in]         -
+ *
+ * @return            - none
+ *
+ * @Note              - function with HAL_DELAY before StartScheduler
+ *
+
+ */
+
+static void write_4_bits_init(uint8_t num)
+{
+	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_D4, ((num >> 0) & 0x1));
+	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_D5, ((num >> 1) & 0x1));
+	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_D6, ((num >> 2) & 0x1));
+	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_D7, ((num >> 3) & 0x1));
+
+	// from low to high
+	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_EN, GPIO_PIN_SET);
+	HAL_Delay(1);
+
+	// from high to low
+	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_EN, GPIO_PIN_RESET);
+	HAL_Delay(1);// execution time > 37 micro seconds
 }
 
 /*********************************************************************
@@ -50,11 +83,11 @@ static void lcd_enable(void)
 {
 	// from low to high
 	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_EN, GPIO_PIN_SET);
-	HAL_Delay(1);
+	vTaskDelay(1);
 
 	// from high to low
 	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_EN, GPIO_PIN_RESET);
-	HAL_Delay(1);// execution time > 37 micro seconds
+	vTaskDelay(1);// execution time > 37 micro seconds
 }
 
 /*********************************************************************
@@ -136,31 +169,32 @@ void lcd_init(void)
 	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_RW, GPIO_PIN_RESET);
 
 	/* Command for initialization */
-	write_4_bits(0x3);
+	write_4_bits_init(0x3);
 
 	lcd_busy_wait();
 
 	/* Command for initialization */
-	write_4_bits(0x3);
+	write_4_bits_init(0x3);
 
 	lcd_busy_wait();
 
 	/* Command for initialization */
-	write_4_bits(0x3);
-	write_4_bits(0x2);
+	write_4_bits_init(0x3);
+	write_4_bits_init(0x2);
 
 	/* Function set command */
-	lcd_send_command(LCD_CMD_4DL_2N_5X8F);
+	lcd_send_command_init(LCD_CMD_4DL_2N_5X8F);
 
 	/* Display on cursor on */
-	lcd_send_command(LCD_CMD_DON_CURON);
+	lcd_send_command_init(LCD_CMD_DON_CURON);
 
 	/* Display clear */
-	lcd_display_clear();
+	lcd_display_clear_init();
 
 	/* Entry command */
-	lcd_send_command(LCD_CMD_INCADD);
+	lcd_send_command_init(LCD_CMD_INCADD);
 }
+
 /*********************************************************************
  * @fn      		  - lcd_send_command
  *
@@ -189,6 +223,36 @@ void lcd_send_command(uint8_t cmd)
 
 	/* send lower 4 bits */
 	write_4_bits(cmd & 0x0F);
+}
+
+/*********************************************************************
+ * @fn      		  - lcd_send_command_init
+ *
+ * @brief             - This function allows to send command to LCD for ordinary function
+ *
+ * @param[in]         - command
+ * @param[in]         -
+ * @param[in]         -
+ *
+ * @return            - none
+ *
+ * @Note              - none
+
+ */
+
+void lcd_send_command_init(uint8_t cmd)
+{
+	/* RS = 0 for LCD command */
+	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_RS, GPIO_PIN_RESET);
+
+	/* RW = 0, to write to LCD */
+	HAL_GPIO_WritePin(LCD_GPIO_PORT, LCD_GPIO_RW, GPIO_PIN_RESET);
+
+	/* send higher 4 bits */
+	write_4_bits_init((cmd >> 4) & 0x0F);
+
+	/* send lower 4 bits */
+	write_4_bits_init(cmd & 0x0F);
 }
 
 /*********************************************************************
@@ -263,6 +327,28 @@ void lcd_print_string(char* message)
 void lcd_display_clear(void)
 {
 	lcd_send_command(LCD_CMD_DIS_CLEAR);
+
+	lcd_busy_wait();
+}
+
+/*********************************************************************
+ * @fn      		  - lcd_display_clear_init
+ *
+ * @brief             - This function clear the display of LCD for ordinary function
+ *
+ * @param[in]         -
+ * @param[in]         -
+ * @param[in]         -
+ *
+ * @return            - none
+ *
+ * @Note              - none
+
+ */
+
+void lcd_display_clear_init(void)
+{
+	lcd_send_command_init(LCD_CMD_DIS_CLEAR);
 
 	lcd_busy_wait();
 }

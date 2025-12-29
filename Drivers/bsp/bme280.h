@@ -75,14 +75,6 @@ typedef struct
 
 }BME280_calib_t;
 
-typedef struct
-{
-	double temperature;
-	double pressure;
-	double humidity;
-
-}BME280_data_t;
-
 /* Function prototypes */
 HAL_StatusTypeDef bme280_init(void);
 

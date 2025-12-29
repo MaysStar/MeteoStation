@@ -144,17 +144,12 @@ static uint8_t bcd_to_binary(uint8_t bcd)
 HAL_StatusTypeDef ds1307_init(void)
 {
 	HAL_StatusTypeDef ret;
-	// 1. Initialize I2C pin
-	/*ds1307_i2c_pin_config();
 
-	// 2. Initialize I2C peripheral
-	ds1307_i2c_config();*/
-
-	// 3. Make clock halt = 0
+	// 1. Make clock halt = 0
 	ret = ds1307_write(0x00, DS1307_ADDR_SEC);
 	if(ret != HAL_OK) return ret;
 
-	// 5. Read back clock halt bit
+	// 2. Read back clock halt bit
 	ret = ds1307_read(DS1307_ADDR_SEC).state;
 
 	return ret;
