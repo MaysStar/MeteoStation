@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="file_path"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="file_path"/>
+			<item value="flag_read_rtc"/>
+			<item value="Hal_delay"/>
+			<item value="get_day_of_weak"/>
+			<item value="mdelay"/>
+			<item value="GPIO_WriteToOutputPin"/>
+			<item value="lcd_init"/>
+			<item value="main"/>
+			<item value="printf"/>
+			<item value="pri"/>
+			<item value="HAL_TIM_Base_Start_IT"/>
+			<item value="MX_TIM2_Init"/>
+		</list>
+		<list key="replacehistory">
+			<item value="HAL_GPIO_WritePin"/>
+			<item value="HA"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="788"/>
+		<item key="DIALOG_Y_ORIGIN" value="214"/>
+		<item key="DIALOG_WIDTH" value="414"/>
+		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="646"/>
+		<item key="DIALOG_Y_ORIGIN" value="349"/>
+	</section>
+</section>

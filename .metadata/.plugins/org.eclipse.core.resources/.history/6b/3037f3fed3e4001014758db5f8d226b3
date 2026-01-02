@@ -1,0 +1,145 @@
+#include "main.h"
+#include "sd_functions.h"
+#include "stdio.h"
+
+void sd_create_new_dir(char *path, int year, int month)
+{
+	sd_mount();
+	year += 2000;
+
+	// /LOGS
+    sd_create_directory("/LOGS");
+
+    // /LOGS/YYYY
+    snprintf(path, sizeof(path), "/LOGS/%04d", year);
+    sd_create_directory(path);
+
+    // /LOGS/YYYY/MM
+    snprintf(path, sizeof(path), "/LOGS/%04d/%02d", year, month);
+    sd_create_directory(path);
+
+    sd_unmount();
+}
+
+void sd_create_new_file(char *path, int date, char* format)
+{
+	snprintf(path + strlen(path), sizeof(path) - strlen(path), "%02d.%s", date, format);
+}
+
+void rtc_task(void* param)
+{
+	meteo_msg_t msg;
+	while(1)
+	{
+		xTaskNotifyWait(0, 0, NULL, portMAX_DELAY);
+
+		xSemaphoreTake(i2cMutex, portMAX_DELAY);
+		if(ds1307_get_current_time(&curr_time) != HAL_OK)
+		{
+			printf("DS1307_get_time is failed");
+		}
+		if(ds1307_get_current_date(&curr_date) != HAL_OK)
+		{
+			printf("DS1307_get_date is failed");
+		}
+		xSemaphoreGive(i2cMutex);
+
+		// Write time and date into buffer
+		snprintf(msg.timestamp, sizeof(msg.timestamp), "%02d:%02d:%02d%02d.%02d.%02d", curr_time.hours, curr_time.minutes, curr_time.seconds, curr_date.date, curr_date.month, curr_date.year);
+
+		// Send data to bme280 task
+		xQueueSend(q_bme280, &msg, portMAX_DELAY);
+	}
+}
+
+void bme280_task(void* param)
+{
+	// structure for time, date and measuring
+	meteo_msg_t msg;
+	while(1)
+	{
+		xQueueReceive(q_bme280, &msg, portMAX_DELAY);
+
+		xSemaphoreTake(i2cMutex, portMAX_DELAY);
+		if(bme280_get_data(&measuring) != HAL_OK)
+		{
+			printf("DME280_get_data is failed");
+		}
+		xSemaphoreGive(i2cMutex);
+
+		// Write date into structure
+		msg.temperature = (float)measuring.temperature;
+		msg.pressure = (float)measuring.pressure;
+		msg.humidity = (float)measuring.humidity;
+
+		// Send data to lcd and sd tasks
+		xQueueSend(q_lcd_sd, &msg, portMAX_DELAY);
+	}
+}
+
+extern void lcd_task(void* param)
+{
+	// structure for time, date and measuring
+	meteo_msg_t msg;
+	static char tx_buffer[33];
+
+	while(1)
+	{
+		// get data first task has priority 5
+		xQueueReceive(q_lcd_sd, &msg, portMAX_DELAY);
+
+		snprintf(tx_buffer, sizeof(tx_buffer), "%s%02.1f;%03.1f;%02.2f", msg.timestamp, msg.temperature, msg.pressure, msg.humidity);
+
+		// print data in format
+		/* hh:mm:ssdd:mm:yy
+		 * tt.t;ppp.p;hh.hh\0
+		 */
+		lcd_print_string(tx_buffer);
+		lcd_set_cursor(2, 1);
+		lcd_print_string(&tx_buffer[16]);
+
+		xQueueSend(q_lcd_sd, &msg, portMAX_DELAY);
+	}
+}
+
+extern void sd_task(void* param)
+{
+	// structure for time, date and measuring
+	meteo_msg_t msg;
+	char sd_file_data[32];
+	int32_t meas_begin = 8;
+
+	while(1)
+	{
+		// Get data second task has priority 4
+		xQueueReceive(q_lcd_sd, &msg, portMAX_DELAY);
+
+		// Create new directory if month or year was changed
+		if(prev_date.prev_month != curr_date.month)
+		{
+			prev_date.prev_month = curr_date.month;
+			sd_create_new_dir(&curr_path, curr_date.year, curr_date.month);
+		}
+
+		// Create new file if date was changed
+		if(prev_date.prev_date != curr_date.date)
+		{
+			prev_date.prev_date = curr_date.date;
+			sd_create_new_file(&curr_path, curr_date.date, "csv");
+			sd_append_file(curr_path, "time;temperature;pressure;humidity\r\n");
+		}
+
+		// Form the buffer for write into file
+		/*
+		 * hh:mm:ss;tt.t;ppp.p;hh.hh\0
+		 */
+		snprintf(sd_file_data, sizeof sd_file_data, "%s;%02.1f;%03.1f;%02.2f\r\n",
+		         msg.timestamp, msg.temperature, msg.pressure, msg.humidity);
+
+		// Write data buffer into current file
+		sd_mount();
+		sd_append_file(curr_path, sd_file_data);
+		sd_unmount();
+	}
+}
+

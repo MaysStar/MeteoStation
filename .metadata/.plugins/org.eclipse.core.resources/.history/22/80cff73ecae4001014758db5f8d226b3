@@ -1,0 +1,44 @@
+#ifndef INC_TYPES_H_
+#define INC_TYPES_H_
+
+/* definitions of some structures of date and time */
+typedef struct
+{
+	uint8_t date;
+	uint8_t month;
+	uint8_t	year;
+	uint8_t day;
+}RTC_date_t;
+
+typedef struct
+{
+	uint8_t seconds;
+	uint8_t minutes;
+	uint8_t	hours;
+	uint8_t time_format;
+}RTC_time_t;
+
+typedef struct
+{
+	double temperature;
+	double pressure;
+	double humidity;
+
+}BME280_data_t;
+
+typedef struct
+{
+	char timestamp[17];
+	double temperature;
+	double pressure;
+	double humidity;
+
+}meteo_msg_t;
+
+typedef struct
+{
+	uint8_t prev_date;
+	uint8_t	prev_month;
+};
+
+#endif /* INC_TYPES_H_ */
