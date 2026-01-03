@@ -3,7 +3,7 @@
 $dataFile = "data.json";
 date_default_timezone_set('Europe/Kyiv');
 $maxHistory = 10000;
-$updateInterval = 3000; // milliseconds
+$updateInterval = 10000; // milliseconds
 
 if (!file_exists($dataFile)) {
     file_put_contents($dataFile, json_encode([]));

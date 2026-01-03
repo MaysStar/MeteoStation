@@ -172,17 +172,17 @@ int main(void)
   /* SET CURR DATA */
   {
 	  curr_date.day = WEDNESDAY;
-	  curr_date.date = 1;
+	  curr_date.date = 3;
 	  curr_date.month = 1;
 	  curr_date.year = 26;
 
 	  curr_time.time_format = DS1307_TIME_FORMAT_24HOUR;
-	  curr_time.hours = 21;
-	  curr_time.minutes = 59;
-	  curr_time.seconds = 40;
+	  curr_time.hours = 18;
+	  curr_time.minutes = 31;
+	  curr_time.seconds = 56;
 
-	  prev_date.prev_month = 11;
-	  prev_date.prev_date = 28;
+	  prev_date.prev_month = 12;
+	  prev_date.prev_date = 2;
   }
 
   if(ds1307_set_current_date(&curr_date) != HAL_OK)
