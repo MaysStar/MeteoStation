@@ -78,6 +78,7 @@ void bme280_task(void*);
 void lcd_task(void*);
 void esp32(void*);
 void sd_task(void*);
+void RTC_SetTimeDate(void);
 void vApplicationIdleHook(void);
 
 /* USER CODE END PFP */
@@ -95,6 +96,7 @@ BME280_data_t measuring;
 prev_date_t prev_date;
 
 char curr_path[21];
+uint8_t spi_rx_data[6];
 
 // handlers
 TaskHandle_t handle_rtc_task, handle_bme280_task, handle_lcd_task, handle_sd_task, handle_esp32_send;
@@ -171,18 +173,24 @@ int main(void)
 
   /* SET CURR DATA */
   {
-	  curr_date.day = WEDNESDAY;
-	  curr_date.date = 3;
-	  curr_date.month = 1;
-	  curr_date.year = 26;
+	  while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_4) != 1)
+	  {
+		  HAL_Delay(10);
+	  }
+	  HAL_SPI_Receive(&hspi1, spi_rx_data, sizeof(spi_rx_data), HAL_MAX_DELAY);
+
+	  curr_date.day = SUNDAY;
+	  curr_date.date = spi_rx_data[3];
+	  curr_date.month = spi_rx_data[4];
+	  curr_date.year = spi_rx_data[5];
 
 	  curr_time.time_format = DS1307_TIME_FORMAT_24HOUR;
-	  curr_time.hours = 18;
-	  curr_time.minutes = 31;
-	  curr_time.seconds = 56;
+	  curr_time.hours = spi_rx_data[2];
+	  curr_time.minutes = spi_rx_data[1];
+	  curr_time.seconds = spi_rx_data[0];
 
-	  prev_date.prev_month = 12;
-	  prev_date.prev_date = 2;
+	  prev_date.prev_month = spi_rx_data[4] - 1;
+	  prev_date.prev_date = spi_rx_data[3] - 1;
   }
 
   if(ds1307_set_current_date(&curr_date) != HAL_OK)
@@ -262,6 +270,7 @@ int main(void)
   xSemaphoreGive(spiMutex);
 
   /* Timer 2 initialization */
+  __HAL_TIM_SET_COUNTER(&htim2, 0);
   HAL_TIM_Base_Start_IT(&htim2);
 
   // Start the freeRTOS scheduler
@@ -431,9 +440,9 @@ static void MX_SPI1_Init(void)
   hspi1.Init.Direction = SPI_DIRECTION_2LINES;
   hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
-  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi1.Init.CLKPhase = SPI_PHASE_2EDGE;
   hspi1.Init.NSS = SPI_NSS_HARD_OUTPUT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_64;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_256;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -558,9 +567,9 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
-  __HAL_RCC_GPIOC_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOD, LD4_Pin|LD3_Pin|LD5_Pin|LD6_Pin, GPIO_PIN_RESET);
@@ -570,6 +579,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_EVT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PC4 */
+  GPIO_InitStruct.Pin = GPIO_PIN_4;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pin : BOOT1_Pin */
   GPIO_InitStruct.Pin = BOOT1_Pin;
@@ -587,7 +602,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin : PA10 */
   GPIO_InitStruct.Pin = GPIO_PIN_10;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
@@ -658,6 +673,28 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+/*void RTC_SetTimeDate(void)
+{
+    RTC_TimeTypeDef sTime = {0};
+    RTC_DateTypeDef sDate = {0};
+
+    sTime.Hours = 20;
+    sTime.Minutes = 59;
+    sTime.Seconds = 20;
+    sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
+    sTime.StoreOperation = RTC_STOREOPERATION_RESET;
+
+    HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
+
+    sDate.WeekDay = RTC_WEEKDAY_SATURDAY;
+    sDate.Month  = RTC_MONTH_JANUARY;
+    sDate.Date   = 9;
+    sDate.Year   = 26;  // 2026
+
+    HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BIN);
+}*/
+
+
 int _write(int fd, unsigned char *buf, int len) {
   if (fd == 1 || fd == 2) {
     HAL_UART_Transmit(&huart2, buf, len, HAL_MAX_DELAY);  // Print to the UART
@@ -669,6 +706,20 @@ void vApplicationIdleHook(void)
 {
 	HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI);
 }
+
+
+
+/*void HAL_RTCEx_WakeUpTimerEventCallback(RTC_HandleTypeDef *hrtc)
+{
+    static uint8_t sec10 = 0;
+
+    sec10++;
+    if (sec10 >= 10)
+    {
+        sec10 = 0;
+        xTaskNotifyFromISR(handle_rtc_task, 0, eNoAction, NULL);
+    }
+}*/
 
 /* USER CODE END 4 */
 
@@ -692,7 +743,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
   if(htim->Instance == TIM2)
   {
-	 xTaskNotifyFromISR(handle_rtc_task, 0, eNoAction, NULL);
+	  HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_15);
+	  BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+	  xTaskNotifyFromISR(handle_rtc_task, 0, eNoAction, &xHigherPriorityTaskWoken);
+	  portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
   }
 
   /* USER CODE END Callback 1 */
@@ -707,6 +761,8 @@ void Error_Handler(void)
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
   __disable_irq();
+
+
   while (1)
   {
   }

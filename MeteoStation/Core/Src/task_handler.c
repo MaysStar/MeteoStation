@@ -33,6 +33,7 @@ void rtc_task(void* param)
 	{
 		xTaskNotifyWait(0, 0, NULL, portMAX_DELAY);
 
+		// DS1307
 		xSemaphoreTake(i2cMutex, portMAX_DELAY);
 		if(ds1307_get_current_time(&curr_time) != HAL_OK)
 		{
@@ -44,13 +45,25 @@ void rtc_task(void* param)
 		}
 		xSemaphoreGive(i2cMutex);
 
+		// RTC
+		//HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
+		//HAL_RTC_GetDate(&hrtc, &sDate, RTC_FORMAT_BIN);
+
 		// Get current value of date, month and year for sd task
 		msg.date = curr_date.date;
 		msg.month = curr_date.month;
 		msg.year = curr_date.year;
 
+		/*msg.date = sDate.Date;
+		msg.month = sDate.Month;
+		msg.year = sDate.Year;*/
+
 		// Write time and date into buffer
+		// ds1307
 		snprintf(msg.timestamp, sizeof(msg.timestamp), "%02d:%02d:%02d%02d.%02d.%02d", curr_time.hours, curr_time.minutes, curr_time.seconds, curr_date.date, curr_date.month, curr_date.year);
+
+		// rtc
+		//snprintf(msg.timestamp, sizeof(msg.timestamp), "%02d:%02d:%02d%02d.%02d.%02d", sTime.Hours, sTime.Minutes, sTime.Seconds, sDate.Date, sDate.Month, sDate.Year);
 
 		// Send data to bme280 task
 		xQueueSend(q_bme280, &msg, portMAX_DELAY);
@@ -177,9 +190,13 @@ extern void sd_task(void* param)
 		         msg.temperature, msg.pressure, msg.humidity);
 
 		// Write data buffer into current file
-		sd_mount();
-		sd_append_file(curr_path, sd_file_data);
-		sd_unmount();
+
+		if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10) == GPIO_PIN_RESET)
+		{
+			sd_mount();
+			sd_append_file(curr_path, sd_file_data);
+			sd_unmount();
+		}
 	}
 }
 

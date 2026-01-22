@@ -1,138 +1,23 @@
-18:30:37 **** Incremental Build of configuration Debug for project MeteoStation ****
+14:54:46 **** Incremental Build of configuration Debug for project MeteoStation ****
 make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/programing/Embedded/projects_stm32/RTOS_workspace/common/ThirdParty/FreeRTOS/include" -I"C:/programing/Embedded/projects_stm32/RTOS_workspace/common/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F" -I"C:/programing/Embedded/projects_stm32/RTOS_workspace/common/ThirdParty/SEGGER/Config" -I"C:/programing/Embedded/projects_stm32/RTOS_workspace/common/ThirdParty/SEGGER/OS" -I"C:/programing/Embedded/projects_stm32/RTOS_workspace/common/ThirdParty/SEGGER/SEGGER" -I"C:/programing/Embedded/projects_stm32/MeteoStation/MeteoStation/Drivers/bsp" -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:146:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
-  146 |           HAL_UART_Transmit(&huart2, "BME280_initialization is failed\n", 100, portMAX_DELAY);
-      |                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                                      |
-      |                                      char *
-In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
-                 from ../Core/Inc/main.h:30,
-                 from ../Core/Src/main.c:20:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:722:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
-  722 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
-      |                                                                ~~~~~~~~~~~~~~~^~~~~
-../Core/Src/main.c:150:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
-  150 |           HAL_UART_Transmit(&huart2, "BME280_initialization is OK\n", 100, portMAX_DELAY);
-      |                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                                      |
-      |                                      char *
-In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
-                 from ../Core/Inc/main.h:30,
-                 from ../Core/Src/main.c:20:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:722:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
-  722 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
-      |                                                                ~~~~~~~~~~~~~~~^~~~~
-../Core/Src/main.c:156:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
-  156 |           HAL_UART_Transmit(&huart2, "BME280_get_data is failed\n", 100, portMAX_DELAY);
-      |                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                                      |
-      |                                      char *
-In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
-                 from ../Core/Inc/main.h:30,
-                 from ../Core/Src/main.c:20:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:722:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
-  722 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
-      |                                                                ~~~~~~~~~~~~~~~^~~~~
-../Core/Src/main.c:160:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
-  160 |           HAL_UART_Transmit(&huart2, "BME280_get_data is OK\n", 100, portMAX_DELAY);
-      |                                      ^~~~~~~~~~~~~~~~~~~~~~~~~
-      |                                      |
-      |                                      char *
-In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
-                 from ../Core/Inc/main.h:30,
-                 from ../Core/Src/main.c:20:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:722:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
-  722 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
-      |                                                                ~~~~~~~~~~~~~~~^~~~~
-../Core/Src/main.c:165:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
-  165 |           HAL_UART_Transmit(&huart2, "DS1307_initialization is failed\n", 100, portMAX_DELAY);
-      |                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                                      |
-      |                                      char *
-In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
-                 from ../Core/Inc/main.h:30,
-                 from ../Core/Src/main.c:20:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:722:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
-  722 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
-      |                                                                ~~~~~~~~~~~~~~~^~~~~
-../Core/Src/main.c:169:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
-  169 |           HAL_UART_Transmit(&huart2, "DS1307_initialization is OK\n", 100, portMAX_DELAY);
-      |                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                                      |
-      |                                      char *
-In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
-                 from ../Core/Inc/main.h:30,
-                 from ../Core/Src/main.c:20:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:722:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
-  722 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
-      |                                                                ~~~~~~~~~~~~~~~^~~~~
-../Core/Src/main.c:190:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
-  190 |           HAL_UART_Transmit(&huart2, "DS1307_set_date is failed\n", 100, portMAX_DELAY);
-      |                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                                      |
-      |                                      char *
-In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
-                 from ../Core/Inc/main.h:30,
-                 from ../Core/Src/main.c:20:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:722:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
-  722 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
-      |                                                                ~~~~~~~~~~~~~~~^~~~~
-../Core/Src/main.c:194:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
-  194 |           HAL_UART_Transmit(&huart2, "DS1307_set_date is OK\n", 100, portMAX_DELAY);
-      |                                      ^~~~~~~~~~~~~~~~~~~~~~~~~
-      |                                      |
-      |                                      char *
-In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
-                 from ../Core/Inc/main.h:30,
-                 from ../Core/Src/main.c:20:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:722:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
-  722 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
-      |                                                                ~~~~~~~~~~~~~~~^~~~~
-../Core/Src/main.c:199:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
-  199 |           HAL_UART_Transmit(&huart2, "DS1307_set_time is failed\n", 100, portMAX_DELAY);
-      |                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                                      |
-      |                                      char *
-In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
-                 from ../Core/Inc/main.h:30,
-                 from ../Core/Src/main.c:20:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:722:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
-  722 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
-      |                                                                ~~~~~~~~~~~~~~~^~~~~
-../Core/Src/main.c:203:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
-  203 |           HAL_UART_Transmit(&huart2, "DS1307_set_time is OK\n", 100, portMAX_DELAY);
-      |                                      ^~~~~~~~~~~~~~~~~~~~~~~~~
-      |                                      |
-      |                                      char *
-In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
-                 from ../Core/Inc/main.h:30,
-                 from ../Core/Src/main.c:20:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:722:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
-  722 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
-      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc "../Core/Src/task_handler.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/programing/Embedded/projects_stm32/RTOS_workspace/common/ThirdParty/FreeRTOS/include" -I"C:/programing/Embedded/projects_stm32/RTOS_workspace/common/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F" -I"C:/programing/Embedded/projects_stm32/RTOS_workspace/common/ThirdParty/SEGGER/Config" -I"C:/programing/Embedded/projects_stm32/RTOS_workspace/common/ThirdParty/SEGGER/OS" -I"C:/programing/Embedded/projects_stm32/RTOS_workspace/common/ThirdParty/SEGGER/SEGGER" -I"C:/programing/Embedded/projects_stm32/MeteoStation/MeteoStation/Drivers/bsp" -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/task_handler.d" -MT"Core/Src/task_handler.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/task_handler.o"
+../Core/Src/task_handler.c: In function 'esp32':
+../Core/Src/task_handler.c:130:21: warning: unused variable 'rx_dummy_buf' [-Wunused-variable]
+  130 |         static char rx_dummy_buf[sizeof(measurement_t)];
+      |                     ^~~~~~~~~~~~
+At top level:
+../Core/Src/task_handler.c:130:21: warning: 'rx_dummy_buf' defined but not used [-Wunused-variable]
 arm-none-eabi-gcc -o "MeteoStation.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MeteoStation.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: MeteoStation.elf
  
 arm-none-eabi-size   MeteoStation.elf 
 arm-none-eabi-objdump -h -S  MeteoStation.elf  > "MeteoStation.list"
    text	   data	    bss	    dec	    hex	filename
-  87232	    484	 124176	 211892	  33bb4	MeteoStation.elf
+  89056	    484	 124184	 213724	  342dc	MeteoStation.elf
 Finished building: default.size.stdout
  
 Finished building: MeteoStation.list
  
 
-18:30:40 Build Finished. 0 errors, 10 warnings. (took 2s.361ms)
+14:54:49 Build Finished. 0 errors, 2 warnings. (took 2s.962ms)
 

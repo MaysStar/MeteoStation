@@ -59,6 +59,9 @@ extern "C" {
 extern RTC_time_t curr_time;
 extern RTC_date_t curr_date;
 
+//extern RTC_TimeTypeDef sTime;
+//extern RTC_DateTypeDef sDate;
+
 extern prev_date_t prev_date;
 extern char curr_path[21];
 
@@ -75,6 +78,7 @@ extern SemaphoreHandle_t i2cMutex, spiMutex;
 extern I2C_HandleTypeDef hi2c1;
 extern SPI_HandleTypeDef hspi1;
 extern UART_HandleTypeDef huart2;
+//extern RTC_HandleTypeDef hrtc;
 
 /* USER CODE END EC */
 

@@ -1,0 +1,1485 @@
+2026-01-10 12:20:28,787 [INFO] Gpio:273 - dependency for GPIO [I2C1, SDIO, SPI1, SYS, USART2]
+2026-01-10 12:21:01,574 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 739688336 Bytes (1073741824)
+2026-01-10 12:21:02,996 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 738808384 Bytes (1073741824)
+2026-01-10 12:21:04,348 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 774693648 Bytes (1073741824)
+2026-01-10 12:21:04,593 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SPI
+2026-01-10 12:21:04,593 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SDIO
+2026-01-10 12:21:04,593 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: TIM1_8
+2026-01-10 12:21:04,593 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SYS
+2026-01-10 12:21:04,593 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: RCC
+2026-01-10 12:21:04,593 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: I2C
+2026-01-10 12:21:04,593 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: NVIC
+2026-01-10 12:21:04,593 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: USART
+2026-01-10 12:21:04,593 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: DMA
+2026-01-10 12:21:04,593 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: GPIO
+2026-01-10 12:21:04,593 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: FATFS
+2026-01-10 12:21:04,594 [INFO] CodeGenerator:799 - code generatio: config db path: C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.9.0.202307051724\\db\
+2026-01-10 12:21:04,599 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:21:04,599 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:21:04,604 [INFO] Argument:319 - Argument : hdmavalue: null
+2026-01-10 12:21:04,604 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 12:21:04,604 [INFO] Argument:319 - Argument : Instancevalue: DMA2_Stream3
+2026-01-10 12:21:04,604 [INFO] Argument:329 - Argument : Instancevalue: DMA2_Stream3
+2026-01-10 12:21:04,604 [INFO] Argument:319 - Argument : Initvalue: null
+2026-01-10 12:21:04,604 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 12:21:04,604 [INFO] Argument:319 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 12:21:04,604 [INFO] Argument:329 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 12:21:04,604 [INFO] Argument:319 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2026-01-10 12:21:04,604 [INFO] Argument:329 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2026-01-10 12:21:04,604 [INFO] Argument:319 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 12:21:04,604 [INFO] Argument:329 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 12:21:04,604 [INFO] Argument:319 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 12:21:04,604 [INFO] Argument:329 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 12:21:04,604 [INFO] Argument:319 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 12:21:04,604 [INFO] Argument:329 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 12:21:04,604 [INFO] Argument:319 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 12:21:04,604 [INFO] Argument:329 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 12:21:04,604 [INFO] Argument:319 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 12:21:04,604 [INFO] Argument:329 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 12:21:04,604 [INFO] Argument:319 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 12:21:04,604 [INFO] Argument:329 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 12:21:04,604 [INFO] Argument:319 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 12:21:04,604 [INFO] Argument:329 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 12:21:04,604 [INFO] Argument:319 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 12:21:04,604 [INFO] Argument:329 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : Lockvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : Lockvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : Statevalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : Statevalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : Parentvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : Parentvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : XferCpltCallbackvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : XferCpltCallbackvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : XferErrorCallbackvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : XferErrorCallbackvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : ErrorCodevalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : ErrorCodevalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : hdmavalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : Instancevalue: DMA2_Stream6
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : Instancevalue: DMA2_Stream6
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : Initvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : Lockvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : Lockvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : Statevalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : Statevalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : Parentvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : Parentvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : XferCpltCallbackvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : XferCpltCallbackvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : XferErrorCallbackvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : XferErrorCallbackvalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:319 - Argument : ErrorCodevalue: null
+2026-01-10 12:21:04,605 [INFO] Argument:329 - Argument : ErrorCodevalue: null
+2026-01-10 12:21:04,737 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\license.tmp_save
+2026-01-10 12:21:04,871 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\license.tmp
+2026-01-10 12:21:04,921 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\gpio.tmp_save
+2026-01-10 12:21:05,026 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\gpio.tmp
+2026-01-10 12:21:05,623 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp_save
+2026-01-10 12:21:05,718 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp
+2026-01-10 12:21:05,730 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp_save
+2026-01-10 12:21:05,786 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp
+2026-01-10 12:21:05,796 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp_save
+2026-01-10 12:21:05,848 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp
+2026-01-10 12:21:05,858 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp_save
+2026-01-10 12:21:05,907 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp
+2026-01-10 12:21:05,942 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma.tmp_save
+2026-01-10 12:21:06,002 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma.tmp
+2026-01-10 12:21:06,011 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma_GV.tmp_save
+2026-01-10 12:21:06,051 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma_GV.tmp
+2026-01-10 12:21:06,060 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp_save
+2026-01-10 12:21:06,117 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp
+2026-01-10 12:21:06,121 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp_save
+2026-01-10 12:21:06,157 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp
+2026-01-10 12:21:06,161 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp_save
+2026-01-10 12:21:06,198 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp
+2026-01-10 12:21:06,202 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp_save
+2026-01-10 12:21:06,238 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp
+2026-01-10 12:21:06,257 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\ffconf.h_save
+2026-01-10 12:21:06,348 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\ffconf.h
+2026-01-10 12:21:06,375 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.c_save
+2026-01-10 12:21:06,455 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.c
+2026-01-10 12:21:06,482 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.h_save
+2026-01-10 12:21:06,553 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.h
+2026-01-10 12:21:06,571 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.h_save
+2026-01-10 12:21:06,639 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.h
+2026-01-10 12:21:06,657 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.c_save
+2026-01-10 12:21:06,746 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.c
+2026-01-10 12:21:06,773 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.c_save
+2026-01-10 12:21:06,850 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.c
+2026-01-10 12:21:06,871 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.h_save
+2026-01-10 12:21:06,945 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.h
+2026-01-10 12:21:06,961 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.c_save
+2026-01-10 12:21:07,026 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.c
+2026-01-10 12:21:07,043 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.h_save
+2026-01-10 12:21:07,103 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.h
+2026-01-10 12:21:07,131 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_it.c_save
+2026-01-10 12:21:07,286 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_it.c
+2026-01-10 12:21:07,311 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_it.h_save
+2026-01-10 12:21:07,413 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_it.h
+2026-01-10 12:21:07,447 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_msp.c_save
+2026-01-10 12:21:07,604 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_msp.c
+2026-01-10 12:21:07,632 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\system.tmp_save
+2026-01-10 12:21:07,700 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\system.tmp
+2026-01-10 12:21:07,718 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_timebase_tim.c_save
+2026-01-10 12:21:07,796 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_timebase_tim.c
+2026-01-10 12:21:07,821 [INFO] CodeEngine:311 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_hal_conf.h_save
+2026-01-10 12:21:07,897 [INFO] CodeEngine:335 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_hal_conf.h
+2026-01-10 12:21:07,917 [WARN] IPConfigManager:3431 - IP not found : TIM
+2026-01-10 12:21:07,917 [WARN] CodeGenerator:3760 - IP not found : null
+2026-01-10 12:21:07,939 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\main.h_save
+2026-01-10 12:21:08,019 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\main.h
+2026-01-10 12:21:08,039 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\main.c_save
+2026-01-10 12:21:08,138 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\main.c
+2026-01-10 12:21:08,686 [INFO] ProjectBuilder:3064 - Time for Copy HAL[1] : 295mS.
+2026-01-10 12:21:08,693 [INFO] ProjectBuilder:4404 - Project Generator version: 4.1.0
+2026-01-10 12:21:08,839 [INFO] ConfigFileManager:1457 - The Die is : DIE413
+2026-01-10 12:21:11,850 [INFO] ProjectBuilder:4626 - Time for Generating toolchain IDE Files: 3157mS.
+2026-01-10 12:21:11,851 [INFO] ProjectBuilder:2935 - Time for Copy CMSIS : 1mS.
+2026-01-10 12:21:11,855 [INFO] ProjectBuilder:2935 - Time for Copy CMSIS : 0mS.
+2026-01-10 12:27:45,193 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 774682096 Bytes (1073741824)
+2026-01-10 12:27:46,548 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 805090800 Bytes (1073741824)
+2026-01-10 12:27:49,999 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 763274408 Bytes (1073741824)
+2026-01-10 12:27:50,225 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SPI
+2026-01-10 12:27:50,225 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SDIO
+2026-01-10 12:27:50,225 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: TIM1_8
+2026-01-10 12:27:50,225 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SYS
+2026-01-10 12:27:50,225 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: RCC
+2026-01-10 12:27:50,225 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: I2C
+2026-01-10 12:27:50,225 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: RTC
+2026-01-10 12:27:50,225 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: NVIC
+2026-01-10 12:27:50,225 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: USART
+2026-01-10 12:27:50,225 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: DMA
+2026-01-10 12:27:50,225 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: GPIO
+2026-01-10 12:27:50,225 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: FATFS
+2026-01-10 12:27:50,227 [INFO] CodeGenerator:799 - code generatio: config db path: C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.9.0.202307051724\\db\
+2026-01-10 12:27:50,232 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:27:50,233 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:27:50,240 [INFO] Argument:319 - Argument : hdmavalue: null
+2026-01-10 12:27:50,240 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : Instancevalue: DMA2_Stream3
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : Instancevalue: DMA2_Stream3
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : Initvalue: null
+2026-01-10 12:27:50,241 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : Lockvalue: null
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : Lockvalue: null
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : Statevalue: null
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : Statevalue: null
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : Parentvalue: null
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : Parentvalue: null
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : XferCpltCallbackvalue: null
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : XferCpltCallbackvalue: null
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : XferErrorCallbackvalue: null
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : XferErrorCallbackvalue: null
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : ErrorCodevalue: null
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : ErrorCodevalue: null
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : hdmavalue: null
+2026-01-10 12:27:50,241 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : Instancevalue: DMA2_Stream6
+2026-01-10 12:27:50,241 [INFO] Argument:329 - Argument : Instancevalue: DMA2_Stream6
+2026-01-10 12:27:50,241 [INFO] Argument:319 - Argument : Initvalue: null
+2026-01-10 12:27:50,242 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 12:27:50,242 [INFO] Argument:319 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 12:27:50,242 [INFO] Argument:329 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 12:27:50,242 [INFO] Argument:319 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2026-01-10 12:27:50,242 [INFO] Argument:329 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2026-01-10 12:27:50,242 [INFO] Argument:319 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 12:27:50,242 [INFO] Argument:329 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 12:27:50,242 [INFO] Argument:319 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 12:27:50,242 [INFO] Argument:329 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 12:27:50,242 [INFO] Argument:319 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 12:27:50,242 [INFO] Argument:329 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 12:27:50,242 [INFO] Argument:319 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 12:27:50,242 [INFO] Argument:329 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 12:27:50,242 [INFO] Argument:319 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 12:27:50,242 [INFO] Argument:329 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 12:27:50,242 [INFO] Argument:319 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 12:27:50,242 [INFO] Argument:329 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 12:27:50,242 [INFO] Argument:319 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 12:27:50,242 [INFO] Argument:329 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 12:27:50,242 [INFO] Argument:319 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 12:27:50,242 [INFO] Argument:329 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 12:27:50,242 [INFO] Argument:319 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 12:27:50,242 [INFO] Argument:329 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 12:27:50,242 [INFO] Argument:319 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 12:27:50,242 [INFO] Argument:329 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 12:27:50,242 [INFO] Argument:319 - Argument : Lockvalue: null
+2026-01-10 12:27:50,242 [INFO] Argument:329 - Argument : Lockvalue: null
+2026-01-10 12:27:50,242 [INFO] Argument:319 - Argument : Statevalue: null
+2026-01-10 12:27:50,242 [INFO] Argument:329 - Argument : Statevalue: null
+2026-01-10 12:27:50,242 [INFO] Argument:319 - Argument : Parentvalue: null
+2026-01-10 12:27:50,242 [INFO] Argument:329 - Argument : Parentvalue: null
+2026-01-10 12:27:50,242 [INFO] Argument:319 - Argument : XferCpltCallbackvalue: null
+2026-01-10 12:27:50,242 [INFO] Argument:329 - Argument : XferCpltCallbackvalue: null
+2026-01-10 12:27:50,242 [INFO] Argument:319 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 12:27:50,242 [INFO] Argument:329 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 12:27:50,242 [INFO] Argument:319 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 12:27:50,242 [INFO] Argument:329 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 12:27:50,242 [INFO] Argument:319 - Argument : XferErrorCallbackvalue: null
+2026-01-10 12:27:50,242 [INFO] Argument:329 - Argument : XferErrorCallbackvalue: null
+2026-01-10 12:27:50,242 [INFO] Argument:319 - Argument : ErrorCodevalue: null
+2026-01-10 12:27:50,242 [INFO] Argument:329 - Argument : ErrorCodevalue: null
+2026-01-10 12:27:50,339 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\license.tmp_save
+2026-01-10 12:27:50,428 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\license.tmp
+2026-01-10 12:27:50,442 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\gpio.tmp_save
+2026-01-10 12:27:50,518 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\gpio.tmp
+2026-01-10 12:27:50,802 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp_save
+2026-01-10 12:27:50,918 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp
+2026-01-10 12:27:50,922 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp_save
+2026-01-10 12:27:51,014 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp
+2026-01-10 12:27:51,017 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp_save
+2026-01-10 12:27:51,075 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp
+2026-01-10 12:27:51,079 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp_save
+2026-01-10 12:27:51,130 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp
+2026-01-10 12:27:51,154 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma.tmp_save
+2026-01-10 12:27:51,214 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma.tmp
+2026-01-10 12:27:51,217 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma_GV.tmp_save
+2026-01-10 12:27:51,249 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma_GV.tmp
+2026-01-10 12:27:51,256 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp_save
+2026-01-10 12:27:51,304 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp
+2026-01-10 12:27:51,307 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp_save
+2026-01-10 12:27:51,339 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp
+2026-01-10 12:27:51,342 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp_save
+2026-01-10 12:27:51,372 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp
+2026-01-10 12:27:51,376 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp_save
+2026-01-10 12:27:51,408 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp
+2026-01-10 12:27:51,420 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\ffconf.h_save
+2026-01-10 12:27:51,491 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\ffconf.h
+2026-01-10 12:27:51,511 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.c_save
+2026-01-10 12:27:51,578 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.c
+2026-01-10 12:27:51,597 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.h_save
+2026-01-10 12:27:51,662 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.h
+2026-01-10 12:27:51,674 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.h_save
+2026-01-10 12:27:51,729 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.h
+2026-01-10 12:27:51,741 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.c_save
+2026-01-10 12:27:51,811 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.c
+2026-01-10 12:27:51,832 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.c_save
+2026-01-10 12:27:51,893 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.c
+2026-01-10 12:27:51,902 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.h_save
+2026-01-10 12:27:51,965 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.h
+2026-01-10 12:27:51,976 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.c_save
+2026-01-10 12:27:52,036 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.c
+2026-01-10 12:27:52,047 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.h_save
+2026-01-10 12:27:52,101 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.h
+2026-01-10 12:27:52,119 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_it.c_save
+2026-01-10 12:27:52,228 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_it.c
+2026-01-10 12:27:52,240 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_it.h_save
+2026-01-10 12:27:52,296 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_it.h
+2026-01-10 12:27:52,310 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_msp.c_save
+2026-01-10 12:27:52,402 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_msp.c
+2026-01-10 12:27:52,416 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\system.tmp_save
+2026-01-10 12:27:52,471 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\system.tmp
+2026-01-10 12:27:52,485 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_timebase_tim.c_save
+2026-01-10 12:27:52,559 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_timebase_tim.c
+2026-01-10 12:27:52,576 [INFO] CodeEngine:311 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_hal_conf.h_save
+2026-01-10 12:27:52,682 [INFO] CodeEngine:335 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_hal_conf.h
+2026-01-10 12:27:52,714 [WARN] IPConfigManager:3431 - IP not found : TIM
+2026-01-10 12:27:52,714 [WARN] CodeGenerator:3760 - IP not found : null
+2026-01-10 12:27:52,728 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\main.h_save
+2026-01-10 12:27:52,802 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\main.h
+2026-01-10 12:27:52,813 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\main.c_save
+2026-01-10 12:27:52,901 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\main.c
+2026-01-10 12:27:53,260 [INFO] ProjectBuilder:3064 - Time for Copy HAL[1] : 150mS.
+2026-01-10 12:27:53,264 [INFO] ProjectBuilder:4404 - Project Generator version: 4.1.0
+2026-01-10 12:27:53,434 [INFO] ConfigFileManager:1457 - The Die is : DIE413
+2026-01-10 12:27:54,433 [INFO] ProjectBuilder:4626 - Time for Generating toolchain IDE Files: 1169mS.
+2026-01-10 12:27:54,434 [INFO] ProjectBuilder:2935 - Time for Copy CMSIS : 1mS.
+2026-01-10 12:27:54,439 [INFO] ProjectBuilder:2935 - Time for Copy CMSIS : 0mS.
+2026-01-10 12:31:05,275 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:31:05,275 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:31:05,275 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:31:05,275 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:31:36,398 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:31:36,398 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:31:36,398 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:31:36,398 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:31:42,832 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:31:42,832 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:31:42,832 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:31:42,832 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:36:51,732 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:36:51,732 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:36:51,732 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:36:51,732 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:39:16,393 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:39:16,393 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:39:16,393 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:39:16,393 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:39:29,527 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:39:29,527 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:39:29,527 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:39:29,527 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:39:38,669 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:39:38,669 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:39:38,669 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:39:38,669 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:39:50,839 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:39:50,839 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:39:50,840 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:39:50,840 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:40:01,152 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:40:01,152 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:40:01,152 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:40:01,152 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:40:05,417 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:40:05,417 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:40:05,418 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:40:05,418 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:42:09,057 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:42:09,057 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:42:09,057 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:42:09,057 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:42:27,650 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 760312904 Bytes (1073741824)
+2026-01-10 12:42:28,915 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 791238936 Bytes (1073741824)
+2026-01-10 12:42:30,283 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 940136680 Bytes (1073741824)
+2026-01-10 12:42:30,549 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SPI
+2026-01-10 12:42:30,549 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SDIO
+2026-01-10 12:42:30,549 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: TIM1_8
+2026-01-10 12:42:30,549 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SYS
+2026-01-10 12:42:30,549 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: RCC
+2026-01-10 12:42:30,549 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: I2C
+2026-01-10 12:42:30,549 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: RTC
+2026-01-10 12:42:30,549 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: NVIC
+2026-01-10 12:42:30,550 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: USART
+2026-01-10 12:42:30,550 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: DMA
+2026-01-10 12:42:30,550 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: GPIO
+2026-01-10 12:42:30,550 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: FATFS
+2026-01-10 12:42:30,551 [INFO] CodeGenerator:799 - code generatio: config db path: C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.9.0.202307051724\\db\
+2026-01-10 12:42:30,556 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 12:42:30,556 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 12:42:30,561 [INFO] Argument:319 - Argument : hdmavalue: null
+2026-01-10 12:42:30,561 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 12:42:30,561 [INFO] Argument:319 - Argument : Instancevalue: DMA2_Stream3
+2026-01-10 12:42:30,561 [INFO] Argument:329 - Argument : Instancevalue: DMA2_Stream3
+2026-01-10 12:42:30,561 [INFO] Argument:319 - Argument : Initvalue: null
+2026-01-10 12:42:30,561 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 12:42:30,561 [INFO] Argument:319 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 12:42:30,561 [INFO] Argument:329 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 12:42:30,561 [INFO] Argument:319 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2026-01-10 12:42:30,561 [INFO] Argument:329 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2026-01-10 12:42:30,561 [INFO] Argument:319 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 12:42:30,561 [INFO] Argument:329 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 12:42:30,561 [INFO] Argument:319 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 12:42:30,561 [INFO] Argument:329 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 12:42:30,561 [INFO] Argument:319 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 12:42:30,561 [INFO] Argument:329 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 12:42:30,561 [INFO] Argument:319 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 12:42:30,561 [INFO] Argument:329 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 12:42:30,561 [INFO] Argument:319 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 12:42:30,561 [INFO] Argument:329 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 12:42:30,561 [INFO] Argument:319 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 12:42:30,561 [INFO] Argument:329 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 12:42:30,561 [INFO] Argument:319 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 12:42:30,561 [INFO] Argument:329 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 12:42:30,561 [INFO] Argument:319 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 12:42:30,561 [INFO] Argument:329 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 12:42:30,561 [INFO] Argument:319 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 12:42:30,561 [INFO] Argument:329 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 12:42:30,561 [INFO] Argument:319 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 12:42:30,561 [INFO] Argument:329 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : Lockvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : Lockvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : Statevalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : Statevalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : Parentvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : Parentvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : XferCpltCallbackvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : XferCpltCallbackvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : XferErrorCallbackvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : XferErrorCallbackvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : ErrorCodevalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : ErrorCodevalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : hdmavalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : Instancevalue: DMA2_Stream6
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : Instancevalue: DMA2_Stream6
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : Initvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : Lockvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : Lockvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : Statevalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : Statevalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : Parentvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : Parentvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : XferCpltCallbackvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : XferCpltCallbackvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : XferErrorCallbackvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:329 - Argument : XferErrorCallbackvalue: null
+2026-01-10 12:42:30,562 [INFO] Argument:319 - Argument : ErrorCodevalue: null
+2026-01-10 12:42:30,563 [INFO] Argument:329 - Argument : ErrorCodevalue: null
+2026-01-10 12:42:30,684 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\license.tmp_save
+2026-01-10 12:42:30,746 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\license.tmp
+2026-01-10 12:42:30,780 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\gpio.tmp_save
+2026-01-10 12:42:30,850 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\gpio.tmp
+2026-01-10 12:42:31,095 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp_save
+2026-01-10 12:42:31,164 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp
+2026-01-10 12:42:31,167 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp_save
+2026-01-10 12:42:31,238 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp
+2026-01-10 12:42:31,242 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp_save
+2026-01-10 12:42:31,281 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp
+2026-01-10 12:42:31,285 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp_save
+2026-01-10 12:42:31,327 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp
+2026-01-10 12:42:31,351 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma.tmp_save
+2026-01-10 12:42:31,407 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma.tmp
+2026-01-10 12:42:31,409 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma_GV.tmp_save
+2026-01-10 12:42:31,440 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma_GV.tmp
+2026-01-10 12:42:31,448 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp_save
+2026-01-10 12:42:31,497 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp
+2026-01-10 12:42:31,500 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp_save
+2026-01-10 12:42:31,533 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp
+2026-01-10 12:42:31,536 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp_save
+2026-01-10 12:42:31,568 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp
+2026-01-10 12:42:31,572 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp_save
+2026-01-10 12:42:31,601 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp
+2026-01-10 12:42:31,613 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\ffconf.h_save
+2026-01-10 12:42:31,686 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\ffconf.h
+2026-01-10 12:42:31,706 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.c_save
+2026-01-10 12:42:31,770 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.c
+2026-01-10 12:42:31,781 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.h_save
+2026-01-10 12:42:31,817 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.h
+2026-01-10 12:42:31,821 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.h_save
+2026-01-10 12:42:31,857 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.h
+2026-01-10 12:42:31,871 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.c_save
+2026-01-10 12:42:31,942 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.c
+2026-01-10 12:42:31,953 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.c_save
+2026-01-10 12:42:31,989 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.c
+2026-01-10 12:42:31,992 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.h_save
+2026-01-10 12:42:32,038 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.h
+2026-01-10 12:42:32,042 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.c_save
+2026-01-10 12:42:32,081 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.c
+2026-01-10 12:42:32,085 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.h_save
+2026-01-10 12:42:32,122 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.h
+2026-01-10 12:42:32,145 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_it.c_save
+2026-01-10 12:42:32,255 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_it.c
+2026-01-10 12:42:32,260 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_it.h_save
+2026-01-10 12:42:32,328 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_it.h
+2026-01-10 12:42:32,352 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_msp.c_save
+2026-01-10 12:42:32,463 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_msp.c
+2026-01-10 12:42:32,474 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\system.tmp_save
+2026-01-10 12:42:32,508 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\system.tmp
+2026-01-10 12:42:32,521 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_timebase_tim.c_save
+2026-01-10 12:42:32,560 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_timebase_tim.c
+2026-01-10 12:42:32,574 [INFO] CodeEngine:311 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_hal_conf.h_save
+2026-01-10 12:42:32,642 [INFO] CodeEngine:335 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_hal_conf.h
+2026-01-10 12:42:32,660 [WARN] IPConfigManager:3431 - IP not found : TIM
+2026-01-10 12:42:32,660 [WARN] CodeGenerator:3760 - IP not found : null
+2026-01-10 12:42:32,674 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\main.h_save
+2026-01-10 12:42:32,719 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\main.h
+2026-01-10 12:42:32,733 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\main.c_save
+2026-01-10 12:42:32,820 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\main.c
+2026-01-10 12:42:33,278 [INFO] ProjectBuilder:3064 - Time for Copy HAL[1] : 265mS.
+2026-01-10 12:42:33,289 [INFO] ProjectBuilder:4404 - Project Generator version: 4.1.0
+2026-01-10 12:42:33,487 [INFO] ConfigFileManager:1457 - The Die is : DIE413
+2026-01-10 12:42:35,883 [INFO] ProjectBuilder:4626 - Time for Generating toolchain IDE Files: 2593mS.
+2026-01-10 12:42:35,884 [INFO] ProjectBuilder:2935 - Time for Copy CMSIS : 1mS.
+2026-01-10 12:42:35,897 [INFO] ProjectBuilder:2935 - Time for Copy CMSIS : 0mS.
+2026-01-10 20:27:59,365 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2026-01-10 20:28:16,337 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 815917416 Bytes (1073741824)
+2026-01-10 20:28:17,385 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 846326120 Bytes (1073741824)
+2026-01-10 20:28:19,271 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 920775016 Bytes (1073741824)
+2026-01-10 20:28:19,564 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SPI
+2026-01-10 20:28:19,564 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SDIO
+2026-01-10 20:28:19,565 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: TIM1_8
+2026-01-10 20:28:19,565 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SYS
+2026-01-10 20:28:19,565 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: RCC
+2026-01-10 20:28:19,565 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: I2C
+2026-01-10 20:28:19,565 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: RTC
+2026-01-10 20:28:19,565 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: NVIC
+2026-01-10 20:28:19,565 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: USART
+2026-01-10 20:28:19,565 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: DMA
+2026-01-10 20:28:19,565 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: GPIO
+2026-01-10 20:28:19,565 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: FATFS
+2026-01-10 20:28:19,567 [INFO] CodeGenerator:799 - code generatio: config db path: C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.9.0.202307051724\\db\
+2026-01-10 20:28:19,572 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 20:28:19,572 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 20:28:19,578 [INFO] Argument:319 - Argument : hdmavalue: null
+2026-01-10 20:28:19,578 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 20:28:19,578 [INFO] Argument:319 - Argument : Instancevalue: DMA2_Stream3
+2026-01-10 20:28:19,578 [INFO] Argument:329 - Argument : Instancevalue: DMA2_Stream3
+2026-01-10 20:28:19,578 [INFO] Argument:319 - Argument : Initvalue: null
+2026-01-10 20:28:19,578 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 20:28:19,578 [INFO] Argument:319 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 20:28:19,578 [INFO] Argument:329 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 20:28:19,578 [INFO] Argument:319 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2026-01-10 20:28:19,578 [INFO] Argument:329 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2026-01-10 20:28:19,578 [INFO] Argument:319 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 20:28:19,579 [INFO] Argument:329 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 20:28:19,579 [INFO] Argument:319 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 20:28:19,579 [INFO] Argument:329 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 20:28:19,579 [INFO] Argument:319 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 20:28:19,579 [INFO] Argument:329 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 20:28:19,579 [INFO] Argument:319 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 20:28:19,579 [INFO] Argument:329 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 20:28:19,579 [INFO] Argument:319 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 20:28:19,579 [INFO] Argument:329 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 20:28:19,579 [INFO] Argument:319 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 20:28:19,579 [INFO] Argument:329 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 20:28:19,579 [INFO] Argument:319 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 20:28:19,579 [INFO] Argument:329 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 20:28:19,579 [INFO] Argument:319 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 20:28:19,579 [INFO] Argument:329 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 20:28:19,579 [INFO] Argument:319 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 20:28:19,579 [INFO] Argument:329 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 20:28:19,579 [INFO] Argument:319 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 20:28:19,579 [INFO] Argument:329 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 20:28:19,579 [INFO] Argument:319 - Argument : Lockvalue: null
+2026-01-10 20:28:19,579 [INFO] Argument:329 - Argument : Lockvalue: null
+2026-01-10 20:28:19,579 [INFO] Argument:319 - Argument : Statevalue: null
+2026-01-10 20:28:19,579 [INFO] Argument:329 - Argument : Statevalue: null
+2026-01-10 20:28:19,579 [INFO] Argument:319 - Argument : Parentvalue: null
+2026-01-10 20:28:19,579 [INFO] Argument:329 - Argument : Parentvalue: null
+2026-01-10 20:28:19,579 [INFO] Argument:319 - Argument : XferCpltCallbackvalue: null
+2026-01-10 20:28:19,579 [INFO] Argument:329 - Argument : XferCpltCallbackvalue: null
+2026-01-10 20:28:19,579 [INFO] Argument:319 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 20:28:19,579 [INFO] Argument:329 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 20:28:19,579 [INFO] Argument:319 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 20:28:19,579 [INFO] Argument:329 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 20:28:19,579 [INFO] Argument:319 - Argument : XferErrorCallbackvalue: null
+2026-01-10 20:28:19,579 [INFO] Argument:329 - Argument : XferErrorCallbackvalue: null
+2026-01-10 20:28:19,579 [INFO] Argument:319 - Argument : ErrorCodevalue: null
+2026-01-10 20:28:19,579 [INFO] Argument:329 - Argument : ErrorCodevalue: null
+2026-01-10 20:28:19,580 [INFO] Argument:319 - Argument : hdmavalue: null
+2026-01-10 20:28:19,580 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 20:28:19,580 [INFO] Argument:319 - Argument : Instancevalue: DMA2_Stream6
+2026-01-10 20:28:19,580 [INFO] Argument:329 - Argument : Instancevalue: DMA2_Stream6
+2026-01-10 20:28:19,580 [INFO] Argument:319 - Argument : Initvalue: null
+2026-01-10 20:28:19,580 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 20:28:19,580 [INFO] Argument:319 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 20:28:19,580 [INFO] Argument:329 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 20:28:19,580 [INFO] Argument:319 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2026-01-10 20:28:19,580 [INFO] Argument:329 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2026-01-10 20:28:19,580 [INFO] Argument:319 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 20:28:19,580 [INFO] Argument:329 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 20:28:19,580 [INFO] Argument:319 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 20:28:19,580 [INFO] Argument:329 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 20:28:19,581 [INFO] Argument:319 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 20:28:19,581 [INFO] Argument:329 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 20:28:19,581 [INFO] Argument:319 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 20:28:19,581 [INFO] Argument:329 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 20:28:19,581 [INFO] Argument:319 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 20:28:19,581 [INFO] Argument:329 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 20:28:19,581 [INFO] Argument:319 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 20:28:19,581 [INFO] Argument:329 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 20:28:19,581 [INFO] Argument:319 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 20:28:19,581 [INFO] Argument:329 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 20:28:19,581 [INFO] Argument:319 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 20:28:19,581 [INFO] Argument:329 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 20:28:19,581 [INFO] Argument:319 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 20:28:19,581 [INFO] Argument:329 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 20:28:19,581 [INFO] Argument:319 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 20:28:19,581 [INFO] Argument:329 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 20:28:19,581 [INFO] Argument:319 - Argument : Lockvalue: null
+2026-01-10 20:28:19,581 [INFO] Argument:329 - Argument : Lockvalue: null
+2026-01-10 20:28:19,581 [INFO] Argument:319 - Argument : Statevalue: null
+2026-01-10 20:28:19,581 [INFO] Argument:329 - Argument : Statevalue: null
+2026-01-10 20:28:19,581 [INFO] Argument:319 - Argument : Parentvalue: null
+2026-01-10 20:28:19,581 [INFO] Argument:329 - Argument : Parentvalue: null
+2026-01-10 20:28:19,581 [INFO] Argument:319 - Argument : XferCpltCallbackvalue: null
+2026-01-10 20:28:19,582 [INFO] Argument:329 - Argument : XferCpltCallbackvalue: null
+2026-01-10 20:28:19,582 [INFO] Argument:319 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 20:28:19,582 [INFO] Argument:329 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 20:28:19,582 [INFO] Argument:319 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 20:28:19,582 [INFO] Argument:329 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 20:28:19,582 [INFO] Argument:319 - Argument : XferErrorCallbackvalue: null
+2026-01-10 20:28:19,582 [INFO] Argument:329 - Argument : XferErrorCallbackvalue: null
+2026-01-10 20:28:19,582 [INFO] Argument:319 - Argument : ErrorCodevalue: null
+2026-01-10 20:28:19,582 [INFO] Argument:329 - Argument : ErrorCodevalue: null
+2026-01-10 20:28:19,777 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\license.tmp_save
+2026-01-10 20:28:19,845 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\license.tmp
+2026-01-10 20:28:19,893 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\gpio.tmp_save
+2026-01-10 20:28:19,960 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\gpio.tmp
+2026-01-10 20:28:20,376 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp_save
+2026-01-10 20:28:20,456 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp
+2026-01-10 20:28:20,461 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp_save
+2026-01-10 20:28:20,497 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp
+2026-01-10 20:28:20,507 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp_save
+2026-01-10 20:28:20,549 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp
+2026-01-10 20:28:20,559 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp_save
+2026-01-10 20:28:20,593 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp
+2026-01-10 20:28:20,637 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma.tmp_save
+2026-01-10 20:28:20,685 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma.tmp
+2026-01-10 20:28:20,694 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma_GV.tmp_save
+2026-01-10 20:28:20,727 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma_GV.tmp
+2026-01-10 20:28:20,735 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp_save
+2026-01-10 20:28:20,788 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp
+2026-01-10 20:28:20,792 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp_save
+2026-01-10 20:28:20,821 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp
+2026-01-10 20:28:20,826 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp_save
+2026-01-10 20:28:20,866 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp
+2026-01-10 20:28:20,870 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp_save
+2026-01-10 20:28:20,906 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp
+2026-01-10 20:28:20,932 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\ffconf.h_save
+2026-01-10 20:28:21,007 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\ffconf.h
+2026-01-10 20:28:21,040 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.c_save
+2026-01-10 20:28:21,114 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.c
+2026-01-10 20:28:21,137 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.h_save
+2026-01-10 20:28:21,179 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.h
+2026-01-10 20:28:21,198 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.h_save
+2026-01-10 20:28:21,237 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.h
+2026-01-10 20:28:21,258 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.c_save
+2026-01-10 20:28:21,335 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.c
+2026-01-10 20:28:21,356 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.c_save
+2026-01-10 20:28:21,421 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.c
+2026-01-10 20:28:21,435 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.h_save
+2026-01-10 20:28:21,493 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.h
+2026-01-10 20:28:21,510 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.c_save
+2026-01-10 20:28:21,558 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.c
+2026-01-10 20:28:21,576 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.h_save
+2026-01-10 20:28:21,621 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.h
+2026-01-10 20:28:21,649 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_it.c_save
+2026-01-10 20:28:21,752 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_it.c
+2026-01-10 20:28:21,766 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_it.h_save
+2026-01-10 20:28:21,822 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_it.h
+2026-01-10 20:28:21,860 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_msp.c_save
+2026-01-10 20:28:22,006 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_msp.c
+2026-01-10 20:28:22,030 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\system.tmp_save
+2026-01-10 20:28:22,077 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\system.tmp
+2026-01-10 20:28:22,097 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_timebase_tim.c_save
+2026-01-10 20:28:22,172 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_timebase_tim.c
+2026-01-10 20:28:22,195 [INFO] CodeEngine:311 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_hal_conf.h_save
+2026-01-10 20:28:22,263 [INFO] CodeEngine:335 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_hal_conf.h
+2026-01-10 20:28:22,283 [WARN] IPConfigManager:3431 - IP not found : TIM
+2026-01-10 20:28:22,285 [WARN] CodeGenerator:3760 - IP not found : null
+2026-01-10 20:28:22,306 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\main.h_save
+2026-01-10 20:28:22,367 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\main.h
+2026-01-10 20:28:22,388 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\main.c_save
+2026-01-10 20:28:22,485 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\main.c
+2026-01-10 20:28:22,952 [INFO] ProjectBuilder:3064 - Time for Copy HAL[1] : 241mS.
+2026-01-10 20:28:22,955 [INFO] ProjectBuilder:4404 - Project Generator version: 4.1.0
+2026-01-10 20:28:23,118 [INFO] ConfigFileManager:1457 - The Die is : DIE413
+2026-01-10 20:28:24,389 [INFO] ProjectBuilder:4626 - Time for Generating toolchain IDE Files: 1434mS.
+2026-01-10 20:28:24,390 [INFO] ProjectBuilder:2935 - Time for Copy CMSIS : 1mS.
+2026-01-10 20:28:24,396 [INFO] ProjectBuilder:2935 - Time for Copy CMSIS : 0mS.
+2026-01-10 20:35:08,254 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 813038168 Bytes (1073741824)
+2026-01-10 20:35:09,434 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 840827480 Bytes (1073741824)
+2026-01-10 20:35:11,175 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 798141232 Bytes (1073741824)
+2026-01-10 20:35:11,356 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SPI
+2026-01-10 20:35:11,356 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SDIO
+2026-01-10 20:35:11,356 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: TIM1_8
+2026-01-10 20:35:11,356 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SYS
+2026-01-10 20:35:11,356 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: RCC
+2026-01-10 20:35:11,356 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: I2C
+2026-01-10 20:35:11,356 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: RTC
+2026-01-10 20:35:11,356 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: NVIC
+2026-01-10 20:35:11,356 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: USART
+2026-01-10 20:35:11,356 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: DMA
+2026-01-10 20:35:11,357 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: GPIO
+2026-01-10 20:35:11,357 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: FATFS
+2026-01-10 20:35:11,358 [INFO] CodeGenerator:799 - code generatio: config db path: C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.9.0.202307051724\\db\
+2026-01-10 20:35:11,360 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 20:35:11,360 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 20:35:11,365 [INFO] Argument:319 - Argument : hdmavalue: null
+2026-01-10 20:35:11,365 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 20:35:11,365 [INFO] Argument:319 - Argument : Instancevalue: DMA2_Stream3
+2026-01-10 20:35:11,365 [INFO] Argument:329 - Argument : Instancevalue: DMA2_Stream3
+2026-01-10 20:35:11,365 [INFO] Argument:319 - Argument : Initvalue: null
+2026-01-10 20:35:11,365 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 20:35:11,365 [INFO] Argument:319 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 20:35:11,365 [INFO] Argument:329 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 20:35:11,365 [INFO] Argument:319 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2026-01-10 20:35:11,365 [INFO] Argument:329 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2026-01-10 20:35:11,365 [INFO] Argument:319 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 20:35:11,365 [INFO] Argument:329 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 20:35:11,365 [INFO] Argument:319 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 20:35:11,365 [INFO] Argument:329 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 20:35:11,365 [INFO] Argument:319 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 20:35:11,365 [INFO] Argument:329 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 20:35:11,365 [INFO] Argument:319 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 20:35:11,365 [INFO] Argument:329 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 20:35:11,365 [INFO] Argument:319 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 20:35:11,365 [INFO] Argument:329 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 20:35:11,365 [INFO] Argument:319 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : Lockvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : Lockvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : Statevalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : Statevalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : Parentvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : Parentvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : XferCpltCallbackvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : XferCpltCallbackvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : XferErrorCallbackvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : XferErrorCallbackvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : ErrorCodevalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : ErrorCodevalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : hdmavalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : Instancevalue: DMA2_Stream6
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : Instancevalue: DMA2_Stream6
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : Initvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : Lockvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : Lockvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : Statevalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : Statevalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : Parentvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : Parentvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : XferCpltCallbackvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : XferCpltCallbackvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : XferErrorCallbackvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : XferErrorCallbackvalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:319 - Argument : ErrorCodevalue: null
+2026-01-10 20:35:11,366 [INFO] Argument:329 - Argument : ErrorCodevalue: null
+2026-01-10 20:35:11,423 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\license.tmp_save
+2026-01-10 20:35:11,498 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\license.tmp
+2026-01-10 20:35:11,523 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\gpio.tmp_save
+2026-01-10 20:35:11,577 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\gpio.tmp
+2026-01-10 20:35:11,876 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp_save
+2026-01-10 20:35:11,961 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp
+2026-01-10 20:35:11,964 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp_save
+2026-01-10 20:35:12,010 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp
+2026-01-10 20:35:12,013 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp_save
+2026-01-10 20:35:12,052 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp
+2026-01-10 20:35:12,054 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp_save
+2026-01-10 20:35:12,088 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp
+2026-01-10 20:35:12,111 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma.tmp_save
+2026-01-10 20:35:12,163 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma.tmp
+2026-01-10 20:35:12,165 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma_GV.tmp_save
+2026-01-10 20:35:12,198 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma_GV.tmp
+2026-01-10 20:35:12,206 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp_save
+2026-01-10 20:35:12,266 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp
+2026-01-10 20:35:12,271 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp_save
+2026-01-10 20:35:12,322 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp
+2026-01-10 20:35:12,325 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp_save
+2026-01-10 20:35:12,394 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp
+2026-01-10 20:35:12,403 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp_save
+2026-01-10 20:35:12,472 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp
+2026-01-10 20:35:12,495 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\ffconf.h_save
+2026-01-10 20:35:12,637 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\ffconf.h
+2026-01-10 20:35:12,682 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.c_save
+2026-01-10 20:35:12,846 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.c
+2026-01-10 20:35:12,873 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.h_save
+2026-01-10 20:35:12,965 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.h
+2026-01-10 20:35:12,994 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.h_save
+2026-01-10 20:35:13,076 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.h
+2026-01-10 20:35:13,106 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.c_save
+2026-01-10 20:35:13,247 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.c
+2026-01-10 20:35:13,264 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.c_save
+2026-01-10 20:35:13,326 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.c
+2026-01-10 20:35:13,334 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.h_save
+2026-01-10 20:35:13,400 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.h
+2026-01-10 20:35:13,407 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.c_save
+2026-01-10 20:35:13,483 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.c
+2026-01-10 20:35:13,490 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.h_save
+2026-01-10 20:35:13,572 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.h
+2026-01-10 20:35:13,618 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_it.c_save
+2026-01-10 20:35:13,825 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_it.c
+2026-01-10 20:35:13,832 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_it.h_save
+2026-01-10 20:35:13,914 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_it.h
+2026-01-10 20:35:13,948 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_msp.c_save
+2026-01-10 20:35:14,159 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_msp.c
+2026-01-10 20:35:14,177 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\system.tmp_save
+2026-01-10 20:35:14,243 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\system.tmp
+2026-01-10 20:35:14,263 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_timebase_tim.c_save
+2026-01-10 20:35:14,338 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_timebase_tim.c
+2026-01-10 20:35:14,365 [INFO] CodeEngine:311 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_hal_conf.h_save
+2026-01-10 20:35:14,491 [INFO] CodeEngine:335 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_hal_conf.h
+2026-01-10 20:35:14,525 [WARN] IPConfigManager:3431 - IP not found : TIM
+2026-01-10 20:35:14,527 [WARN] CodeGenerator:3760 - IP not found : null
+2026-01-10 20:35:14,549 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\main.h_save
+2026-01-10 20:35:14,638 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\main.h
+2026-01-10 20:35:14,655 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\main.c_save
+2026-01-10 20:35:14,817 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\main.c
+2026-01-10 20:35:15,493 [INFO] ProjectBuilder:3064 - Time for Copy HAL[1] : 290mS.
+2026-01-10 20:35:15,501 [INFO] ProjectBuilder:4404 - Project Generator version: 4.1.0
+2026-01-10 20:35:15,753 [INFO] ConfigFileManager:1457 - The Die is : DIE413
+2026-01-10 20:35:17,700 [INFO] ProjectBuilder:4626 - Time for Generating toolchain IDE Files: 2199mS.
+2026-01-10 20:35:17,700 [INFO] ProjectBuilder:2935 - Time for Copy CMSIS : 0mS.
+2026-01-10 20:35:17,710 [INFO] ProjectBuilder:2935 - Time for Copy CMSIS : 0mS.
+2026-01-10 20:40:23,884 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2026-01-10 20:40:24,733 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 809935840 Bytes (1073741824)
+2026-01-10 20:40:25,780 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 839822304 Bytes (1073741824)
+2026-01-10 20:40:27,020 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 905356256 Bytes (1073741824)
+2026-01-10 20:40:27,251 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SPI
+2026-01-10 20:40:27,251 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SDIO
+2026-01-10 20:40:27,251 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: TIM1_8
+2026-01-10 20:40:27,251 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SYS
+2026-01-10 20:40:27,251 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: RCC
+2026-01-10 20:40:27,251 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: I2C
+2026-01-10 20:40:27,251 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: RTC
+2026-01-10 20:40:27,251 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: NVIC
+2026-01-10 20:40:27,251 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: USART
+2026-01-10 20:40:27,251 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: DMA
+2026-01-10 20:40:27,252 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: GPIO
+2026-01-10 20:40:27,252 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: FATFS
+2026-01-10 20:40:27,252 [INFO] CodeGenerator:799 - code generatio: config db path: C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.9.0.202307051724\\db\
+2026-01-10 20:40:27,255 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 20:40:27,255 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 20:40:27,260 [INFO] Argument:319 - Argument : hdmavalue: null
+2026-01-10 20:40:27,260 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 20:40:27,260 [INFO] Argument:319 - Argument : Instancevalue: DMA2_Stream3
+2026-01-10 20:40:27,260 [INFO] Argument:329 - Argument : Instancevalue: DMA2_Stream3
+2026-01-10 20:40:27,260 [INFO] Argument:319 - Argument : Initvalue: null
+2026-01-10 20:40:27,260 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 20:40:27,260 [INFO] Argument:319 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 20:40:27,260 [INFO] Argument:329 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 20:40:27,260 [INFO] Argument:319 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2026-01-10 20:40:27,260 [INFO] Argument:329 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2026-01-10 20:40:27,260 [INFO] Argument:319 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 20:40:27,260 [INFO] Argument:329 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 20:40:27,260 [INFO] Argument:319 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 20:40:27,260 [INFO] Argument:329 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 20:40:27,260 [INFO] Argument:319 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 20:40:27,260 [INFO] Argument:329 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 20:40:27,260 [INFO] Argument:319 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 20:40:27,260 [INFO] Argument:329 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 20:40:27,260 [INFO] Argument:319 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 20:40:27,260 [INFO] Argument:329 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 20:40:27,260 [INFO] Argument:319 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 20:40:27,260 [INFO] Argument:329 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 20:40:27,260 [INFO] Argument:319 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 20:40:27,260 [INFO] Argument:329 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : Lockvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : Lockvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : Statevalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : Statevalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : Parentvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : Parentvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : XferCpltCallbackvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : XferCpltCallbackvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : XferErrorCallbackvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : XferErrorCallbackvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : ErrorCodevalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : ErrorCodevalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : hdmavalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : Instancevalue: DMA2_Stream6
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : Instancevalue: DMA2_Stream6
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : Initvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : Lockvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : Lockvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : Statevalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : Statevalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : Parentvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : Parentvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : XferCpltCallbackvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : XferCpltCallbackvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : XferErrorCallbackvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : XferErrorCallbackvalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:319 - Argument : ErrorCodevalue: null
+2026-01-10 20:40:27,261 [INFO] Argument:329 - Argument : ErrorCodevalue: null
+2026-01-10 20:40:27,345 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\license.tmp_save
+2026-01-10 20:40:27,420 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\license.tmp
+2026-01-10 20:40:27,439 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\gpio.tmp_save
+2026-01-10 20:40:27,546 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\gpio.tmp
+2026-01-10 20:40:27,866 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp_save
+2026-01-10 20:40:27,941 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp
+2026-01-10 20:40:27,945 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp_save
+2026-01-10 20:40:27,991 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp
+2026-01-10 20:40:27,994 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp_save
+2026-01-10 20:40:28,038 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp
+2026-01-10 20:40:28,043 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp_save
+2026-01-10 20:40:28,100 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp
+2026-01-10 20:40:28,153 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma.tmp_save
+2026-01-10 20:40:28,251 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma.tmp
+2026-01-10 20:40:28,253 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma_GV.tmp_save
+2026-01-10 20:40:28,291 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma_GV.tmp
+2026-01-10 20:40:28,299 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp_save
+2026-01-10 20:40:28,353 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp
+2026-01-10 20:40:28,356 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp_save
+2026-01-10 20:40:28,388 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp
+2026-01-10 20:40:28,392 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp_save
+2026-01-10 20:40:28,428 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp
+2026-01-10 20:40:28,431 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp_save
+2026-01-10 20:40:28,463 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp
+2026-01-10 20:40:28,474 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\ffconf.h_save
+2026-01-10 20:40:28,548 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\ffconf.h
+2026-01-10 20:40:28,568 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.c_save
+2026-01-10 20:40:28,635 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.c
+2026-01-10 20:40:28,646 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.h_save
+2026-01-10 20:40:28,679 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.h
+2026-01-10 20:40:28,690 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.h_save
+2026-01-10 20:40:28,731 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.h
+2026-01-10 20:40:28,744 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.c_save
+2026-01-10 20:40:28,813 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.c
+2026-01-10 20:40:28,825 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.c_save
+2026-01-10 20:40:28,869 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.c
+2026-01-10 20:40:28,873 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.h_save
+2026-01-10 20:40:28,907 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.h
+2026-01-10 20:40:28,910 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.c_save
+2026-01-10 20:40:28,942 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.c
+2026-01-10 20:40:28,946 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.h_save
+2026-01-10 20:40:28,979 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.h
+2026-01-10 20:40:28,999 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_it.c_save
+2026-01-10 20:40:29,090 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_it.c
+2026-01-10 20:40:29,094 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_it.h_save
+2026-01-10 20:40:29,135 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_it.h
+2026-01-10 20:40:29,157 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_msp.c_save
+2026-01-10 20:40:29,276 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_msp.c
+2026-01-10 20:40:29,306 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\system.tmp_save
+2026-01-10 20:40:29,347 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\system.tmp
+2026-01-10 20:40:29,362 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_timebase_tim.c_save
+2026-01-10 20:40:29,415 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_timebase_tim.c
+2026-01-10 20:40:29,430 [INFO] CodeEngine:311 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_hal_conf.h_save
+2026-01-10 20:40:29,497 [INFO] CodeEngine:335 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_hal_conf.h
+2026-01-10 20:40:29,515 [WARN] IPConfigManager:3431 - IP not found : TIM
+2026-01-10 20:40:29,516 [WARN] CodeGenerator:3760 - IP not found : null
+2026-01-10 20:40:29,529 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\main.h_save
+2026-01-10 20:40:29,578 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\main.h
+2026-01-10 20:40:29,590 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\main.c_save
+2026-01-10 20:40:29,689 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\main.c
+2026-01-10 20:40:30,122 [INFO] ProjectBuilder:3064 - Time for Copy HAL[1] : 190mS.
+2026-01-10 20:40:30,126 [INFO] ProjectBuilder:4404 - Project Generator version: 4.1.0
+2026-01-10 20:40:30,274 [INFO] ConfigFileManager:1457 - The Die is : DIE413
+2026-01-10 20:40:31,457 [INFO] ProjectBuilder:4626 - Time for Generating toolchain IDE Files: 1331mS.
+2026-01-10 20:40:31,458 [INFO] ProjectBuilder:2935 - Time for Copy CMSIS : 1mS.
+2026-01-10 20:40:31,468 [INFO] ProjectBuilder:2935 - Time for Copy CMSIS : 0mS.
+2026-01-10 20:43:34,732 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2026-01-10 20:45:46,804 [INFO] Gpio:273 - dependency for GPIO [I2C1, SDIO, SPI1, SYS, USART2]
+2026-01-10 20:46:03,602 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 814937776 Bytes (1073741824)
+2026-01-10 20:46:04,942 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 844824240 Bytes (1073741824)
+2026-01-10 20:46:06,351 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 927661744 Bytes (1073741824)
+2026-01-10 20:46:06,676 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SPI
+2026-01-10 20:46:06,676 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SDIO
+2026-01-10 20:46:06,676 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: TIM1_8
+2026-01-10 20:46:06,676 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SYS
+2026-01-10 20:46:06,676 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: RCC
+2026-01-10 20:46:06,677 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: I2C
+2026-01-10 20:46:06,677 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: RTC
+2026-01-10 20:46:06,677 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: NVIC
+2026-01-10 20:46:06,677 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: USART
+2026-01-10 20:46:06,677 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: DMA
+2026-01-10 20:46:06,677 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: GPIO
+2026-01-10 20:46:06,677 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: FATFS
+2026-01-10 20:46:06,678 [INFO] CodeGenerator:799 - code generatio: config db path: C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.9.0.202307051724\\db\
+2026-01-10 20:46:06,683 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 20:46:06,683 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 20:46:06,689 [INFO] Argument:319 - Argument : hdmavalue: null
+2026-01-10 20:46:06,689 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 20:46:06,689 [INFO] Argument:319 - Argument : Instancevalue: DMA2_Stream3
+2026-01-10 20:46:06,689 [INFO] Argument:329 - Argument : Instancevalue: DMA2_Stream3
+2026-01-10 20:46:06,689 [INFO] Argument:319 - Argument : Initvalue: null
+2026-01-10 20:46:06,689 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 20:46:06,689 [INFO] Argument:319 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 20:46:06,689 [INFO] Argument:329 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 20:46:06,689 [INFO] Argument:319 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2026-01-10 20:46:06,689 [INFO] Argument:329 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2026-01-10 20:46:06,689 [INFO] Argument:319 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 20:46:06,689 [INFO] Argument:329 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 20:46:06,689 [INFO] Argument:319 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 20:46:06,689 [INFO] Argument:329 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 20:46:06,689 [INFO] Argument:319 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 20:46:06,689 [INFO] Argument:329 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 20:46:06,689 [INFO] Argument:319 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 20:46:06,689 [INFO] Argument:329 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 20:46:06,689 [INFO] Argument:319 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 20:46:06,689 [INFO] Argument:329 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 20:46:06,690 [INFO] Argument:319 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 20:46:06,690 [INFO] Argument:329 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 20:46:06,690 [INFO] Argument:319 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 20:46:06,690 [INFO] Argument:329 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 20:46:06,690 [INFO] Argument:319 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 20:46:06,690 [INFO] Argument:329 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 20:46:06,690 [INFO] Argument:319 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 20:46:06,690 [INFO] Argument:329 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 20:46:06,690 [INFO] Argument:319 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 20:46:06,690 [INFO] Argument:329 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 20:46:06,690 [INFO] Argument:319 - Argument : Lockvalue: null
+2026-01-10 20:46:06,690 [INFO] Argument:329 - Argument : Lockvalue: null
+2026-01-10 20:46:06,690 [INFO] Argument:319 - Argument : Statevalue: null
+2026-01-10 20:46:06,690 [INFO] Argument:329 - Argument : Statevalue: null
+2026-01-10 20:46:06,690 [INFO] Argument:319 - Argument : Parentvalue: null
+2026-01-10 20:46:06,690 [INFO] Argument:329 - Argument : Parentvalue: null
+2026-01-10 20:46:06,690 [INFO] Argument:319 - Argument : XferCpltCallbackvalue: null
+2026-01-10 20:46:06,690 [INFO] Argument:329 - Argument : XferCpltCallbackvalue: null
+2026-01-10 20:46:06,690 [INFO] Argument:319 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 20:46:06,690 [INFO] Argument:329 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 20:46:06,690 [INFO] Argument:319 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 20:46:06,690 [INFO] Argument:329 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 20:46:06,690 [INFO] Argument:319 - Argument : XferErrorCallbackvalue: null
+2026-01-10 20:46:06,690 [INFO] Argument:329 - Argument : XferErrorCallbackvalue: null
+2026-01-10 20:46:06,690 [INFO] Argument:319 - Argument : ErrorCodevalue: null
+2026-01-10 20:46:06,690 [INFO] Argument:329 - Argument : ErrorCodevalue: null
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : hdmavalue: null
+2026-01-10 20:46:06,691 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : Instancevalue: DMA2_Stream6
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : Instancevalue: DMA2_Stream6
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : Initvalue: null
+2026-01-10 20:46:06,691 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : Lockvalue: null
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : Lockvalue: null
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : Statevalue: null
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : Statevalue: null
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : Parentvalue: null
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : Parentvalue: null
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : XferCpltCallbackvalue: null
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : XferCpltCallbackvalue: null
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : XferErrorCallbackvalue: null
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : XferErrorCallbackvalue: null
+2026-01-10 20:46:06,691 [INFO] Argument:319 - Argument : ErrorCodevalue: null
+2026-01-10 20:46:06,691 [INFO] Argument:329 - Argument : ErrorCodevalue: null
+2026-01-10 20:46:06,783 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\license.tmp_save
+2026-01-10 20:46:06,838 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\license.tmp
+2026-01-10 20:46:06,850 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\gpio.tmp_save
+2026-01-10 20:46:06,904 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\gpio.tmp
+2026-01-10 20:46:07,199 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp_save
+2026-01-10 20:46:07,334 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp
+2026-01-10 20:46:07,337 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp_save
+2026-01-10 20:46:07,381 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp
+2026-01-10 20:46:07,384 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp_save
+2026-01-10 20:46:07,422 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp
+2026-01-10 20:46:07,425 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp_save
+2026-01-10 20:46:07,461 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp
+2026-01-10 20:46:07,485 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma.tmp_save
+2026-01-10 20:46:07,540 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma.tmp
+2026-01-10 20:46:07,542 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma_GV.tmp_save
+2026-01-10 20:46:07,579 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma_GV.tmp
+2026-01-10 20:46:07,586 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp_save
+2026-01-10 20:46:07,634 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp
+2026-01-10 20:46:07,637 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp_save
+2026-01-10 20:46:07,666 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp
+2026-01-10 20:46:07,669 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp_save
+2026-01-10 20:46:07,703 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp
+2026-01-10 20:46:07,707 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp_save
+2026-01-10 20:46:07,740 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp
+2026-01-10 20:46:07,751 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\ffconf.h_save
+2026-01-10 20:46:07,837 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\ffconf.h
+2026-01-10 20:46:07,857 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.c_save
+2026-01-10 20:46:07,928 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.c
+2026-01-10 20:46:07,940 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.h_save
+2026-01-10 20:46:07,975 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.h
+2026-01-10 20:46:07,987 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.h_save
+2026-01-10 20:46:08,023 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.h
+2026-01-10 20:46:08,035 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.c_save
+2026-01-10 20:46:08,105 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.c
+2026-01-10 20:46:08,117 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.c_save
+2026-01-10 20:46:08,155 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.c
+2026-01-10 20:46:08,158 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.h_save
+2026-01-10 20:46:08,194 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.h
+2026-01-10 20:46:08,198 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.c_save
+2026-01-10 20:46:08,234 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.c
+2026-01-10 20:46:08,239 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.h_save
+2026-01-10 20:46:08,276 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.h
+2026-01-10 20:46:08,299 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_it.c_save
+2026-01-10 20:46:08,423 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_it.c
+2026-01-10 20:46:08,439 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_it.h_save
+2026-01-10 20:46:08,510 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_it.h
+2026-01-10 20:46:08,539 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_msp.c_save
+2026-01-10 20:46:08,690 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_msp.c
+2026-01-10 20:46:08,702 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\system.tmp_save
+2026-01-10 20:46:08,737 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\system.tmp
+2026-01-10 20:46:08,750 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_timebase_tim.c_save
+2026-01-10 20:46:08,791 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_timebase_tim.c
+2026-01-10 20:46:08,804 [INFO] CodeEngine:311 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_hal_conf.h_save
+2026-01-10 20:46:08,868 [INFO] CodeEngine:335 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_hal_conf.h
+2026-01-10 20:46:08,887 [WARN] IPConfigManager:3431 - IP not found : TIM
+2026-01-10 20:46:08,888 [WARN] CodeGenerator:3760 - IP not found : null
+2026-01-10 20:46:08,899 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\main.h_save
+2026-01-10 20:46:08,951 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\main.h
+2026-01-10 20:46:08,962 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\main.c_save
+2026-01-10 20:46:09,065 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\main.c
+2026-01-10 20:46:09,572 [INFO] ProjectBuilder:3064 - Time for Copy HAL[1] : 254mS.
+2026-01-10 20:46:09,578 [INFO] ProjectBuilder:4404 - Project Generator version: 4.1.0
+2026-01-10 20:46:09,717 [INFO] ConfigFileManager:1457 - The Die is : DIE413
+2026-01-10 20:46:10,870 [INFO] ProjectBuilder:4626 - Time for Generating toolchain IDE Files: 1292mS.
+2026-01-10 20:46:10,870 [INFO] ProjectBuilder:2935 - Time for Copy CMSIS : 0mS.
+2026-01-10 20:46:10,874 [INFO] ProjectBuilder:2935 - Time for Copy CMSIS : 0mS.
+2026-01-10 20:54:46,882 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2026-01-10 20:54:51,026 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 20:54:51,026 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 20:54:51,026 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 20:54:51,026 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 20:54:51,062 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2026-01-10 20:57:49,502 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2026-01-10 20:57:49,625 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2026-01-10 20:57:59,187 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 20:57:59,187 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 20:57:59,187 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 20:57:59,187 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 20:57:59,317 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 20:57:59,317 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 20:57:59,317 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 20:57:59,317 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 20:58:00,223 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 20:58:00,223 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 20:58:00,223 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 20:58:00,223 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 20:58:00,274 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2026-01-10 20:58:07,674 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2026-01-10 20:58:07,714 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2026-01-10 20:58:11,224 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2026-01-10 20:58:11,289 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2026-01-10 20:58:13,978 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2026-01-10 20:58:14,031 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2026-01-10 20:58:15,444 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2026-01-10 20:58:15,487 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2026-01-10 20:58:16,967 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 948164224 Bytes (1073741824)
+2026-01-10 20:58:18,952 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 758047240 Bytes (1073741824)
+2026-01-10 20:58:20,163 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 840362504 Bytes (1073741824)
+2026-01-10 20:58:20,390 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SPI
+2026-01-10 20:58:20,390 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SDIO
+2026-01-10 20:58:20,390 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: TIM1_8
+2026-01-10 20:58:20,390 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SYS
+2026-01-10 20:58:20,390 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: RCC
+2026-01-10 20:58:20,390 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: I2C
+2026-01-10 20:58:20,390 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: RTC
+2026-01-10 20:58:20,390 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: NVIC
+2026-01-10 20:58:20,390 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: USART
+2026-01-10 20:58:20,390 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: DMA
+2026-01-10 20:58:20,390 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: GPIO
+2026-01-10 20:58:20,390 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: FATFS
+2026-01-10 20:58:20,391 [INFO] CodeGenerator:799 - code generatio: config db path: C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.9.0.202307051724\\db\
+2026-01-10 20:58:20,395 [WARN] IP:2114 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2026-01-10 20:58:20,395 [WARN] IP:2114 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : hdmavalue: null
+2026-01-10 20:58:20,400 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : Instancevalue: DMA2_Stream3
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : Instancevalue: DMA2_Stream3
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : Initvalue: null
+2026-01-10 20:58:20,400 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : Directionvalue: DMA_MEMORY_TO_PERIPH
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : Lockvalue: null
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : Lockvalue: null
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : Statevalue: null
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : Statevalue: null
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : Parentvalue: null
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : Parentvalue: null
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : XferCpltCallbackvalue: null
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : XferCpltCallbackvalue: null
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : XferErrorCallbackvalue: null
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : XferErrorCallbackvalue: null
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : ErrorCodevalue: null
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : ErrorCodevalue: null
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : hdmavalue: null
+2026-01-10 20:58:20,400 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : Instancevalue: DMA2_Stream6
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : Instancevalue: DMA2_Stream6
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : Initvalue: null
+2026-01-10 20:58:20,400 [INFO] Argument:321 - 	 sub Args: 
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : Channelvalue: DMA_CHANNEL_4
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2026-01-10 20:58:20,400 [INFO] Argument:319 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 20:58:20,400 [INFO] Argument:329 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_WORD
+2026-01-10 20:58:20,401 [INFO] Argument:319 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 20:58:20,401 [INFO] Argument:329 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_WORD
+2026-01-10 20:58:20,401 [INFO] Argument:319 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 20:58:20,401 [INFO] Argument:329 - Argument : Modevalue: DMA_PFCTRL
+2026-01-10 20:58:20,401 [INFO] Argument:319 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 20:58:20,401 [INFO] Argument:329 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2026-01-10 20:58:20,401 [INFO] Argument:319 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 20:58:20,401 [INFO] Argument:329 - Argument : FIFOModevalue: DMA_FIFOMODE_ENABLE
+2026-01-10 20:58:20,401 [INFO] Argument:319 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 20:58:20,401 [INFO] Argument:329 - Argument : FIFOThresholdvalue: DMA_FIFO_THRESHOLD_FULL
+2026-01-10 20:58:20,401 [INFO] Argument:319 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 20:58:20,401 [INFO] Argument:329 - Argument : MemBurstvalue: DMA_MBURST_INC4
+2026-01-10 20:58:20,401 [INFO] Argument:319 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 20:58:20,401 [INFO] Argument:329 - Argument : PeriphBurstvalue: DMA_PBURST_INC4
+2026-01-10 20:58:20,401 [INFO] Argument:319 - Argument : Lockvalue: null
+2026-01-10 20:58:20,401 [INFO] Argument:329 - Argument : Lockvalue: null
+2026-01-10 20:58:20,401 [INFO] Argument:319 - Argument : Statevalue: null
+2026-01-10 20:58:20,401 [INFO] Argument:329 - Argument : Statevalue: null
+2026-01-10 20:58:20,401 [INFO] Argument:319 - Argument : Parentvalue: null
+2026-01-10 20:58:20,401 [INFO] Argument:329 - Argument : Parentvalue: null
+2026-01-10 20:58:20,401 [INFO] Argument:319 - Argument : XferCpltCallbackvalue: null
+2026-01-10 20:58:20,401 [INFO] Argument:329 - Argument : XferCpltCallbackvalue: null
+2026-01-10 20:58:20,401 [INFO] Argument:319 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 20:58:20,401 [INFO] Argument:329 - Argument : XferHalfCpltCallbackvalue: null
+2026-01-10 20:58:20,401 [INFO] Argument:319 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 20:58:20,401 [INFO] Argument:329 - Argument : XferM1CpltCallbackvalue: null
+2026-01-10 20:58:20,401 [INFO] Argument:319 - Argument : XferErrorCallbackvalue: null
+2026-01-10 20:58:20,401 [INFO] Argument:329 - Argument : XferErrorCallbackvalue: null
+2026-01-10 20:58:20,401 [INFO] Argument:319 - Argument : ErrorCodevalue: null
+2026-01-10 20:58:20,401 [INFO] Argument:329 - Argument : ErrorCodevalue: null
+2026-01-10 20:58:20,506 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\license.tmp_save
+2026-01-10 20:58:20,576 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\license.tmp
+2026-01-10 20:58:20,614 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\gpio.tmp_save
+2026-01-10 20:58:20,754 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\gpio.tmp
+2026-01-10 20:58:20,987 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp_save
+2026-01-10 20:58:21,047 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp
+2026-01-10 20:58:21,051 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp_save
+2026-01-10 20:58:21,084 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp
+2026-01-10 20:58:21,086 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp_save
+2026-01-10 20:58:21,119 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp
+2026-01-10 20:58:21,121 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp_save
+2026-01-10 20:58:21,165 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp
+2026-01-10 20:58:21,196 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma.tmp_save
+2026-01-10 20:58:21,273 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma.tmp
+2026-01-10 20:58:21,276 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma_GV.tmp_save
+2026-01-10 20:58:21,320 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\dma_GV.tmp
+2026-01-10 20:58:21,329 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp_save
+2026-01-10 20:58:21,412 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_HalInit.tmp
+2026-01-10 20:58:21,416 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp_save
+2026-01-10 20:58:21,457 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_vars.tmp
+2026-01-10 20:58:21,462 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp_save
+2026-01-10 20:58:21,503 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_ext_vars.tmp
+2026-01-10 20:58:21,507 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp_save
+2026-01-10 20:58:21,541 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\fatfs_inc.tmp
+2026-01-10 20:58:21,553 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\ffconf.h_save
+2026-01-10 20:58:21,628 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\ffconf.h
+2026-01-10 20:58:21,650 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.c_save
+2026-01-10 20:58:21,719 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.c
+2026-01-10 20:58:21,732 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.h_save
+2026-01-10 20:58:21,773 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\bsp_driver_sd.h
+2026-01-10 20:58:21,785 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.h_save
+2026-01-10 20:58:21,823 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.h
+2026-01-10 20:58:21,836 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.c_save
+2026-01-10 20:58:21,909 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\sd_diskio.c
+2026-01-10 20:58:21,920 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.c_save
+2026-01-10 20:58:21,958 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.c
+2026-01-10 20:58:21,962 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.h_save
+2026-01-10 20:58:21,999 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\App\fatfs.h
+2026-01-10 20:58:22,002 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.c_save
+2026-01-10 20:58:22,041 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.c
+2026-01-10 20:58:22,045 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.h_save
+2026-01-10 20:58:22,078 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\FATFS\Target\fatfs_platform.h
+2026-01-10 20:58:22,096 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_it.c_save
+2026-01-10 20:58:22,180 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_it.c
+2026-01-10 20:58:22,184 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_it.h_save
+2026-01-10 20:58:22,227 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_it.h
+2026-01-10 20:58:22,250 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_msp.c_save
+2026-01-10 20:58:22,385 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_msp.c
+2026-01-10 20:58:22,397 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\system.tmp_save
+2026-01-10 20:58:22,472 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\MXTmpFiles\system.tmp
+2026-01-10 20:58:22,489 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_timebase_tim.c_save
+2026-01-10 20:58:22,545 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\stm32f4xx_hal_timebase_tim.c
+2026-01-10 20:58:22,560 [INFO] CodeEngine:311 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_hal_conf.h_save
+2026-01-10 20:58:22,633 [INFO] CodeEngine:335 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\stm32f4xx_hal_conf.h
+2026-01-10 20:58:22,652 [WARN] IPConfigManager:3431 - IP not found : TIM
+2026-01-10 20:58:22,652 [WARN] CodeGenerator:3760 - IP not found : null
+2026-01-10 20:58:22,664 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\main.h_save
+2026-01-10 20:58:22,713 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Inc\main.h
+2026-01-10 20:58:22,725 [INFO] CodeEngine:255 - oldGeneratedFile, C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\main.c_save
+2026-01-10 20:58:22,823 [INFO] CodeEngine:279 - Generated code: C:\programing\Embedded\projects_stm32\MeteoStation\MeteoStation\Core\Src\main.c
+2026-01-10 20:58:23,215 [INFO] ProjectBuilder:3064 - Time for Copy HAL[1] : 165mS.
+2026-01-10 20:58:23,219 [INFO] ProjectBuilder:4404 - Project Generator version: 4.1.0
+2026-01-10 20:58:23,360 [INFO] ConfigFileManager:1457 - The Die is : DIE413
+2026-01-10 20:58:24,395 [INFO] ProjectBuilder:4626 - Time for Generating toolchain IDE Files: 1176mS.
+2026-01-10 20:58:24,396 [INFO] ProjectBuilder:2935 - Time for Copy CMSIS : 1mS.
+2026-01-10 20:58:24,401 [INFO] ProjectBuilder:2935 - Time for Copy CMSIS : 0mS.
